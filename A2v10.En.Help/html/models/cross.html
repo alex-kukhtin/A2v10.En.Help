@@ -1,64 +1,68 @@
 ﻿<div>
-	<!--title:Перекрестные модели данных-->
-	<!--keywords:Перекрестные модели данных;-->
+	<!--title:Cross data models-->
+	<!--keywords:Cross data models;-->
 	<div class="title">
 		<h1>
-			Перекрестные модели данных
+			Cross data models
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Модели данных</a>
+			<a href="index">Data models</a>
 		</div>
 	</div>
 	<p>
-		Перекрестная модель данных включает одно или несколько полей,
-		которые будут развернуты либо в горизонтальный массив элементов (тип <code>CrossArray</code>), либо в объект с ключами (тип <code>CrossObject</code>).
-
-		Чаще всего такие модели используются для
-		построения перекрестных отчетов, в которых количество колонок переменное и определяется полученными данными.
-
-		Это похоже на sql-оператор <b>pivot</b>, но, в отличие от него, не требуется заранее знать какие колонки будут включены в результирующий набор.
+		The cross data model includes one or more fields that will be expanded into either a
+		horizontal array of items (<code>CrossArray</code> type) or into a keyed
+		object (<code>CrossObject</code> type).
 	</p>
 	<p>
-		Обратите внимание, что использовать перекрестные модели для объектов (не массивов) не имеет смысла (хотя и не запрещается). Вместо этого
-		просто используйте <code>MapObject</code>.
+		Such models are most often used
+		to build cross-sectional reports, in which the number of columns is variable and is
+		determined by the received data.
+
+		This is similar to the sql <b>pivot</b> statement, but, unlike it, you do 
+		not need to know in advance which columns will be included in the result set.
+	</p>
+	<p>
+		Note that it doesn't make sense (though not forbidden) to use cross-models
+		for objects (not arrays). Just use <code>MapObject</code> instead.
 	</p>
 
 	<p>
-		Для перекрестных массивов отличия от простых вложенных массивов заключаются в следующем:
+		For cross arrays, the differences from simple nested arrays are the following:
 		<ul class="std">
-			<li>Все перекрестные массивы во всех записях будут иметь одинаковый размер.</li>
-			<li>Порядок элементов будет определяться ключом (<code>Key</code>) перекрестного элемента.</li>
+			<li>All cross arrays in all records will be the same size.</li>
+			<li>The order of the items will be determined by the (<code>Key</code>) of the cross item.</li>
 			<li>
-				Основной массив (тот, в котором содержится элементы с перекрестными массивами) будет иметь дополнительное свойство
-				<a class="code-link" href="/client/arrayprops">$cross</a>, в котором будут представлены
-				массивы ключей для каждого из перекрестных массивов.
+				The main array (the one that contains the items with the cross arrays) will have an additional
+				<a class="code-link" href="/client/arrayprops">$cross</a> property
+				where the key arrays for each of the cross arrays will be represented.
 			</li>
 		</ul>
 	</p>
 
 	<p>
-		Для перекрестных объектов логика следующая:
+		For cross objects, the logic is as follows:
 		<ul class="std">
-			<li>Все перекрестные объекты во всех записях будут иметь одинаковую структуру.</li>
+			<li>All cross objects in all records will have the same structure.</li>
 			<li>
-				Основной массив (тот, в котором содержится элементы с перекрестными массивами) будет иметь дополнительное свойство
-				<a class="code-link" href="/client/arrayprops">$cross</a>, в котором будут представлены
-				массивы ключей для каждого из перекрестных массивов.
+				The main array (the one that contains the items with the cross arrays) will have an additional
+				<a class="code-link" href="/client/arrayprops">$cross</a>, property where the key arrays for each of 
+				the cross arrays will be represented.
 			</li>
 		</ul>
 	</p>
-	<p>Проще всего разобраться с принципами работы перекрестных моделей на примере.</p>
+	<p>The easiest way to understand how cross models work is with an example.</p>
 
-	<h3>Пример обработки перекрестного массива</h3>
+	<h3>Cross Array Processing Example</h3>
 	<p>
-		Пусть имеется фрагмент кода SQL:
+		Let there be a fragment of SQL code:
 <pre class="code-highlight js" data-lang="sql">
 <script type="text/template">
-/* основной набор */
+/* main recordset */
 select [RepData!TData!Array] = null, [Id!!Id] = Id, S1, N1, [Cross1!TCross!CrossArray] = null
 from ...;
 
-/*перекрестный набор */
+/* cross part */
 select [!TCross!CrossArray] = null, [Key!!Key] = Key, Val, [!TData.Cross1!ParentId] = Id;
 from ...;
 </script>
@@ -66,7 +70,7 @@ from ...;
 	</p>
 
 	<p>
-		И он возвращает следующие данные:
+		And it returns the following data:
 		<table class="sql-table">
 			<thead>
 				<tr>
@@ -121,28 +125,41 @@ from ...;
 	</p>
 
 	<p>
-		При обработке первого набора создается простой массив <code>RepData</code> элементов типа <code>TData</code>. В каждом элементе этого массива будет поле
-		<code>Cross1</code>, которое в дальнейшем станет перекрестным массивом элементов типа <code>TCross</code>. Обратите внимание, что в элементах основного обязательно
-		должен присутствовать идентификатор (поле с типом <code>!Id</code>), для того, чтобы следующие наборы данных могли ссылаться на элемент массива.
+		When the first set is being processed, a simple array 
+		of the <code>RepData</code> items of the <code>TData</code> type will be created. 
+		Each item of this array will contain the <code>Cross1</code> field, 
+		which will later become a cross array of items of the <code>TCross</code> type. 
+		Please note that the main items must contain an 
+		identifier (a field with the <code>!Id</code> type), 
+		so that the next data sets can refer to the array item.
 	</p>
 	<p>
-		Второй набор обрабатывается следующим образом.
-		Сначала ищется поле ссылки на перекрестное поле основного элемента массива (поле с типом <code>!ParentId</code>).
-		Тип ссылки указывает на имя типа и имя поля через точку. <code>!TData.Cross1!ParentId</code> - поле <code>Cross1</code> в элементе типа <code>TData</code>.
-		Содержимое перекрестной записи сохраняется во внутреннем буфере найденной основной записи.
+		The second set is processed as follows. First, the field of reference 
+		to the cross field of the main item of the array is searched 
+		(a field with the <code>!ParentId</code> type). 
+		The link type indicates the type name and the field name separated by a dot. 
+		<code>!TData.Cross1!ParentId</code> - the <code>Cross1</code> field in 
+		the <code>TData</code> type item. 
+		The content of the cross-record is stored in the internal 
+		buffer of the found master record.
 	</p>
 	<p>
-		Обратите внимание, что перекрестный массив обязательно должен содержать тестовое поле c типом <code>!Key</code>. Оно используется для внутренней обработки.
-		Именно это поле будет содержаться в массиве, который возвращается свойством <code>$cross</code>. Это свойство будет добавлено в сам массив (не элемент!) объектов типа
-		<code>TData</code>. Обращение к списку ключей будет выглядеть как <code>RepArray.$cross.Cross1.</code>
+		Please note that the cross array must contain a test field of the 
+		<code>!Key</code> type. 
+		It is used for internal processing. 
+		It is this field that will be contained in the array returned 
+		by the <code>$cross</code> property. 
+		This property will be added to the array itself (not an item!) of <code>TData</code> objects. 
+		A reference to the list of keys will look like <code>RepArray.$Cross.Cross1</code>.
 	</p>
-
 	<p>
-		После обработки всех записей перекрестных наборов, система находит объединение всех возможных ключей во всех записях <code>TData</code> и преобразовывает внутренние
-		буфреры в массивы. В результате все перекрестные массивы будут иметь одинаковую длину.
+		After processing all cross-set records, the system finds 
+		the concatenation of all possible keys in all <code>TData</code> records and 
+		converts the internal buffers to arrays. As a result, 
+		all cross arrays will have the same length.
 	</p>
 	<p>
-		Результирующая модель получится такой:
+		The resulting model will look as follows:
 
 <pre class="code-highlight js" data-lang="js">
 <script type="text/template">
@@ -173,37 +190,42 @@ RepData: [
 </pre>
 	</p>
 
-	<h3>Пример</h3>
+	<h3>Example</h3>
 	<p>
-		Чаще всего перекрестные модели используются для построения отчетов совместно с таблицами <a class="code-link" href="/xaml/sheet/sheet">Sheet</a>.
-		Для того, чтобы пример был более реалистичным, добавим вывод итоговых значений.
-		Для вывода перекрестных массивов используется элемент <a class="code-link" href="/xaml/sheet/sheetcellgroup">SheetCellGroup</a>.
+
+	</p>
+	<p>
+		The cross models are most often used to build reports in conjunction with
+		<a class="code-link" href="/xaml/sheet/sheet">Sheet</a>tables. To make the
+		example more realistic, let's add the output of the totals.
+		The <a class="code-link" href="/xaml/sheet/sheetcellgroup">SheetCellGroup</a> 
+		element is used to display cross arrays.
 	</p>
 
 	<p>
-		Шаблон
+		Template
 <pre class="code-highlight js">
 <script type="text/template">
 const template = {
 	properties: {
-		/* свойства для всего массива */
+		/* properties for the whole array */
 
-		/* объединяемые колонки */
+		/* merge columns */
 		'TDataArray.$Cross1Span'() {return this.$cross.Cross1.length + 1; },
-		/* итоговые значения по перекрестным элементам. Возвращает массив! */
+		/* cross totals. returns array! */
 		'TDataArray.$Cross1Total'() {
 			return this.$cross.Cross1.reduce((prevArray, currKey, currIndex) => {
 				prevArray.push({ Val: this.reduce((prevTotal, currElem) => prevTotal + currElem.Cross1[currIndex].Val, 0) });
 				return prevArray;
 			}, []);
 		},
-		/* общее итоговое значение раздела Cross1 по всем строкам */
+		/* total for Cross1 section across all lines */
 		'TDataArray.$GrandTotal'() {
 			return this.$Cross1Total.reduce((p, c) => p + c.Val, 0);
 		},
 
-		/* свойства для каждого элемента массива */
-		/* итоговое значение Cross1 по строке */
+		/* properties for each item of the array */
+		/* total Cross1 by line */
 		'TData.$Cross1Total'() {return this.Cross1.reduce((p, c) => p + c.Val, 0); }
 	}
 }
@@ -213,50 +235,51 @@ const template = {
 
 	</p>
 
-	<p>XAML:
+	<p>
+		XAML:
 <pre class="code-highlight xml">
 <script type="text/template">
 <![CDATA[
-	<Sheet Margin="1rem" GridLines="Both" Compact="True">
+		<Sheet Margin="1rem" GridLines="Both" Compact="True">
 		<Sheet.Header>
-			<SheetRow Style="Header">
-				<SheetCell RowSpan="2">Id</SheetCell>
-				<SheetCell RowSpan="2">S1</SheetCell>
-				<SheetCell RowSpan="2">N1</SheetCell>
-				<SheetCell ColSpan="{Bind RepData.$Cross1Span}">Cross1</SheetCell>
+		<SheetRow Style="Header">
+		<SheetCell RowSpan="2">Id</SheetCell>
+		<SheetCell RowSpan="2">S1</SheetCell>
+		<SheetCell RowSpan="2">N1</SheetCell>
+		<SheetCell ColSpan="{Bind RepData.$Cross1Span}">Cross1</SheetCell>
 			</SheetRow>
-			<SheetRow Style="Header">
-				<SheetCellGroup ItemsSource="{Bind RepData.$cross.Cross1}">
-					<SheetCell Content="{Bind}" />
+		<SheetRow Style="Header">
+		<SheetCellGroup ItemsSource="{Bind RepData.$cross.Cross1}">
+		<SheetCell Content="{Bind}" />
 				</SheetCellGroup>
-				<SheetCell>Total</SheetCell>
+		<SheetCell>Total</SheetCell>
 			</SheetRow>
-			<SheetRow Style="Total">
-				<SheetCell ColSpan="3">Total</SheetCell>
-				<SheetCellGroup ItemsSource="{Bind RepData.$Cross1Total}">
-					<SheetCell Content="{Bind Val}" />
+		<SheetRow Style="Total">
+		<SheetCell ColSpan="3">Total</SheetCell>
+		<SheetCellGroup ItemsSource="{Bind RepData.$Cross1Total}">
+		<SheetCell Content="{Bind Val}" />
 				</SheetCellGroup>
-				<SheetCell Content="{Bind RepData.$GrandTotal}"/>
+		<SheetCell Content="{Bind RepData.$GrandTotal}" />
 			</SheetRow>
 		</Sheet.Header>
 		<SheetSection ItemsSource="{Bind RepData}">
-			<SheetRow>
-				<SheetCell Content="{Bind Id}" />
-				<SheetCell Content="{Bind S1}" />
-				<SheetCell Content="{Bind N1}" />
-				<SheetCellGroup ItemsSource="{Bind Cross1}">
-					<SheetCell Content="{Bind Val, DataType=Number, HideZeros=True}" />
+		<SheetRow>
+		<SheetCell Content="{Bind Id}" />
+		<SheetCell Content="{Bind S1}" />
+		<SheetCell Content="{Bind N1}" />
+		<SheetCellGroup ItemsSource="{Bind Cross1}">
+		<SheetCell Content="{Bind Val, DataType=Number, HideZeros=True}" />
 				</SheetCellGroup>
-				<SheetCell Content="{Bind $Cross1Total}"/>
+		<SheetCell Content="{Bind $Cross1Total}" />
 			</SheetRow>
 		</SheetSection>
 	</Sheet>
 ]]>
 </script>
 </pre>
-</p>
+	</p>
 	<p>
-		Результат:
+		Result:
 
 		<table class="sheet-table">
 			<thead>

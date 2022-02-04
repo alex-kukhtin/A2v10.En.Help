@@ -2,7 +2,7 @@
 	What's new		/whatsnew/index
 		Январь 2022				/whatsnew/w202201
 	
-Общая информация		/common/index
+General information		/common/index
 	Platform			/common/platform
 
 Прикладные приложения		/app/index
@@ -14,7 +14,7 @@
 		reports			/app/reports
 		files			/app/files
 
-	Специальные папки		/app/folders/index
+	Special folders		/app/folders/index
 		_assets				/app/folders/assets
 		_layout				/app/folders/layout
 		_emails				/app/folders/emails
@@ -22,23 +22,23 @@
 
 	redirect.json		/app/redirect
 
-Модели данных		/models/index
-	Общая информация			/models/general
-	Простые модели				/models/simple
-	Работа с массивами			/models/array
-	Разбиение на страницы		/models/paging
-	Обновление моделей			/models/update
-	Иерархические модели		/models/tree
-	Перекрестные модели			/models/cross
+Data models		/models/index
+	General information			/models/general
+	Simple Data models				/models/simple
+	Working with arrays			/models/array
+	Pagination		/models/paging
+	Updating the models			/models/update
+	Hierarchical data models		/models/tree
+	Cross data models			/models/cross
 	Модели с группировкой		/models/group
 	Работа с двоичными объектами		/models/blob
 
 
-Представления	/views/index
+Views	/views/index
 	Xaml			/xaml/index
-		Общие сведения		/xaml/overview/index
+		General information		/xaml/overview/index
 			Расширения разметки	/xaml/overview/extensions
-		Элементы управления	/xaml/controls/index
+		Controls	/xaml/controls/index
 			Alert				/xaml/controls/alert
 			Button				/xaml/controls/button
 			ChatItem			/xaml/controls/chatitem
@@ -115,7 +115,7 @@
 			Wizard				/xaml/containers/wizard
 			WizardPage			/xaml/containers/wizardpage
 
-		Текстовые элементы			/xaml/text/index
+		Inline elements			/xaml/text/index
 			Badge				/xaml/text/badge
 			Break				/xaml/text/break
 			Hyperlink			/xaml/text/hyperlink
@@ -130,7 +130,7 @@
 			TagLabel			/xaml/text/taglabel
 			Text				/xaml/text/text
 
-		Таблицы				/xaml/sheet/index
+		Sheets				/xaml/sheet/index
 			Sheet			/xaml/sheet/sheet
 			SheetCell		/xaml/sheet/sheetcell
 			SheetCellGroup	/xaml/sheet/sheetcellgroup
@@ -142,12 +142,12 @@
 			SheetSection		/xaml/sheet/sheetsection
 			SheetTreeSection	/xaml/sheet/sheettreesection
 			SheetAutoGenerate	/xaml/sheet/sheetautogenerate
-		Привязки					/xaml/bind/index
+		Binding					/xaml/bind/index
 			Bind					/xaml/bind/bind
 			BindCmd					/xaml/bind/bindcmd
 			StyleResource			/xaml/bind/styleresource
 
-		Компоненты					/xaml/components/index
+		Components					/xaml/components/index
 			CollectionView			/xaml/components/collectionview
 			Confirm					/xaml/components/confirm
 			FilterDescription		/xaml/components/filterdescription
@@ -156,7 +156,7 @@
 			Switch					/xaml/components/switch
 			Validator				/xaml/components/validator
 
-		Простые элементы	/xaml/simple/index
+		Simple elements	/xaml/simple/index
 			Accel			/xaml/simple/accel
 			AccelCommand	/xaml/simple/accelcommand
 			GapSize			/xaml/simple/gapsize
@@ -168,7 +168,7 @@
 			UIElementCollection			/xaml/simple/uielementcollection
 			ResourceDictionary			/xaml/simple/resourcedictionary
 
-		Перечисления	/xaml/enums/index
+		Enums	/xaml/enums/index
 			AlignItem			/xaml/enums/alignitem
 			AlignItems			/xaml/enums/alignitems
 			AutoFlowMode		/xaml/enums/autoflowmode
@@ -191,7 +191,7 @@
 			VerticalAlign		/xaml/enums/verticalalign
 			WrapMode			/xaml/enums/wrapmode
 
-		Абстрактные элементы	/xaml/abstract/index
+		Abstract elements	/xaml/abstract/index
 			CheckBoxBase		/xaml/abstract/checkboxbase
 			Control				/xaml/abstract/control
 			CommandControl		/xaml/abstract/commandcontrol
@@ -235,7 +235,7 @@
 Desktop applications			/desktop/index
 	Файл app.config.json		/desktop/config
 
-Бизнес-процессы			/workflow/index
+Business processes (WWF)	/workflow/index
 	Activities			/workflow/activities/index
 		Request			/workflow/activities/request
 		SendMessage		/workflow/activities/sendmessage
@@ -245,7 +245,7 @@ Desktop applications			/desktop/index
 		ModelStateInfo	/workflow/objects/modelstateinfo
 		TrackRecord		/workflow/objects/trackrecord
 
-Работа с сообщениями	/messaging/index
+Messaging	/messaging/index
 	Settings			/messaging/settings
 	Bindings			/messaging/bindings
 	EmailMessage		/messaging/emailmessage
@@ -262,7 +262,7 @@ Desktop applications			/desktop/index
 
 Тестирование		/tests/index
 	Проверка типов	/tests/checktypes
-	Инструменты		/tests/tools
+	Tools		/tests/tools
 
 About help system	/help/about
 
