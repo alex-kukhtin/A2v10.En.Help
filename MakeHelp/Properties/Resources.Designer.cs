@@ -19,7 +19,7 @@ namespace MakeHelp.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,11 +61,76 @@ namespace MakeHelp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to с
+        ///   Looks up a localized string similar to «
+        ///»
+        ///©
+        ///a
+        ///a2
+        ///a2v10
+        ///v10
+        ///an
+        ///in
+        ///out
+        ///the
+        ///а
+        ///в
+        ///все
+        ///внутри
+        ///во
+        ///да
+        ///для
+        ///до
+        ///другой
+        ///других
+        ///за
+        ///и
+        ///из
+        ///из-за
+        ///или
+        ///какие
+        ///каким
+        ///кого
+        ///которые
+        ///которая
+        ///который
+        ///которую
+        ///кто
         ///на
+        ///не
+        ///нет
+        ///ни
+        ///ні
+        ///о
+        ///об
+        ///он
+        ///она
+        ///оно
         ///по
         ///после
-        ///за.
+        ///потому
+        ///поэтому
+        ///при
+        ///просто
+        ///с
+        ///самым
+        ///самый
+        ///себя
+        ///со
+        ///так
+        ///такие
+        ///таким
+        ///такой
+        ///тем
+        ///теперь
+        ///того
+        ///что
+        ///чего
+        ///чему
+        ///этим
+        ///это
+        ///этого
+        ///я
+        ///.
         /// </summary>
         internal static string stopwords {
             get {
