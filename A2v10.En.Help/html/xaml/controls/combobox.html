@@ -12,7 +12,7 @@
 
 	<p>Represents a drop-down selection list.</p>
 
-	Наследует: <a class="code-link" href="/xaml/abstract/valuedcontrol">ValuedControl</a> :
+	Inherits: <a class="code-link" href="/xaml/abstract/valuedcontrol">ValuedControl</a> :
 	<a class="code-link" href="/xaml/abstract/control">Control</a> :
 	<a class="code-link" href="/xaml/abstract/uielement">UIElement</a> :
 	<a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>
@@ -68,7 +68,8 @@
 					<ul class="enum-vals">
 						<li><span class="prop-name">Default</span> - (by default) a regular list.</li>
 						<li>
-							<span class="prop-name">Hyperlink</span> - display the list as a hyperlink.</li>
+							<span class="prop-name">Hyperlink</span> - display the list as a hyperlink.
+						</li>
 					</ul>
 				</td>
 			</tr>
@@ -106,17 +107,18 @@
 				from the item. The list displays the <code>Content</code> property (or <code>Value</code>, if it is set that <code>ShowValue = true</code>).
 			</li>
 			<li>
-				<b>Binding to the list of objects.</b>. In this case, the <code>ItemsSource</code>
+				<b>Binding to the list of objects</b>. In this case, the <code>ItemsSource</code>
 				binding is associated with an array of objects. The value will be the selected object. The list displays the property of the associated object,
 				specified by the <code>DisplayProperty</code> property.
 			</li>
 			<li>
 				<b>
-					Binding to a list of objects and value. In this case, the <code>ItemsSource</code> также связывается
-					с массивом объектов. binding is also associated with an array of objects. But a single nested
-					<a class="code-link" href="comboboxitem">ComboBoxItem</a>element is used to display and select values. The <code>Content</code> and
-					<code>Value</code> properties of this element are bound to the required values of the array element.
-</li>
+					Binding to a list of objects and value
+				</b>. In this case, the <code>ItemsSource</code> также связывается
+				с массивом объектов. binding is also associated with an array of objects. But a single nested
+				<a class="code-link" href="comboboxitem">ComboBoxItem</a>element is used to display and select values. The <code>Content</code> and
+				<code>Value</code> properties of this element are bound to the required values of the array element.
+			</li>
 		</ul>
 	</p>
 </div>
