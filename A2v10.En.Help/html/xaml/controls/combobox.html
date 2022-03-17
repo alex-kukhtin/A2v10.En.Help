@@ -3,29 +3,29 @@
 	<!--keywords:ComboBox-->
 	<div class="title">
 		<h1>
-			Элемент ComboBox
+			ComboBox Control
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все элементы управления</a>
+			<a href="index">All controls</a>
 		</div>
 	</div>
 
-	<p>Представляет собой выпадающий список выбора.</p>
+	<p>Represents a drop-down selection list.</p>
 
 	Наследует: <a class="code-link" href="/xaml/abstract/valuedcontrol">ValuedControl</a> :
 	<a class="code-link" href="/xaml/abstract/control">Control</a> :
 	<a class="code-link" href="/xaml/abstract/uielement">UIElement</a> :
 	<a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>
 
-	<p>Свойство содержимого: <code>Children</code></p>
+	<p>Content property: <code>Children</code></p>
 
-	<h3>Свойства</h3>
+	<h3>Properties</h3>
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -33,7 +33,7 @@
 				<td class="prop-name">Children</td>
 				<td>List&lt;<a class="code-link" href="comboboxitem">ComboBoxItems</a>&gt;</td>
 				<td>
-					Содержимое списка. Представляет собой список элементов <a class="code-link" href="comboboxitem">ComboBoxItem</a>.
+					List content. Represents a list of the <a class="code-link" href="comboboxitem">ComboBoxItem</a> items. Can be static or dynamic.
 					Может быть статическим или динамическим.
 				</td>
 			</tr>
@@ -41,32 +41,34 @@
 				<td class="prop-name">ItemsSource</td>
 				<td>Array</td>
 				<td>
-					Всегда привязка - <a class="code-link" href="../bind/bind">Bind</a>. Источник данных для отображения в списке.
+					Always a binding - <a class="code-link" href="../bind/bind">Bind</a>. The data source to display in the list.
+
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">DisplayProperty</td>
 				<td>String</td>
-				<td>Имя свойства, которое будет отображаться при связывании элементов списка с объектами.</td>
+				<td>Name of the property to be displayed when linking list items to objects.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">ShowValue</td>
 				<td>Boolean</td>
-				<td>Отображать в списке значение вместо содержимого.</td>
+				<td>Display value instead of content in the list.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Align</td>
 				<td><a class="code-link" href="/xaml/enums/textalign">TextAlign</a></td>
-				<td>Выравнивание текста.</td>
+				<td>Text alignment.</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name">Style</td>
 				<td><code>ComboBoxStyle</code></td>
 				<td>
-					Стиль отображения. Возможные значения:
+					Display style. Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">Default</span> - (по умолчанию) обычный список.</li>
-						<li><span class="prop-name">Hyperlink</span> - отображать список в виде гиперссылки</li>
+						<li><span class="prop-name">Default</span> - (by default) a regular list.</li>
+						<li>
+							<span class="prop-name">Hyperlink</span> - display the list as a hyperlink.</li>
 					</ul>
 				</td>
 			</tr>
@@ -74,44 +76,47 @@
 				<td class="prop-name">Size</td>
 				<td><code>ControlSize</code></td>
 				<td>
-					Размер элемента. Возможные значения:
+					Item size. Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">Default</span> - (по умолчанию) список обычного размера.</li>
-						<li><span class="prop-name">Large</span> - увеличенный размер списка.</li>
+						<li>
+							<span class="prop-name">Default</span> - (by default) regular list size.
+						</li>
+						<li><span class="prop-name">Large</span> - increased list size.</li>
 					</ul>
-					(остальные значения перечисления <code>ControlSize</code> не поддерживаются).
+					(other values of the <code>ControlSize</code> enumeration are not supported).
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/valuedcontrol">Свойства базового элемента</a>
+					<a href="/xaml/abstract/valuedcontrol">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Описание</h3>
+	<h3>Description</h3>
 	<p>
-		Содержимое выпадающего списка может задаваться тремя различными способами:
+		The content of the dropdown list can be determined in three different ways:
 		<ul class="std">
 			<li>
-				<b>Статическое содержимое</b>. В этом случае, элемент должен включать перечень элементов
-				<a class="code-link" href="comboboxitem">ComboBoxItem</a>, для каждого из которых задаются
-				свойства <code>Content</code> и <code>Value</code>. Свойство <code>ItemsSource</code> не указывается.
-				При выборе элемента свойству <code>Value</code> присваивается соответствующее значение <code>Value</code>
-				из элемента. В списке отображается свойство <code>Content</code> (или <code>Value</code>, если установлено <code>ShowValue = true</code>).
+				<b>Static content.</b>. In this case, the item must include a list of
+				<a class="code-link" href="comboboxitem">ComboBoxItem</a>, items, for each of which the
+				<code>Content</code> and <code>Value</code> properties are set. The <code>ItemsSource</code> property is not specified.
+				When you select an item, the <code>Value</code> property is assigned the corresponding <code>Value</code>
+				from the item. The list displays the <code>Content</code> property (or <code>Value</code>, if it is set that <code>ShowValue = true</code>).
 			</li>
 			<li>
-				<b>Привязка к списку объектов</b>. В этом случае привязка <code>ItemsSource</code>
-				связывается с массивом объектов. Значением будет выбранный объект. В списке отображается свойство связанного объекта,
-				заданное свойством <code>DisplayProperty</code>.
+				<b>Binding to the list of objects.</b>. In this case, the <code>ItemsSource</code>
+				binding is associated with an array of objects. The value will be the selected object. The list displays the property of the associated object,
+				specified by the <code>DisplayProperty</code> property.
 			</li>
 			<li>
-				<b>Привязка к списку объектов и значению</b>. В этом случае привязка <code>ItemsSource</code> также связывается 
-				с массивом объектов. Но для отображения и выбора значений используется единственный вложенный элемент 
-				<a class="code-link" href="comboboxitem">ComboBoxItem</a>. Свойства <code>Content</code> и <code>Value</code> 
-				этого элемента связываются с необходимыми значениями элемента массива.
-			</li>
+				<b>
+					Binding to a list of objects and value. In this case, the <code>ItemsSource</code> также связывается
+					с массивом объектов. binding is also associated with an array of objects. But a single nested
+					<a class="code-link" href="comboboxitem">ComboBoxItem</a>element is used to display and select values. The <code>Content</code> and
+					<code>Value</code> properties of this element are bound to the required values of the array element.
+</li>
 		</ul>
 	</p>
 </div>
