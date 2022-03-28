@@ -3,14 +3,14 @@
 	<!--keywords:TableRow-->
 	<div class="title">
 		<h1>
-			Элемент TableRow
+			TableRow
 		</h1>
 		<div class="breadcrumb">
 			<a href="index">All controls</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой строку таблицы.
+		Represents a table row.
 	</p>
 
 	Inherits: <a class="code-link" href="/xaml/abstract/uielement">UIElement</a> : <a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>
@@ -21,80 +21,80 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">Cells</td>
-				<td>Коллекция <a class="code-link" href="tablecell">TableCell</a></td>
-				<td>Коллекция ячеек в строке.</td>
+				<td>Collection <a class="code-link" href="tablecell">TableCell</a></td>
+				<td>A collection of cells in a row.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Align</td>
 				<td><a class="code-link" href="/xaml/enums/textalign">TextAlign?</a></td>
 				<td>
-					Выравнивание по горизонтали для всех ячеек строки. Может быть переопределено в каждой ячейке индивидуально.
+					Horizontal alignment for all cells in the row. Can be redefined in each cell individually.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">VAlign</td>
 				<td><a class="code-link" href="/xaml/enums/verticalalign">VerticalAlign</a></td>
 				<td>
-					Вертикальное выравнивание текста. Может быть переопределено в каждой ячейке индивидуально.
+					Vertical text alignment. Can be redefined in each cell individually.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Mark</td>
 				<td>Object</td>
 				<td>
-					Только привязка. Маркировка строки. Подробности ниже.
+					Binding only. Row marking. Details below.
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/uielement">Свойства базового элемента</a>
+					<a href="/xaml/abstract/uielement">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Маркировка строк</h3>
+	<h3>Rows marking</h3>
 	<p>
-		Выражение привязки для свойства <code>Mark</code> должно возвращать текстовую строку, которая представляет собой дополнительный
-		css-класс, добавляемый к строке.
-
-		В теме по умолчанию поддерживаются следующие варианты маркировки строк:
+		The binding expression for the property <code>Mark</code> should return
+		a text string, which represents an additional CSS class to add to the line. 
+		The default theme supports the following line markings:
 	</p>
 	<p>
 		<table class="a2-table grid-both">
 			<tr class="danger">
 				<td><code>"danger", "error", "red"</code></td>
-				<td>Содержимое строки</td>
+				<td>Row content</td>
 			</tr>
 			<tr class="warning">
 				<td><code>"warning", "orange"</code></td>
-				<td>Содержимое строки</td>
+				<td>Row content</td>
 			</tr>
 			<tr class="success">
 				<td><code>"success", "green"</code></td>
-				<td>Содержимое строки</td>
+				<td>Row content</td>
 			</tr>
 			<tr class="info">
 				<td><code>"info", "cyan"</code></td>
-				<td>Содержимое строки</td>
+				<td>Row content</td>
 			</tr>
 		</table>
 	</p>
 
-	<p>Для добавления дополнительного элемента маркировки можно использовать ячейку <a class="code" href="tablemarkcell">TableMarkerCell</a>.</p>
+	<p>You can use the <a class="code" href="tablemarkcell">TableMarkerCell</a> to add an additional marking element.</p>
 
 	<p class="tip info">
-		Обратите внимание! Маркировка просто добавляет css-класс к строке. Это означает, что вы не ограничены
-		только указанными вариантами. Например, если свойство привязки вернет <code>"danger bold"</code>, то строка будет
-		маркирована красным фоном и будет показываться полужирным шрифтом.
+		Note! Marking is just adding the CSS class to the line. This means that you are not limited to just the options shown.
+		For example, if the anchor property returns <code>"danger bold"</code>, then the row will be highlighted with a red 
+		background and displayed in bold.
+
 	</p>
 
 </div>

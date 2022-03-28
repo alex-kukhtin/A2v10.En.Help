@@ -3,15 +3,15 @@
 	<!--keywords:Image-->
 	<div class="title">
 		<h1>
-			Элемент Image
+			Image Control
 		</h1>
 		<div class="breadcrumb">
 			<a href="index">All controls</a>
 		</div>
 	</div>
 
-	<p>Представляет собой изображение с возможностью привязки к данным.</p>
-	<p><a href="/models/blob">Подробнее о работе с двоичными объектами...</a></p>
+	<p>Represents an image with the possibility of binding to data.</p>
+	<p><a href="/models/blob">Read more about working with binary objects</a></p>
 
 	<p>
 		Inherits: <a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>
@@ -22,9 +22,9 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,93 +32,94 @@
 				<td class="prop-name">Base</td>
 				<td>String</td>
 				<td>
-					URL модели, из которой будет получено изображение.
+
+					The URL of the model from which the image will be received.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Source</td>
 				<td><a class="code-link" href="/xaml/bind/Bind">Bind</a></td>
-				<td>Всегда привязка. Связывается с полем, которой определяет идентификатор картинки.</td>
+				<td>Always binding. Binds to the field that defines the identifier of the picture.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Width</td>
 				<td><a class="code-link" href="/xaml/simple/length">Length</a></td>
 				<td>
-					Ширина изображения.
+					Image width.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Height</td>
 				<td><a class="code-link" href="/xaml/simple/length">Length</a></td>
 				<td>
-					Высота изображения.
+					Image height.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">ReadOnly</td>
 				<td>Boolean</td>
 				<td>
-					Запретить загрузку изображения.
+					Disable image loading.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Limit</td>
 				<td>Int32</td>
 				<td>
-					Максимальный размер загружаемого изображения (в KB).
+					The maximum size of the loaded image (in KB).
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Placeholder</td>
 				<td>String</td>
 				<td>
-					Подсказка. Отображается, если изображение не выбрано.
+					Prompt. Displayed if the image is not selected.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Icon</td>
 				<td><a class="code-link" href="/xaml/enums/icon">Icon</a></td>
 				<td>
-					Иконка. Отображается вместе с заполнителем <code>Placeholder</code>, если изображение не выбрано.
+					Icon. Displayed with the <code>Placeholder</code> placeholder if the image is not selected.
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/uielementbase">Свойства базового элемента</a>
+					<a href="/xaml/abstract/uielementbase">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Особенности</h3>
+	<h3>Specific features</h3>
 	<p>
-		Чаще всего задается только одно из свойств <code>Width</code> или <code>Height</code>. В этом случает
-		картинка будет сохранять пропорции.
+		Most often, only one of the <code>Width</code> or <code>Height</code> properties is set.
+		In this case, the picture will keep the aspect ratio.
 	</p>
 
 
-	<h3>Пример</h3>
+	<h3>Example</h3>
 
 	<p>
-		Элемент управления <code>Image</code> используется для одновременного показа и загрузки картинки
-		с использованием упрощенного подхода.
+		<code>Image</code> control is used to simultaneously display and load an image using 
+		a simplified approach.
 	</p>
 
 	<p>
-		Свойство <code>Source</code> должно ссылаться на свойство модели,
-		которое представляет собой объект с двумя полями (<code>Id!!Id</code> и <code>Token!!Token</code>).
-		Имя этого свойства будет определять суффикс для хранимых процедур,
-		которые будут вызываться для получения или записи реальных байтов изображения.
+		<code>Source</code> property must refer to a property of the model, which represents an object with two fields
+		(<code>Id!!Id</code> and <code>Token!!Token</code>).
+		The name of this property will define the suffix for the stored procedures that will be 
+		called to get or write the actual image bytes.
 	</p>
 
 	<p>
-		Свойство <code>Base</code> должно ссылаться на полную модель
-		(ту, которая указана в корне файла <code>model.json</code>).
+		<code>Base</code> property must refer to the complete model (the one specified in the
+		root of the <code>model.json</code> file).
 	</p>
 
 
 	<p>
-		Пример разметки XAML
+		XAML markup sample:
 <pre class="code-highlight xml">
 <script type="text/template">
 <Image Base="/catalog/product" Source="{Bind Product.Image}" Height="200px" />
@@ -130,7 +131,7 @@
 	</p>
 
 	<p>
-		Фрагмент файла <code>/catalog/product/model.json</code>
+		File fragment <code>/catalog/product/model.json</code>
 <pre class="code-highlight js">
 <script type="text/template">
 {
@@ -142,7 +143,7 @@
 	</p>
 
 	<p>
-		Фрагмент модели данных
+		Data model fragment
 <pre class="code-highlight js">
 <script type="text/template">
 {
@@ -159,20 +160,23 @@
 	</p>
 
 
-	<h4>Получение изображения</h4>
+	<h4>Getting an image</h4>
 	<p>
-		Для получения изображения система вызовет хранимую процедуру
-		<code>a2.[Product.Image.Load]</code>, передав ей в качестве параметра @Id
-		идентификатор объекта <code>Image</code>.
-		Имя <b>Image</b> в наименовании процедуры соответствует имени свойства.
-		Токен доступа будет проверен на сервере (в процедуру он не передается).
-		Если он не соответствует правилам, то процедура вообще не вызовется.
+		To get the image, the system will call the stored procedure
+		<code>a2.[Product.Image.Load]</code>, passing the 
+		<code>Image</code> object ID as the @Id parameter. The Name Image
+		in the name of the procedure corresponds to the name of the property. 
+		The access token will be verified on the server (it is not passed 
+		to the procedure). If it does not match the rules, then the procedure 
+		will not be called at all.
 	</p>
 
-	<h4>Загрузка изображения</h4>
+	<h4>Loading an image</h4>
 	<p>
-		При загрузке изображения на сервер, система вызовет хранимую процедуру
-		<code>a2.[Product.Image.Update]</code>. Процедура вернет идентификатор изображения и новый токен досупа,
-		которые будут обновлены в модели.
+		When the image is uploaded to the server, the system will call the
+		stored procedure <code>a2.[Product.Image.Update]</code>. The procedure 
+		will return an image ID and a new access token, which will be 
+		updated in the model.
+
 	</p>
 </div>

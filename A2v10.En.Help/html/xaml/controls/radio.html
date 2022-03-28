@@ -3,14 +3,14 @@
 	<!--keywords:Radio-->
 	<div class="title">
 		<h1>
-			Элемент Radio
+			Radio Control
 		</h1>
 		<div class="breadcrumb">
 			<a href="index">All controls</a>
 		</div>
 	</div>
 
-	<p>Представляет собой радиокнопку.</p>
+	<p>Represents a radio button.</p>
 
 	Inherits: <a class="code-link" href="/xaml/abstract/checkboxbase">CheckBoxBase</a> :
 	<a class="code-link" href="/xaml/abstract/valuedcontrol">ValuedControl</a> :
@@ -19,47 +19,46 @@
 	<a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>
 
 	<p>
-		Набор радиокнопок связывается с одним значением. Обычно такой набор располагается внутри контейнера
-		<a class="code-link" href="/xaml/containers/fieldset">FieldSet</a>, хотя это и не обязательно.
+		A set of radio buttons is associated with a single value. Typically, such a set is located inside a
+		<a class="code-link" href="/xaml/containers/fieldset">FieldSet</a> container, although this is not obligatory.
 	</p>
 
 	<h3>Properties</h3>
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">CheckedValue</td>
-				<td>Скалярный тип (String, Number, и т.д.)</td>
-				<td>Обязательно. Значение, при котором кнопка будет отмечена.
-				Может быть привязкой.</td>
+				<td>Scalar type  (String, Number, и т.д.)</td>
+				<td>Obligatory. The value at which the button will be marked. Can be a binding.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Style</td>
 				<td><a class="code-link" href="/xaml/enums/radiobuttonstyle">RadioButtonStyle</a></td>
 				<td>
-					Вид кнопки. Может отображаться как стандартная радиокнопка, так и в виде флажка. Отображение в виде флажка чаще
-					всего используется в отчетах.
+					Button type. It can be displayed as a standard radio button or as a check box. Displaying 
+					as a checkbox is most commonly used in reports.
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/checkboxbase">Свойства базового элемента</a>
+					<a href="/xaml/abstract/checkboxbase">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
 
-	<h3>Пример</h3>
+	<h3>Example</h3>
 
 	<p>
-		Пусть в модели имеется элемент <code>Element</code>, у которого есть свойство <code>Option</code>.
+		Suppose the model has an <code>Element</code> item that has the <code>Option</code> property.
 	</p>
 
 	<p>
@@ -86,7 +85,7 @@
 
 	<div id="xaml-radio">
 		<p>
-			Результат
+			Result
 			<div class="xaml-sample" style="padding:0;width:400px">
 				<div class="grid" style="grid-template-columns:1fr 1fr 1fr;align-items:start">
 					<fieldset class="field-set vertical">

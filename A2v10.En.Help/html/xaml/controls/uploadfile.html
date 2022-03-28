@@ -3,17 +3,17 @@
 	<!--keywords:UploadFile-->
 	<div class="title">
 		<h1>
-			Элемент UploadFile
+			UploadFile Control
 		</h1>
 		<div class="breadcrumb">
 			<a href="index">All controls</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой элемент управления для выбора и загрузки файлов. Поддерживает drag'n'drop.
+		Represents a control for selecting and downloading files. Supports drag and drop.
 	</p>
 
-	<p><a href="/models/blob">Подробнее о работе с двоичными объектами...</a></p>
+	<p><a href="/models/blob">More on working with binary objects...</a></p>
 
 	<p>
 		Inherits: <a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>
@@ -23,9 +23,9 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th width="1px">Имя</th>
-				<th width="1px">Тип</th>
-				<th>Описание</th>
+				<th width="1px">Name</th>
+				<th width="1px">Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -33,58 +33,55 @@
 				<td class="prop-name">Url</td>
 				<td class="fit">String</td>
 				<td>
-					Путь к <a href="/app/files">команде загрузки файла</a>.
+					The path to the <a href="/app/files">file download command</a>.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Argument</td>
 				<td class="fit">Object</td>
 				<td>
-					Объект, свойства которого будут параметрами команды загрузки файла.
+					An object, the properties of which will be the parameters of the file download command.
 				</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name">Accept</td>
 				<td>String</td>
 				<td>
-					Строка фильтра для диалога выбора файла. 
-					<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types" target="_blank">Mime-типы</a> принимаемых файлов.
-					Поддержка зависит от браузера. Соответствует атрибуту <code>accept</code> элемента
-					<code>&lt;input type="file"&gt;</code>. Можно указывать несколько типов через запятую.
-					Например, для выбора картинок в формате jpg или png можно указать
-					<code>Accept="image/png, image/jpeg"</code>.
+					Filter string for the file selection dialog.
+					<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types" target="_blank">Mime-types</a>
+					of received files. Support depends on the browser. Corresponds to the <code>accept</code> attribute of the
+					<code>&lt;input type="file"&gt;</code> item. It is possible to specify multiple types separated by commas. For example, to select
+					images in jpg or png format, you can specify <code>Accept="image/png, image/jpeg"</code>.
 					<br />
-					Обратите внимание, что это только рекомендация браузеру. Запретить пользователю выбирать
-					другие файлы невозможно.
+					Note that this is only a recommendation to the browser. It is impossible to prevent the user from selecting other files.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Limit</td>
 				<td class="fit">Int32</td>
 				<td>
-					Максимально допустимый размер загружаемого файла (в килобайтах).
-					Если не указан, можно загружать файлы любого размера.
+					The maximum allowable size of the uploaded file (in kilobytes). If not specified, you can upload files of any size.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Delegate</td>
 				<td>String</td>
 				<td>
-					Имя <a href="/template/delegates">делегата</a>, который будет вызван после того,
-					как файл будет загружен. Аргументом делегата будет полученный с сервера результат.
+					Name of the <a href="/template/delegates">delegate</a> which will be called after the file is downloaded. The delegate's 
+					argument will be the result received from the server.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">ErrorDelegate</td>
 				<td>String</td>
 				<td>
-					Имя <a href="/template/delegates">делегата</a>, который будет вызван при возникновении ошибок.
-					Если не указан, выводится стандартное сообщение об ошибке.
+					Name of the <a href="/template/delegates">delegate</a>, which will be called in case of errors. If not specified, a standard error 
+					message is displayed.
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/uielementbase">Свойства базового элемента</a>
+					<a href="/xaml/abstract/uielementbase">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>

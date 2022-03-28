@@ -3,18 +3,19 @@
 	<!--keywords:Pager-->
 	<div class="title">
 		<h1>
-			Элемент Pager
+			Pager Control
 		</h1>
 		<div class="breadcrumb">
 			<a href="index">All controls</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой элемент для постраничной навигации. Обычно используется для всей страницы
-		<a class="code-link" href="/xaml/containers/page">Page</a> и задается как свойство <code>Pager</code>.
+		Represents an item for page navigation. Typically used for the entire
+		<a class="code-link" href="/xaml/containers/page">Page</a> and set as the <code>Pager</code> property.
 	</p>
 
-	<p>Сам компонент не использует никаких коллекций. Для этого всегда используется компонент работы с коллекцией <a class="code-link" href="/xaml/components/collectionview">CollectionView</a>.</p>
+	<p>The component itself does not use any collections. For this, the 
+	<a class="code-link" href="/xaml/components/collectionview">CollectionView</a> component is always used.</p>
 
 	Inherits:
 	<a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>
@@ -23,9 +24,9 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -33,19 +34,19 @@
 				<td class="prop-name fit">Source</td>
 				<td>Object</td>
 				<td>
-					Исходная коллекция. Всегда привязка. Если используется совместно с
-					<a class="code-link" href="/xaml/components/collectionview">CollectionView</a>, то привязка
-					будет <code>Source="{Bind Parent.Pager}"</code>
+					Source collection. Always a binding. If used in conjunction with a
+					<a class="code-link" href="/xaml/components/collectionview">CollectionView</a>,
+					then the binding will be <code>Source="{Bind Parent.Pager}"</code>
 				</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name">Style</td>
 				<td><code>PagerStyle</code></td>
 				<td>
-					Стиль отображения. Возможные значения:
+					Display style. Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">Default</span> - (по умолчанию) обычные кнопки.</li>
-						<li><span class="prop-name">Rounded</span> - круглые кнопки.</li>
+						<li><span class="prop-name">Default</span> - (by default) regular buttons.</li>
+						<li><span class="prop-name">Rounded</span> - round buttons.</li>
 					</ul>
 				</td>
 			</tr>
@@ -53,44 +54,45 @@
 				<td class="prop-name fit">EmptyText</td>
 				<td>String</td>
 				<td>
-					Текст, который будет отображаться в правой части элемента в случае, если коллекция пуста. Если не указано,
-					показывается текст <b>"нет элементов"</b> (с учетом текущей локализации).
+					The text that will be displayed on the right side of the item if the collection is empty.
+					If not specified, the text <b>"no items"</b> is displayed (based on the current localization).
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name fit">TemplateText</td>
 				<td>String</td>
 				<td>
-					Текст, который будет отображаться в правой части элемента. В тексте допускаются макросы:
+					The text to be displayed on the right side of the element. Macros are allowed in the text:
 					<table class="sub-table">
 						<tr>
 							<td class="prop-name no-wrap">#[Start]</td>
-							<td>Номер первого элемента на странице.</td>
+							<td>Number of the first item on the page.</td>
 						</tr>
 						<tr>
 							<td class="prop-name  no-wrap">#[End]</td>
-							<td>Номер последнего элемента на странице.</td>
+							<td>Number of the last item on the page.</td>
 						</tr>
 						<tr>
 							<td class="prop-name no-wrap">#[Count]</td>
-							<td>Количество элементов в коллекции.</td>
+							<td>Quantity of the items in the collection.</td>
 						</tr>
 					</table>
-					Если свойство не указано, выводится текст
-					<b>"элементы #[Start]-#[End] из #[Count]"</b> (с учетом текущей локализации).
+					If the property is not specified, the text
+					<b>"elements #[Start]-#[End] from #[Count]"</b> is displayed 
+					(based on the current localization).
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/uielementbase">Свойства базового элемента</a>
+					<a href="/xaml/abstract/uielementbase">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Пример</h3>
+	<h3>Example</h3>
 
-	<p>Просто пример отображения (не функциональный) </p>
+	<p>Just a display example (non-functional)</p>
 
 	<div class="xaml-sample" style="width:100%">
 		<div class="rounded a2-pager" style="padding: 1rem 0px 0px;">
@@ -103,7 +105,7 @@
 				<i class="ico ico-chevron-right"></i>
 			</button>
 			<span class="a2-pager-divider"></span>
-			<span class="a2-pager-title">элементы: <b>1</b>-<b>20</b> из <b>50</b></span>
+			<span class="a2-pager-title">elements: <b>1</b>-<b>20</b> from <b>50</b></span>
 		</div>
 	</div>
 </div>

@@ -3,7 +3,7 @@
 	<!--keywords:TreeView-->
 	<div class="title">
 		<h1>
-			Элемент TreeView
+			TreeView Control
 		</h1>
 		<div class="breadcrumb">
 			<a href="index">All controls</a>
@@ -11,10 +11,10 @@
 	</div>
 
 	<p>
-		Представляет собой иерархический список (дерево). Поддерживает "ленивую" загрузку элементов.
+		Represents a hierarchical list (tree). Supports lazy items loading.
 	</p>
 
-	<p>Обратите внимание, что элемент используется для работы с <a href="/models/tree">иерархическими моделями данных</a>.</p>
+	<p>Note that the item is used to work with <a href="/models/tree">hierarchical data models</a>.</p>
 
 	<p>
 		Inherits: <a class="code-link" href="/xaml/abstract/control">Control</a> : <a class="code-link" href="/xaml/abstract/uielement">UIElement</a> : <a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>
@@ -27,35 +27,35 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr class="top">
 				<td class="prop-name">Children</td>
-				<td class="no-wrap">Коллекция <a class="code-link" href="treeviewitem">TreeViewItem</a></td>
+				<td class="no-wrap"><a class="code-link" href="treeviewitem">TreeViewItem</a> collection</td>
 				<td>
-					Свойство содержимого. Как правило состоит из одного элемента, свойства которого задают привязки к элементам дерева.
+					Content property. Typically, it consists of one element, the properties of which set the bindings to the tree items.
 				</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name">ItemsSource</td>
 				<td>Array</td>
 				<td>
-					Всегда привязка (<a class="code-link" href="/xaml/bind/bind">Bind</a>). Источник данных для получения элементов
-					дерева первого уровня. Привязка остальных уровней определяется в дочернем элементе <a href="treeviewitem">TreeViewItem</a>.
+					Always a binding (<a class="code-link" href="/xaml/bind/bind">Bind</a>). Data source for getting the items of the
+					first-level tree. The binding of the rest of the levels is defined in the <a href="treeviewitem">TreeViewItem</a> child element.
 				</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name fit">Style</td>
 				<td><code>TreeViewStyle</code></td>
 				<td>
-					Стиль отображения дерева. Возможные значения:
+					Tree display style. Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">Normal</span> - по умолчанию.</li>
-						<li><span class="prop-name">SideBarMenu</span> - выглядит как боковое меню.</li>
+						<li><span class="prop-name">Normal</span> - by default.</li>
+						<li><span class="prop-name">SideBarMenu</span> - looks like a side menu.</li>
 					</ul>
 				</td>
 			</tr>
@@ -63,14 +63,15 @@
 				<td class="prop-name fit">AutoSelect</td>
 				<td><code>AutoSelectMode</code></td>
 				<td>
-					Автоматический выбор элемента при загрузке. Возможные значения:
+					Automatic item selection during loading. Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">None</span> - по умолчанию. Не выбирать ничего</li>
-						<li><span class="prop-name">FirstItem</span> - первый элемент.</li>
-						<li><span class="prop-name">LastItem</span> - последний элемент.</li>
+						<li><span class="prop-name">None</span> - by default. Don't select anything.</li>
+						<li><span class="prop-name">FirstItem</span> - the first item.</li>
+						<li><span class="prop-name">LastItem</span> - the last item.</li>
 						<li>
-							<span class="prop-name">ItemId</span> - элемент с заданным идентификатором.
-							Это идентификатор основного объекта модели и, как правило, является последним элементом url страницы.
+							<span class="prop-name">ItemId</span> - item with the specified identifier. 
+							This is the identifier of the main object of the model and is usually the last
+							element of the page URL.
 						</li>
 					</ul>
 				</td>
@@ -79,61 +80,62 @@
 				<td class="prop-name">IconFolder</td>
 				<td><a class="code-link" href="/xaml/enums/icon">Icon</a></td>
 				<td>
-					Иконка для папки. Обратите внимание, что это иконка "по умолчанию". Она может быть переопределена
-					в элементе <a href="treeviewitem">TreeViewItem</a>.
+					Icon for the folder. Note that this is a "by default" icon. It can be overridden in the
+					<a href="treeviewitem">TreeViewItem</a> element.
 				</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name">IconItem</td>
 				<td><a class="code-link" href="/xaml/enums/icon">Icon</a></td>
 				<td>
-					Иконка для элемента. Обратите внимание, что это иконка "по умолчанию". Она может быть переопределена
-					в элементе <a href="treeviewitem">TreeViewItem</a>.
+					The icon for the item. Note that this is a "by default" icon.
+					It can be overridden in the  <a href="treeviewitem">TreeViewItem</a> item.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name fit">WrapLabel</td>
 				<td>Boolean</td>
-				<td>Разрешен ли перенос текста метки дерева. По умолчанию - <code>False</code>.</td>
+				<td>Whether the text wrapping of the tree label is allowed. By default - <code>False</code>.</td>
 			</tr>
 			<tr>
 				<td class="prop-name fit">FolderSelect</td>
 				<td>Boolean</td>
-				<td>Разрешено ли выбирать папки. Если равно <code>False</code>, то выбрать можно только элемент дерева.</td>
+				<td>Whether folder selection is allowed. If it is <code>False</code>, 
+				then only the tree item can be selected.</td>
 			</tr>
 			<tr>
 				<td class="prop-name fit">ExpandFirstItem</td>
 				<td>Boolean</td>
-				<td>Автоматически раскрывать первый элемент дерева после загрузки.</td>
+				<td>Expand the first item of the tree automatically after loading.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Height</td>
 				<td><a class="code-link" href="/xaml/simple/length">Length</a></td>
-				<td>Высота элемента.</td>
+				<td>Item height.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Indent</td>
 				<td>Boolean?</td>
-				<td>Отступы для вложенных элементов. По умолчанию - <code>True</code>.</td>
+				<td>Indentations for nested elements. by default - <code>True</code>.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">DoubleClick</td>
 				<td width="1px"><a class="code-link" href="/xaml/bind/bindcmd">BindCmd</a></td>
 				<td>
-					Команда, которая будет выполнена при двойном щелчке на элементе дерева.
-					Не забудьте передать в команду аргумент.
+					The command that will be executed when you double-click on an item in the tree. 
+					Don't forget to pass an argument to the command.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">ContextMenu</td>
 				<td width="1px"><a class="code-link" href="/xaml/containers/dropdownmenu">DropDownMenu</a></td>
 				<td>
-					Контекстное меню, которое будет показыватьcя по правой кнопке мыши.
+					The context menu that will be displayed upon the right mouse click.
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/control">Свойства базового элемента</a>
+					<a href="/xaml/abstract/control">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>
@@ -141,10 +143,11 @@
 
 
 	<p>
-	Более подробное описание работы с деревьями (в том числе и с "ленивой" загрузкой) описано в разделе <a href="/models/tree">работы с иерархическими моделями данных</a>.
+		A more detailed description of working with trees (including with "lazy" loading) is described in the 
+		section on <a href="/models/tree">working with hierarchical data models</a>.
 	</p>
 
-	<h3>Пример</h3>
+	<h3>Example</h3>
 
 	<div class="xaml-sample" id="tree-view-sample" style="min-height:196px">
 		<ul class="tree-view">

@@ -3,20 +3,20 @@
 	<!--keywords:DataGrid-->
 	<div class="title">
 		<h1>
-			Элемент DataGrid
+			DataGrid Control
 		</h1>
 		<div class="breadcrumb">
 			<a href="index">All controls</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой таблицу с данными. Работает только с источником данных. Отображает одну строку
-		для каждого элемента массива - источника данных. Колонки таблицы определяются коллекцией вложенных объектов
-		<a class="code-link" href="datagridcolumn">DataGridColumn</a>.
+		Represents a table with data. Works only with a data source. Displays one row for each element
+		of the data source array. Table columns are defined by a collection of nested
+		<a class="code-link" href="datagridcolumn">DataGridColumn</a> objects.
 	</p>
 	<p>
-		Совместно с компонентом <a class="code-link" href="../components/collectionview">CollectionView</a>,
-		таблица поддерживает сортировку, фильтрацию, разбиение на страницы и группировку строк.
+		Together with the <a class="code-link" href="../components/collectionview">CollectionView</a> component,
+		the table supports sorting, filtering, pagination, and row grouping.
 	</p>
 
 	Inherits: <a class="code-link" href="/xaml/abstract/control">Control</a> : <a class="code-link" href="/xaml/abstract/uielement">UIElement</a> : <a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>
@@ -25,9 +25,9 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -35,73 +35,77 @@
 				<td class="prop-name">ItemsSource</td>
 				<td class="fit">Array</td>
 				<td>
-					Всегда привязка - <a class="code-link" href="../bind/bind">Bind</a>. Источник данных для отображения.
+					Always a binding - <a class="code-link" href="../bind/bind">Bind</a>. The source of data to display.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Compact</td>
 				<td>Boolean</td>
 				<td>
-					Компактный стиль отображения таблицы.
+					Compact table display style.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Hover</td>
 				<td>Boolean</td>
 				<td>
-					Выделение строки при наведении курсора мыши.
+					Highlighting a row on mouse hover.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Striped</td>
 				<td>Boolean</td>
 				<td>
-					Раскраска таблицы "в полоску" с выделением четных и нечетных строк.
+					Coloring the table "with stripes" with highlighting even and odd rows.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">FixedHeader</td>
 				<td>Boolean</td>
 				<td>
-					Зафиксировать шапку таблицы при прокрутке.
+					Fix the table header when scrolling.
 				</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name">Style</td>
 				<td><code>DataGridStyle</code></td>
 				<td>
-					Стиль отображения таблицы. Возможные значения:
+					Table display style. Possible values:
+
 					<ul class="enum-vals">
-						<li><span class="prop-name">Default</span> - (по умолчанию) обычный стиль.</li>
-						<li><span class="prop-name">Light</span> - светлый стиль.</li>
+						<li><span class="prop-name">Default</span> - (by default) regular style.</li>
+						<li><span class="prop-name">Light</span> - light style.</li>
 					</ul>
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Background</td>
 				<td><a class="code-link" href="/xaml/enums/backgroundstyle">BackgroundStyle</a></td>
-				<td>Цвет фона.</td>
+				<td>Background color.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Mark</td>
 				<td>Object</td>
 				<td>
-					Только привязка (<a class="code-link" href="/xaml/bind/bind">Bind</a>). Маркировка строки таблицы.
-					Маркер представляет собой вертикальную линию в левой колонке и/или выделение цветом.
-					Подробности ниже.
+					Bind (<a class="code-link" href="/xaml/bind/bind">Bind</a>) only. Table row marking. A marker is 
+					a vertical line in the left column and/or a color highlight. Details below.
+
+
+
 				</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name">MarkerStyle</td>
 				<td><code>RowMarkerStyle</code></td>
 				<td>
-					Стиль маркировки строки в таблице.
-					Возможные значения:
+					The style of marking a row in a table. Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">None</span> - (по умолчанию) нет маркировки.</li>
-						<li><span class="prop-name">Row</span> - фоновый цвет.</li>
-						<li><span class="prop-name">Marker</span> - маркер в виде линии в первой колонке.</li>
-						<li><span class="prop-name">Both</span> - оба вида маркировки.</li>
+						<li><span class="prop-name">None</span> - (by default) no marking.</li>
+						<li><span class="prop-name">Row</span> - background color.</li>
+						<li><span class="prop-name">Marker</span> - marker in the form of a line in the first column.</li>
+						<li>
+							<span class="prop-name">Both</span> - both types of marking.
+						</li>
 					</ul>
 				</td>
 			</tr>
@@ -109,52 +113,54 @@
 				<td class="prop-name">EmptyPanel</td>
 				<td><a class="code-link" href="/xaml/abstract/uielement">UIElement</a></td>
 				<td>
-					Панель, которая отображается, если содержимое пустое. Обычно представляет собой объект
-					<a class="code-link" href="emptypanel">EmptyPanel</a>.
+					The panel that is displayed if the content is empty. Usually an
+					<a class="code-link" href="emptypanel">EmptyPanel</a> object.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">DoubleClick</td>
 				<td width="1px"><a class="code-link" href="/xaml/bind/bindcmd">BindCmd</a></td>
 				<td>
-					Команда, которая будет выполнена при двойном щелчке на строке таблицы.
-					Не забудьте передать в команду аргумент.
+					The command to be executed when you double-click on a row in the table. 
+					Don't forget to pass an argument to the command.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">ContextMenu</td>
 				<td width="1px"><a class="code-link" href="/xaml/containers/dropdownmenu">DropDownMenu</a></td>
 				<td>
-					Контекстное меню, которое будет показыватьcя по правой кнопке мыши.
+					The context menu that will be displayed upon the right mouse-click.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">RowDetails</td>
 				<td width="1px"><a class="code-link" href="/xaml/controls/datagridrowdetails">DataGridRowDetails</a></td>
 				<td>
-					Детализация для строки.
+					Detailing for a string.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">AutoSelect</td>
 				<td><a class="code-link" href="/xaml/enums/autoselectmode">AutoSelectMode</a></td>
 				<td>
-					Автоматически выделять элемент после загрузки или обновления списка.
-					Поддерживаются только значения <code>FirstItem</code> и <code>LastItem</code>.
+					Automatically highlight an item after loading or refreshing the list.
+					Only the <code>FirstItem</code> and <code>LastItem</code> values are supported.
+					.
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/control">Свойства базового элемента</a>
+					<a href="/xaml/abstract/control">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h4>Маркировка строк таблицы</h4>
+	<h4>Marking of the table rows</h4>
 	<p>
-		Выражение привязки для свойства <code>Mark</code> должно возвращать текстовую строку, которая представляет собой дополнительный
-		css-класс, добавляемый к строке.
+		The binding expression for the <code>Mark</code> property must return a text string, which is an 
+		additional CSS class to add to the string. The default theme supports the following row markings:
+
 
 		В теме по умолчанию поддерживаются следующие варианты маркировки строк:
 		<div style="display:inline-grid;grid-template-columns:auto 120px 120px;align-items:center;grid-gap:4px 8px;">

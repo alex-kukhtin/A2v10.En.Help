@@ -3,14 +3,14 @@
 	<!--keywords:Table-->
 	<div class="title">
 		<h1>
-			Элемент Table
+			Table Control
 		</h1>
 		<div class="breadcrumb">
 			<a href="index">All controls</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой таблицу.
+		Represents a table.
 	</p>
 
 	Inherits: <a class="code-link" href="/xaml/abstract/control">Control</a> :
@@ -22,83 +22,86 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">Rows</td>
-				<td class="fit">Коллекция <a class="code-link" href="tablerow">TableRow</a></td>
+				<td class="fit">Collection <a class="code-link" href="tablerow">TableRow</a></td>
 				<td>
-					Строки тела таблицы.
+					Table body rows.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Header</td>
-				<td class="fit">Коллекция <a class="code-link" href="tablerow">TableRow</a></td>
+				<td class="fit">Collection <a class="code-link" href="tablerow">TableRow</a></td>
 				<td>
-					Строки заголовка таблицы.
+					Table header rows.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Footer</td>
-				<td class="fit no-wrap">Коллекция <a class="code-link" href="tablerow">TableRow</a></td>
+				<td class="fit no-wrap">Collection <a class="code-link" href="tablerow">TableRow</a></td>
 				<td>
-					Строки подвала таблицы.
+					Table footer rows.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Columns</td>
-				<td class="fit no-wrap">Коллекция <a class="code-link" href="tablecolumn">TableColumn</a></td>
+				<td class="fit no-wrap">
+					Collection <a class="code-link" href="tablecolumn">TableColumn</a>
+				</td>
 				<td>
-					Колонки таблицы.
+					Table columns.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">ItemsSource</td>
 				<td>Array</td>
-				<td>Всегда привязка (<a class="code-link" href="/xaml/bind/bind">Bind</a>). Источник данных для получения строк тела таблицы.</td>
+				<td>Always a binding (<a class="code-link" href="/xaml/bind/bind">Bind</a>) Data source for 
+				retrieving the table body rows.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Border</td>
 				<td>Boolean</td>
 				<td>
-					Рамка вокруг таблицы.
+					The frame around the table.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Compact</td>
 				<td>Boolean</td>
 				<td>
-					Компактный стиль отображения таблицы.
+					Compact table display style.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Hover</td>
 				<td>Boolean</td>
 				<td>
-					Выделение строки при наведении курсора мыши.
+					Highlighting a row upon mouse hover.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Striped</td>
 				<td>Boolean</td>
 				<td>
-					Раскраска таблицы "в полоску" с выделением четных и нечетных строк.
+					Coloring of the table "with stripes" with highlighting of even and odd rows.
 				</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name">GridLines</td>
 				<td><code>GridLinesVisibility</code></td>
 				<td>
-					Отображение сетки. Возможные значения:
+					Displaying the grid. Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">None</span> - по умолчанию.</li>
-						<li><span class="prop-name">Horizontal</span> - горизонтальные линии.</li>
-						<li><span class="prop-name">Vertical</span> - вертикальные линии.</li>
-						<li><span class="prop-name">Both</span> - сетка.</li>
+						<li><span class="prop-name">None</span> - by default.</li>
+						<li><span class="prop-name">Horizontal</span> - horizontal lines.</li>
+						<li><span class="prop-name">Vertical</span> - vertical lines.</li>
+						<li><span class="prop-name">Both</span> - grid.</li>
 					</ul>
 				</td>
 			</tr>
@@ -106,14 +109,14 @@
 				<td class="prop-name">Background</td>
 				<td><code>TableBackgroundStyle</code></td>
 				<td>
-					Цвет фона. Возможные значения:
+					Background color. Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">None</span> - по умолчанию. Прозрачный фон.</li>
-						<li><span class="prop-name">Paper</span> - цвет бумаги.</li>
-						<li><span class="prop-name">Yellow</span> - бледно-желтый.</li>
-						<li><span class="prop-name">Cyan</span> - бледно-голубой.</li>
-						<li><span class="prop-name">Rose</span> - бледно-розовый.</li>
-						<li><span class="prop-name">WhiteSmoke</span> - дымчатый.</li>
+						<li><span class="prop-name">None</span> - by default. Transparent background.</li>
+						<li><span class="prop-name">Paper</span> - the color of the paper.</li>
+						<li><span class="prop-name">Yellow</span> - pale yellow.</li>
+						<li><span class="prop-name">Cyan</span> - pale blue.</li>
+						<li><span class="prop-name">Rose</span> - pale pink.</li>
+						<li><span class="prop-name">WhiteSmoke</span> - smoky.</li>
 					</ul>
 				</td>
 			</tr>
@@ -121,18 +124,18 @@
 				<td class="prop-name">CellSpacing</td>
 				<td><code>CellSpacingMode</code></td>
 				<td>
-					Расстояние между ячейками. Если указано, то каждая ячейка будет отображаться отдельно. Возможные значения:
+					Distance between cells. If specified, then each cell will be displayed separately. Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">None</span> - по умолчанию. Нет.</li>
-						<li><span class="prop-name">Small</span> - маленькое.</li>
-						<li><span class="prop-name">Medium</span> - среднее.</li>
-						<li><span class="prop-name">Large</span> - большое.</li>
+						<li><span class="prop-name">None</span> - by default. None.</li>
+						<li><span class="prop-name">Small</span> - small.</li>
+						<li><span class="prop-name">Medium</span> - medium.</li>
+						<li><span class="prop-name">Large</span> - large.</li>
 					</ul>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/control">Свойства базового элемента</a>
+					<a href="/xaml/abstract/control">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>
