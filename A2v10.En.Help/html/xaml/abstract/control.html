@@ -3,21 +3,21 @@
 	<!--keywords:Control-->
 	<div class="title">
 		<h1>
-			Абстрактный элемент Control
+			Control Abstract Element
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все абстрактные элементы</a>
+			<a href="index">All abstract elements</a>
 		</div>
 	</div>
 
-	<p>Представляет собой абстрактный элемент управления. </p>
+	<p>Represents an abstract control.</p>
 
 	<p>
 		Inherits: <a class="code-link" href="/xaml/abstract/uielement">UIElement</a> : <a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>
 	</p>
 
 	<p>
-		Производные элементы: <a class="code-link" href="/xaml/abstract/valuedcontrol">ValuedControl</a>,
+		Derived elements: <a class="code-link" href="/xaml/abstract/valuedcontrol">ValuedControl</a>,
 		<a class="code-link" href="/xaml/abstract/contentcontrol">ContentControl</a>,
 		<a class="code-link" href="/xaml/controls/list">List</a>,
 		<a class="code-link" href="/xaml/controls/datagrid">DataGrid</a>,
@@ -29,124 +29,120 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">Block</td>
 				<td>Boolean</td>
-				<td>Выводить элемент управления в виде блочного, а не строчного элемента.</td>
+				<td>Render the control as a block element rather than an inline element.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Label</td>
 				<td>String</td>
-				<td>Текстовая метка для элемента управления. Обычно выводится сверху или слева от поля ввода.</td>
+				<td>The text control for the item. Usually displayed above or on the left of the input field.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Description</td>
 				<td>String</td>
-				<td>Описание для элемента управления. Обычно выводится под полем ввода.</td>
+				<td>Description for the control. Typically displayed below the input field.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Required</td>
 				<td>Boolean</td>
-				<td>
-					Обязательное значение для ввода. Обратите внимание, что это только визуальное представление обязательного ввода
-					в поле ввода (конкретный вид зависит от темы пользовательского интерфейса). Для управления проверками используйте
-					<a href="/template/validators">валидаторы шаблонов</a>.
-				</td>
+				<td>Required value to enter. Please note that this is only a visual representation of the 
+				required input in the input field (the specific look depends on the user interface theme).
+				Use <a href="/template/validators">template validators</a> to manage checks.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Disabled</td>
 				<td>Boolean</td>
-				<td>Элемент управления недоступен для ввода. Для управления этим полем обычно используется привязка <a class="code-link" href="/xaml/bind/bind">Bind</a>.</td>
+				<td>The control is not available for input. Typically the
+					<a class="code-link" href="/xaml/bind/bind">Bind</a> binding is used to control this field.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Width</td>
 				<td><a class="code-link" href="/xaml/simple/length">Length</a></td>
-				<td>
-					Ширина элемента управления. По умолчанию элемент занимает 100% ширины родительского элемента.
-					Для некоторых контейнеров (например <a class="code-link" href="/xaml/containers/toolbar">Toolbar</a>) ширина вложенных элементов будет установлена в некоторое значение по умолчанию.
-				</td>
+				<td>The control width. By default, an element occupies 100% of the width of the parent element.
+					For some containers (e.g. (например <a class="code-link" href="/xaml/containers/toolbar">Toolbar</a>) 
+					the width of the nested elements will be set to a certain default value.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">TabIndex</td>
 				<td>Int32</td>
-				<td>Порядковый номер элемента в цепочке переходов по клавише <kbd>Tab</kbd>. Значение "-1" исключает элемент из цепочки переходов.</td>
+				<td>The control’s ordinal number in the chain of transitions by the <kbd>Tab</kbd> key. A value of "-1" excludes the item from the navigation chain.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">TestId</td>
 				<td>String</td>
-				<td>Идентификатор элемента для инструментов тестирования.</td>
+				<td>The control’s ID for testing tools.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Popover</td>
 				<td><a class="code-link" href="/xaml/text/popover">Popover</a></td>
-				<td>Всплывающая подсказка для элемента. Выводится в виде ссылки <a class="a2-hyperlink a2-inline"><i class="ico ico-help-outline"></i></a> справа от элемента.</td>
+				<td>The tooltip for the control. Displayed as a link <i class="ico po-ico ico-help" style="color:#999"></i> on the right of the control.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Hint</td>
 				<td><a class="code-link" href="/xaml/text/popover">Popover</a></td>
-				<td>
-				Всплывающая подсказка для элемента. Выводится в виде <i class="ico po-ico ico-help" style="color:#999"></i> после метки.
-				Иконку можно заменить, указав свойство <code>Icon</code> объекта <code>Popover</code>.
-				</td>
+				<td>The tooltip for the control. It is displayed as <i class="ico po-ico ico-help" style="color:#999"></i>
+					after the mark. The icon can be replaced by specifying the <code>Icon</code> property of the <code>Popover</code> object.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Validator</td>
 				<td><a class="code-link" href="/xaml/components/validator">Validator</a></td>
-				<td>Позволяет задать свойства валидатора элемента, такие как положение или ширину.</td>
+				<td>Allows to set properties of the control’s validator, such as position or width.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">AddOns</td>
 				<td><a class="code-link" href="/xaml/simple/uielementcollection">UIElementCollection</a></td>
-				<td>Дополнительные элементы управления. Обычно это гиперссылки, которые выполняют какие-то дополнительные команды.</td>
+				<td>Additional controls. Usually these are hyperlinks that execute some additional commands.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Link</td>
 				<td><a class="code-link" href="/xaml/abstract/uielement">UIElement</a></td>
-				<td>Дополнительная ссылка, связанная с элементом. Отображается в правом верхнем углу элемента.
-				Обычно это гиперссылка.</td>
+				<td>Additional link associated with the control. Displays in the upper right corner of the control.
+				This is typically a hyperlink.</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="uielement">Свойства базового элемента</a>
+					<a href="uielement">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Пример</h3>
+	<h3>Example</h3>
 	<p>
 		XAML
 <pre class="code-highlight xml">
-<script type="text/template">
-<!-- пример элемента -->
-<TextBox Label="Метка элемента" Description="Описание элемента" 
-		Hint="Текст всплывающей подсказки для редактора">
-	<TextBox.AddOns>
-		<Hyperlink Icon="Search" />
-	</TextBox.AddOns>
-	<TextBox.Link>
-		<Hyperlink Content="дополнительно..."/>
-	</TextBox.Link>
-</TextBox>
+	<script type="text/template">
+		<!-- the control example -->
+		<TextBox Label="Control’s label" Description="Control’s description"
+				 Hint="The tooltip text for the editor">
+			<TextBox.AddOns>
+				<Hyperlink Icon="Search" />
+			</TextBox.AddOns>
+			<TextBox.Link>
+				<Hyperlink Content="more..." />
+			</TextBox.Link>
+		</TextBox>
 
-</script>
+	</script>
 </pre>
 	</p>
 	<p>
-		Результат
+		Result
 		<div class="xaml-sample" id="xaml-control">
-			<textbox label="Метка элемента" description="Описание элемента" v-bind:item="Agent" prop="Name">
+			<textbox label="Control’s label" description="Control’s description" v-bind:item="Agent" prop="Name">
 				<template slot="hint">
-					<popover class="a2-inline hint po-top-right" icon="help"><span>Текст всплывающей подсказки для редактора</span></popover>
+					<popover class="a2-inline hint po-top-right" icon="help"><span>Editor tooltip text</span></popover>
 				</template>
 				<template slot="link">
-					<a class="a2-hyperlink control-link">дополнительно...</a>
+					<a class="a2-hyperlink control-link">more...</a>
 				</template>
 				<a class="a2-hyperlink add-on a2-inline"><i class="ico ico-search"></i> </a>
 			</textbox>
