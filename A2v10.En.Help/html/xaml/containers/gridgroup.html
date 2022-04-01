@@ -3,22 +3,22 @@
 	<!--keywords:GridGroup-->
 	<div class="title">
 		<h1>
-			Элемент GridGroup
+			GridGroup Layout Element
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все контейнеры</a>
+			<a href="index">All containers</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой группу элементов внутри сетки <a class="code-link" href="grid">Grid</a>. Элемент не имеет внешнего представления
-		и предназначен для того, чтобы было удобно скрывать/показывать группы элементов с помощью свойств <code>If</code>,
-		<code>Show</code>, <code>Hide</code>.
+		Represents a group of items within a <a class="code-link" href="grid">Grid</a>. The element has no external
+		representation and is intended to make it convenient to hide/show groups of items using the <code>If</code>,
+		<code>Show</code>, <code>Hide</code> properties.
 	</p>
 
 	<p>
-		Элемент <b>GridGroup</b> является "прозрачным" с точки зрения присоединенных свойств. Это означает, что
-		присоединенные свойства (такие как, например <code>Grid.Row</code>, <code>Grid.Col</code>) дочерних элементов будут
-		относиться не к <b>GridGroup</b>, а к родительскому контейнеру <a class="code-link" href="grid">Grid</a>.
+		The <b>GridGroup</b> Element is transparent in terms of attached properties. This means that the attached properties
+		(such as, for example, <code>Grid.Row</code>, <code>Grid.Col</code>) of the children will refer not to the <b>GridGroup</b>,
+		but to the parent <a class="code-link" href="grid">Grid</a> container.
 	</p>
 
 	<p>
@@ -26,14 +26,13 @@
 	</p>
 
 	<p>
-		Элемент не содержит собственных свойств.
-		<a href="/xaml/abstract/container">Свойства базового элемента</a>.
+		Element does not contain its own properties.
+		<a href="/xaml/abstract/container">Base item properties.</a>.
 	</p>
 
 	<p class="tip warning">
-		Обратите внимание! Поскольку элемент не имеет собственного представления, то из всех свойств базового элемента допустимо использовать
-		только свойства, связанные с отображением (<code>If</code>, <code>Show</code>, <code>Hide</code>). Указывать любые другие свойства 
-		не имеет смысла.
+		Note! Since the element does not have its own representation, from all the properties of the base item it is allowed to use only the properties associated with the display
+		(<code>If</code>, <code>Show</code>, <code>Hide</code>). It makes no sense to specify any other properties.
 	</p>
 
 </div>

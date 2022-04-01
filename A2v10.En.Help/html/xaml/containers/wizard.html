@@ -3,23 +3,24 @@
 	<!--keywords:Wizard-->
 	<div class="title">
 		<h1>
-			Элемент Wizard
+			Wizard Layout Element
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все контейнеры</a>
+			<a href="index">All containers</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой мастер, состоящий из нескольких отдельных страниц
-		<a class="code-link" href="/xaml/containers/wizardpage">WiazrdPage</a>
+		Represents a Wizard consisting of several separate
+		<a class="code-link" href="/xaml/containers/wizardpage">WiazrdPage</a> pages.
 	</p>
 
 	<p>
 		Inherits: <a class="code-link" href="/xaml/containers/dialog">Dialog</a> : <a class="code-link" href="/xaml/abstract/rootcontainer">RootContainer</a> : <a class="code-link" href="/xaml/abstract/container">Container</a> : <a class="code-link" href="/xaml/abstract/uielement">UIElement</a> : <a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>
 	</p>
 
-	<p>Content property: <code>Children</code>.
-	Всегда будет коллекцией элементов <a class="code-link" href="/xaml/containers/wizardpage">WiazrdPage</a>.
+	<p>
+		Content property: <code>Children</code>.
+		Will always be a collection of the <a class="code-link" href="/xaml/containers/wizardpage">WiazrdPage</a>.
 	</p>
 
 	<h3>Properties</h3>
@@ -27,29 +28,29 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">FinishCommand</td>
 				<td><a class="code-link" href="/xaml/bind/bindcmd">BindCmd</a></td>
-				<td>Команда, которая будет выполнена при нажатии кнопки <code>Finish</code>.</td>
+				<td>The command which will be executed when the <code>Finish</code> button is pressed.</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/containers/dialog">Свойства базового элемента</a>
+					<a href="/xaml/containers/dialog">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Особенности</h3>
+	<h3>Specific features</h3>
 	<p>
-		Кнопки навигации (кнопки <b>Назад</b>, <b>Далее</b>, <b>Готово</b> и <b>Отмена</b>) 
-		отображаются и управляются автоматически.
-		При нажатии кнопки <b>Готово</b> будет выполнена команда, заданная свойством <code>FinishCommand</code>.
+		Navigation buttons (<b>Back</b>, <b>Next</b>, <b>Done</b> and <b>Cancel</b> buttons)
+		are displayed and controlled automatically. When you press the <b>Done</b> button, the
+		command specified by the <code>FinishCommand</code> property will be executed.
 	</p>
 </div>

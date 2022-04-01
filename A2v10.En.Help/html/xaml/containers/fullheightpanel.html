@@ -3,14 +3,14 @@
 	<!--keywords:FullHeightPanel;-->
 	<div class="title">
 		<h1>
-			Элемент FullHeightPanel
+			FullHeightPanel Layout Element
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все контейнеры</a>
+			<a href="index">All containers</a>
 		</div>
 	</div>
 	<p>
-		Представляет панель, высота которой всегда равна 100%.
+		Represents a panel whose height is always 100%.
 	</p>
 
 	<p>
@@ -21,33 +21,33 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">MinWidth</td>
 				<td><a class="code-link" href="/xaml/simple/length">Length</a></td>
-				<td>Минимальная ширина панели</td>
+				<td>Minimum panel width.</td>
 			</tr>
 		</tbody>
 		<tr>
 			<td colspan="3">
-				<a href="/xaml/abstract/container">Свойства базового элемента</a>
+				<a href="/xaml/abstract/container">Base item properties</a>
 			</td>
 		</tr>
 	</table>
 
 
-	<h3>Присоединенные свойства</h3>
+	<h3>Attached properties</h3>
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -55,32 +55,31 @@
 				<td class="prop-name">FullHeightPanel.Fill</td>
 				<td>Boolean</td>
 				<td>
-					Определяет дочерний элемент, высота которого будет изменяться при изменении высоты родительского контейнера.
-					<br /> Только один дочерний элемент может иметь свойство <code>Fill = True</code>.
+					Defines a child item whose height will change when the height of the parent container changes.
+					<br /> Only one child element can have the property <code>Fill = True</code>.
 				</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name">FullHeightPanel.Skip</td>
 				<td>Boolean</td>
 				<td>
-					Пропускать этот элемент при создании контейнера. Это свойство используется в том случае, если нужно, чтобы в одном
-					блоке контейнера выводился один из нескольких элементов (например с помощью привязки <code>If</code>).
-					<br />Установите <code>Skip = True</code> для всех элементов в блоке, кроме одного (любого).
+					Skip this item when creating a container. This property is used when you want one of several
+					elements to be displayed in one container block (for example, using the <code>If</code> binding).
+					<br />Set <code>Skip = True</code> for all items in the block, except one (any).
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
 	<p class="tip warning">
-		<b>Обратите внимание!</b> Для реализации панели используется сетка (css grid). Из-за этого, при скрытии элементов с помощью
-		привязки <code>If</code>, выбор элемента для заполнения будет неправильным.
+		<b>Note!</b> To implement the panel, a grid is used (CSS grid). Because of this, when hiding items using an
+		<code>If</code> binding, the selection of the item to fill will be incorrect.
 		<br />
-		Это происходит потому, что
-		адресация панелей осуществляется по порядковому номеру.
+		This is because the panels are addressed by a sequential number.
 		<br />
-		Если нужно использовать привязку <b>If</b>, то поместите скрываемый элемент в
-		дополнительный блок <a href="/xaml/containers/block" class="code-link">Block</a> либо используйте присоединенное свойство
-		<code>FullHeightPanel.Skip</code>.
+		If you want to use an <b>If</b> binding, either place the hidden item in an additional
+		<a href="/xaml/containers/block" class="code-link">Block</a>, or use the attached
+		<code>FullHeightPanel.Skip</code> property.
 	</p>
 
 </div>

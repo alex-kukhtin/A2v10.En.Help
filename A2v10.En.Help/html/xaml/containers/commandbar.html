@@ -3,21 +3,24 @@
 	<!--keywords:CommandBar-->
 	<div class="title">
 		<h1>
-			Элемент CommandBar
+			CommandBar Layout Element
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все контейнеры</a>
+			<a href="index">All containers</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой панель команд. Обычно используется внутри элементов
-		<a class="code-link" href="/xaml/controls/datagrid">DataGrid</a> и
-		<a class="code-link" href="/xaml/controls/listitem">ListItem</a>.
+		Represents the command bar. Usually used inside
+		<a class="code-link" href="/xaml/controls/datagrid">DataGrid</a> and
+		<a class="code-link" href="/xaml/controls/listitem">ListItem</a> items.
 	</p>
 
-	<p>Особенность этого элемента в том, что его видимость будет определяться состояние родительского контейнера. 
-	Например, если разместить его в колонке таблицы и установить свойство <code>Visibility = "Active"</code>, то 
-	панель команд будет отображаться только для активной строки таблицы.</p>
+	<p>
+		ОThe particularity of this item is that its visibility will be determined by
+		the state of the parent container. For example, if you place it in a table column
+		and set the property <code>Visibility = "Active"</code>, the command bar will 
+		be displayed only for the active row of the table.
+	</p>
 
 	Inherits: <a class="code-link" href="/xaml/abstract/container">Container</a> :
 	<a class="code-link" href="/xaml/abstract/uielement">UIElement</a> : <a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>
@@ -27,9 +30,9 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -37,13 +40,13 @@
 				<td class="prop-name">Visibility</td>
 				<td class="fit"><code>CommandBarVisibility</code></td>
 				<td>
-					Видимость панели. Возможные значения:
+					Bar’s visibility. Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">Default</span> - (по умолчанию) Видима всегда.</li>
-						<li><span class="prop-name">Active</span> - Видима только для активного элемента.</li>
+						<li><span class="prop-name">Default</span> - (by default) Always visible.</li>
+						<li><span class="prop-name">Active</span> - Visible only for the active item.</li>
 						<li>
-							<span class="prop-name">Hover</span> - Видима как для активного элемента, так и для элемента,
-							на котором находится курсор мыши.
+							<span class="prop-name">Hover</span> - Visible to both the active item and 
+							the item on which the mouse cursor is located.
 						</li>
 					</ul>
 				</td>
@@ -52,17 +55,17 @@
 				<td class="prop-name">Float</td>
 				<td><code>FloatMode</code></td>
 				<td>
-					Сделать панель "плавающей".
+					Make the bar "floating".
 					<ul class="enum-vals">
-						<li><span class="prop-name">None</span> - (по умолчанию) нет.</li>
-						<li><span class="prop-name">Left</span> - разместить слева.</li>
-						<li><span class="prop-name">Right</span> - разместить справа.</li>
+						<li><span class="prop-name">None</span> - (by default) no.</li>
+						<li><span class="prop-name">Left</span> - place on the left.</li>
+						<li><span class="prop-name">Right</span> - place on the right.</li>
 					</ul>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/container">Свойства базового элемента</a>
+					<a href="/xaml/abstract/container">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>

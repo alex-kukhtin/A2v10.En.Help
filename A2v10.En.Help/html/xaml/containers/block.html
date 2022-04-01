@@ -3,15 +3,14 @@
 	<!--keywords:Block-->
 	<div class="title">
 		<h1>
-			Элемент Block
+			Block Layout Element
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все контейнеры</a>
+			<a href="index">All containers</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой контейнер, которые содержит другие элементы
-		управления или другие контейнеры.
+		Represents a container that contains other controls or other containers.
 	</p>
 
 	<p>
@@ -24,84 +23,84 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">Children</td>
 				<td><a class="code-link" href="/xaml/simple/uielementcollection">UIElementCollection</a></td>
-				<td>Свойство содержимого. Коллекция дочерних элементов.</td>
+				<td>Content property. Collection of child items.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Align</td>
 				<td><a class="code-link" href="/xaml/enums/textalign">TextAlign</a></td>
 				<td>
-					Горизонтальное выравнивание содержимого контейнера.
+					Horizontal alignment of the container’s contents
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Color</td>
 				<td><a class="code-link" href="/xaml/enums/textcolor">TextColor</a></td>
 				<td>
-					Цвет текста.
+					Text color.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Background</td>
 				<td><a class="code-link" href="/xaml/enums/backgroundstyle">BackgroundStyle</a></td>
-				<td>Цвет фона.</td>
+				<td>Background color.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Height</td>
 				<td><a class="code-link" href="/xaml/simple/length">Length</a></td>
-				<td>Высота блока.</td>
+				<td>Block height.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Width</td>
 				<td><a class="code-link" href="/xaml/simple/length">Length</a></td>
-				<td>Ширина блока. По умолчанию блок занимает 100% ширины родительского элемента.</td>
+				<td>Block width. By default the block occupies 100% of the width of a parent element.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">MaxWidth</td>
 				<td><a class="code-link" href="/xaml/simple/length">Length</a></td>
-				<td>Максимальная ширина блока. Если содержимое шире, то оно переносится.</td>
+				<td>Maximum block width. If the content is wider, it is wrapped.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Border</td>
 				<td>Boolean</td>
 				<td>
-					Отображать рамку для блока.
+					Display a frame for the block.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Scroll</td>
 				<td>Boolean?</td>
 				<td>
-					Допускает ли блок прокрутку. Имеет смысл только, если установлена высота блока.
-					Если установлено в <b>True</b>, то будет появляться полоса прокрутки.
-					Если установлено в <b>False</b>, то лишнее содержимое будет обрезано.
-					По умолчанию высота блока будет такой, чтобы включать все вложенные элементы.
+					Whether the block allows scrolling. Only makes sense if the height of the block is set.
+					If set to <b>True</b>, a scroll bar will appear. If set to <b>False</b>, the excess 
+					content will be truncated. By default the height of the block will be such as to 
+					include all nested elements.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">DropShadow</td>
 				<td><a class="code-link" href="/xaml/enums/shadowstyle">ShadowStyle</a></td>
-				<td>Вид тени.</td>
+				<td>Type of shadow.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Relative</td>
 				<td>Boolean</td>
 				<td>
-					Относительное позиционирование для блока. Все дочерние элементы с установленным свойством <code>Absolute</code>
-					будут позиционироваться относительно этого блока.
+					Relative positioning for the block. All child items with the <code>Absolute</code>
+					property set will be positioned relative to this block.
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/uielement">Свойства базового элемента</a>
+					<a href="/xaml/abstract/uielement">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>

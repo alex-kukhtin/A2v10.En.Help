@@ -3,25 +3,27 @@
 	<!--keywords:Toolbar-->
 	<div class="title">
 		<h1>
-			Элемент Toolbar
+			Toolbar Layout Element
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все контейнеры</a>
+			<a href="index">All containers</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой панель инструментов.
+		Represents a toolbar.
 	</p>
 
 	<p>
-		В панель инструментов можно помещать любые элементы, но чаще всего там размещаются простые кнопки
-		<a class="code-link" href="/xaml/controls/button">Button</a>, текстовые поля
-		<a class="code-link" href="/xaml/controls/textbox">TextBox</a> и т.д.
-		Для визуального разделения кнопок используется 
-		элемент <a class="code-link" href="/xaml/controls/separator">Separator</a>.
+		Any item can be placed in the toolbar, but most often, simple
+		<a class="code-link" href="/xaml/controls/button">Button</a> buttons,
+		<a class="code-link" href="/xaml/controls/textbox">TextBox</a> text boxes,
+		etc. are placed there. The <a class="code-link" href="/xaml/controls/separator">Separator</a>
+		element is used to visually separate the buttons.
 	</p>
-	<p>Для того, чтобы разделить блоки кнопок на две части - левую и правую, используется присоединенное свойство 
-	<code>Toolbar.Align</code>.</p>
+	<p>
+		To split button blocks into two parts - left and right, the <code>Toolbar.Align</code>
+		attached property is used.
+	</p>
 
 	<p>
 		Inherits: <a class="code-link" href="/xaml/abstract/container">Container</a> : <a class="code-link" href="/xaml/abstract/uielement">UIElement</a> : <a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>
@@ -31,9 +33,9 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -41,48 +43,48 @@
 				<td class="prop-name">Style</td>
 				<td class="fit"><code>ToolbarStyle</code></td>
 				<td>
-					Стиль отображения панели инструментов. Возможные значения:
+					Toolbar display style. Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">Default</span> - (по умолчанию) Стандартное отображение.</li>
-						<li><span class="prop-name">Transparent</span> - Прозрачная панель инструментов.</li>
-						<li><span class="prop-name">Light</span> - Светлый стиль.</li>
+						<li><span class="prop-name">Default</span> - (by default) standard display.</li>
+						<li><span class="prop-name">Transparent</span> - transparent toolbar.</li>
+						<li><span class="prop-name">Light</span> - light style.</li>
 					</ul>
-					Конретный вид отображения зависит от темы пользовательского интерфейса.
+					The exact display type depends on the user interface theme.
 				</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name">Border</td>
 				<td class="fit"><code>ToolbarBorderStyle</code></td>
 				<td>
-					Рамка. Возможные значения:
+					Frame. Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">None</span> - (по умолчанию) Нет рамки.</li>
-						<li><span class="prop-name">Bottom</span> - Рамка только снизу.</li>
-						<li><span class="prop-name">BottomShadow</span> - Рамка снизу с тенью.</li>
+						<li><span class="prop-name">None</span> - (by default) no frame.</li>
+						<li><span class="prop-name">Bottom</span> - frame bottom only.</li>
+						<li><span class="prop-name">BottomShadow</span> - bottom frame with shadow.</li>
 					</ul>
-					Конретный вид отображения зависит от темы пользовательского интерфейса.
+					The exact display type depends on the user interface theme.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">AlignItems</td>
 				<td><a class="code-link" href="/xaml/enums/alignitems">AlignItems</a></td>
-				<td>Режим выравнивания элементов.</td>
+				<td>Items alignment mode.</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/container">Свойства базового элемента</a>
+					<a href="/xaml/abstract/container">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Присоединенные свойства</h3>
+	<h3>Attached properties</h3>
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -90,17 +92,17 @@
 				<td class="prop-name">Toolbar.Align</td>
 				<td class="fit"><code>ToolbarAlign</code></td>
 				<td>
-					Куда помещать элемент. Возможные значения:
+					Where to place the item. Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">Left</span> - (по умолчанию) В левый блок кнопок.</li>
-						<li><span class="prop-name">Right</span> - В правый блок кнопок.</li>
+						<li><span class="prop-name">Left</span> - (by default) To the left block of buttons.</li>
+						<li><span class="prop-name">Right</span> - To the right block of buttons.</li>
 					</ul>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Пример</h3>
+	<h3>Example</h3>
 
 	<p>
 		XAML
@@ -118,7 +120,7 @@
 	</p>
 
 	<p>
-		Результат
+		Result
 		<div class="xaml-sample" style="width:500px">
 			<div class="toolbar">
 				<button toggle="" class="btn btn-tb">

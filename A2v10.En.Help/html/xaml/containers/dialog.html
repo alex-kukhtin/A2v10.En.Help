@@ -3,15 +3,15 @@
 	<!--keywords:Dialog-->
 	<div class="title">
 		<h1>
-			Элемент Dialog
+			Dialog Layout Element
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все контейнеры</a>
+			<a href="index">All containers</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой контейнер, которые содержит другие элементы
-		управления или другие контейнеры. Всегда используется как корневой элемент разметки.
+		Represents a container that contains other 
+		controls or other containers. Always used as the root markup element.
 	</p>
 
 	<p>
@@ -25,9 +25,9 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -35,154 +35,162 @@
 				<td class="prop-name">Title</td>
 				<td>String</td>
 				<td>
-					Заголовок окна диалога.
+					The title of the dialog box.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">HelpUrl</td>
 				<td>String</td>
 				<td>
-					Путь к странице справки. Если указан, то в заголовке окна диалога появится гиперссылка на страницу справки.
+					The path to the help page. If specified, a hyperlink to the help page will appear in the title of the dialog box.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">TitleInfo</td>
 				<td class="fit"><a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a></td>
 				<td>
-					Дополнительный элемент в заголовке. Выводится после текста заголовка.
+					Additional element in the header. Displayed after the title text.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Buttons</td>
 				<td class="fit"><a class="code-link" href="/xaml/simple/uielementcollection">UIElementCollection</a></td>
 				<td>
-					Содержимое панели кнопок. Обычно набор управляющих кнопок.
+					The content of the button bar. Usually a set of control buttons.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Taskpad</td>
 				<td class="fit"><a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a></td>
 				<td>
-					Панель задач диалога. Чаще всего это элемент <a class="code-link" href="/xaml/containers/taskpad">Taskpad</a>.
+					Dialog taskbar. Most often this is the  <a class="code-link" href="/xaml/containers/taskpad">Taskpad</a> element.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Width</td>
 				<td><a class="code-link" href="/xaml/simple/length">Length</a></td>
 				<td>
-					Ширина окна диалога. По умолчанию определяется содержимым.
+					The width of the dialog box. By default, it is determined by the content.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Height</td>
 				<td><a class="code-link" href="/xaml/simple/length">Length</a></td>
 				<td>
-					Высота окна диалога. По умолчанию определяется содержимым.
+					The height of the dialog box. By default, it is determined by the content.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">MinWidth</td>
 				<td><a class="code-link" href="/xaml/simple/length">Length</a></td>
 				<td>
-					Минимальная ширина окна.
+					The window minimum width.
 				</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name">Size</td>
 				<td><code>DialogSize</code></td>
 				<td>
-					Размер окна диалога. Возможные значения:
+					The size of the dialog box. Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">Default</span> - по умолчанию.</li>
-						<li><span class="prop-name">Small</span> - маленький.</li>
-						<li><span class="prop-name">Medium</span> - нормальный.</li>
-						<li><span class="prop-name">Large</span> - большой.</li>
-						<li><span class="prop-name">Max</span> - Развернутый на весь экран. Эквивалентно <code>Maximize="True"</code></li>
+						<li><span class="prop-name">Default</span> - by default.</li>
+						<li><span class="prop-name">Small</span> - small.</li>
+						<li><span class="prop-name">Medium</span> - regular.</li>
+						<li><span class="prop-name">Large</span> - large.</li>
+						<li><span class="prop-name">Max</span> - Expanded to full screen. Equivalent to <code>Maximize="True"</code></li>
 					</ul>
-					Конкретные значения размера зависят от темы пользовательского интерфейса.
-					Если указано свойство <code>Width</code>, то это свойство игнорируется.
+					The specific size values depend on the user interface theme. If the <code>Width</code>
+					property is specified, then this property is ignored.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Maximize</td>
 				<td>Boolean</td>
 				<td>
-					Максимально возможный размер диалога. Будет меняться в зависимости от размеров окна браузера.
+					The maximum possible size of the dialogue. Will vary depending on the size of the browser window.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">ButtonOnTop</td>
 				<td>Boolean</td>
 				<td>
-					Размешать панель кнопок в верхней части окна диалога.
+					Place the button bar at the top of the dialog box.
 				</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name">ShowWaitCursor</td>
 				<td>Boolean</td>
 				<td>
-					Если свойство установлено в <code>True</code>, то при выполнении запросов к серверу
-					окно диалога будет затеняться и будет показываться индикатор выполнения запроса.
+					If the property is set to <code>True</code>, then when making requests to the server,
+					the dialog box will be grayed out and a progress bar will be displayed.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">TestId</td>
 				<td>String</td>
 				<td>
-					Идентификатор окна. Используется при тестировании.
+					Window identifier. Used for testing.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">AlwaysOk</td>
 				<td>Boolean</td>
 				<td>
-					Если свойство установлено в <code>True</code>, то при закрытии диалога любым способом будет считаться что
-					возвращаемый результат равен <code>true</code>.
+					If the property is set to <code>True</code>, then when the dialog is closed in 
+					any way, it will be considered that the returned result is <code>true</code>.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">CanCloseDelegate</td>
 				<td>String</td>
-				<td>Имя <a href="/template/delegates">делегата</a>, который будет вызываться при попытке закрытия окна (любым способом).</td>
+				<td>
+					The name of the <a href="/template/delegates">delegate</a> that will be called upon an attempt to close the window (in any way).
+				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Background</td>
 				<td><a class="code-link" href="/xaml/enums/backgroundstyle">BackgroundStyle</a></td>
-				<td>Цвет фона диалога.</td>
+				<td>Dialogue background color.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Overflow</td>
 				<td>Boolean</td>
 				<td>
-					Может ли появляться скролл-бар в диалоге. Установите это свойство, 
-					если нужно чтобы всплывающие окна (например <code>DatePicker</code>) могли выходить за границы элемента.
-					В этом случае нужно внимательно следить за тем, чтобы основное содержимое не вышло за границы. 
-					Скролл-бар отображаться не будет.
+					Whether a scroll bar can appear in the dialogue. Set this property if you want popups (such as <code>DatePicker</code>)
+					to be able to extend beyond the bounds of the element. In this case, you need to be careful to ensure that the main 
+					content does not go beyond the boundaries. The scroll bar will not be displayed.
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/rootcontainer">Свойства базового элемента</a>
+					<a href="/xaml/abstract/rootcontainer">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Формат делегата CanCloseDelegate</h3>
+	<h3>CanCloseDelegate delegate format</h3>
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">canClose(this:IRoot): any | Promise</pre></div>
-		<h4>Аргументы:</h4>
+		<h4>Parameters:</h4>
 		<ul class="params">
 			<li>
-				<code>this</code> - корень модели данных.
+				<code>this</code> - data model root.
 			</li>
 		</ul>
-		<h4>Возвращаемое значение:</h4>
+		<h4>Returned value:</h4>
 		<ul class="enum-vals">
-			<li><code>Promise</code> - Если <code>Promise</code> вернет <code>truthy</code> значение, то диалог закроется с этим результатом.</li>
-			<li><code>any</code> - Если значение <code>truthy</code>, то диалог закроется с этим результатом.</li>
+			<li>
+				<code>Promise</code> - If Promise <code>Promise</code> returns a <code>truthy</code> value,
+				then the dialog will close with this result.
+			</li>
+			<li>
+				<code>any</code> - If the value is <code>truthy</code>, then the dialog will close with this result.
+			</li>
 		</ul>
-		<p>Примечание: <code>truthy</code> - любое значение, которое считается истинным.</p>
+		<p>
+			Note: <code>truthy</code> is any value that is considered to be true.
+		</p>
 	</div>
 
 </div>

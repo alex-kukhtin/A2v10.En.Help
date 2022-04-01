@@ -3,15 +3,15 @@
 	<!--keywords:DropDownMenu-->
 	<div class="title">
 		<h1>
-			Элемент DropDownMenu
+			DropDownMenu Layout Element
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все контейнеры</a>
+			<a href="index">All containers</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой выпадающее меню. Содержимое обычно представляет собой коллекцию элементов
-		<a class="code-link" href="/xaml/controls/menuitem">MenuItem</a>.
+		Represents a dropdown menu. The content is usually a collection of
+		<a class="code-link" href="/xaml/controls/menuitem">MenuItem</a> items.
 	</p>
 
 	Inherits: <a class="code-link" href="/xaml/abstract/container">Container</a> :
@@ -21,9 +21,9 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -31,12 +31,12 @@
 				<td class="prop-name">Direction</td>
 				<td class="fit"><code>DropDownDirection</code></td>
 				<td>
-					Направление "выпадения" меню. Возможные значения:
+					The direction of the menu’s "drop-out". Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">DownRight</span> - (по умолчанию) вниз, разворачивается вправо. Привязка левого края.</li>
-						<li><span class="prop-name">DownLeft</span> - вниз, разворачивается влево. Привязка правого края.</li>
-						<li><span class="prop-name">UpRight</span> - вверх, разворачивается вправо. Привязка левого края.</li>
-						<li><span class="prop-name">UpLeft</span> - вверх, разворачивается влево. Привязка правого края.</li>
+						<li><span class="prop-name">DownRight</span> - (by default) downwards, unwraps to the right. Left edge anchor.</li>
+						<li><span class="prop-name">DownLeft</span> - downwards, unwraps to the left. Right edge anchor.</li>
+						<li><span class="prop-name">UpRight</span> - upwards, unwraps to the right. Left edge anchor.</li>
+						<li><span class="prop-name">UpLeft</span> - upwards, unwraps to the left. Right edge anchor.</li>
 					</ul>
 				</td>
 			</tr>
@@ -44,24 +44,24 @@
 				<td class="prop-name">Separate</td>
 				<td>Boolean</td>
 				<td>
-					Показывать меню раздельно от родительской кнопки. В этом случае фон элемента будет белым.
+					Display the menu separately from the parent button. In this case, the background of the element will be white.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Background</td>
 				<td><a class="code-link" href="/xaml/enums/backgroundstyle">BackgroundStyle</a></td>
-				<td>Цвет фона.</td>
+				<td>Background color.</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/container">Свойства базового элемента</a>
+					<a href="/xaml/abstract/container">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
 
-	<h3>Пример</h3>
+	<h3>Example</h3>
 
 	<p>
 		XAML
@@ -83,7 +83,7 @@
 	</p>
 
 	<p>
-		Результат
+		Example
 		<div class="xaml-sample" id="xaml-menuitem">
 			<div class="toolbar">
 				<div class="dropdown dir-down" dropdown-top="" v-dropdown="1">

@@ -3,25 +3,25 @@
 	<!--keywords:InlineDialog-->
 	<div class="title">
 		<h1>
-			Элемент InlineDialog
+			InlineDialog Layout Element
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все контейнеры</a>
+			<a href="index">All containers</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой диалог, который работает с текущей моделью и не требует
-		дополнительной загрузки с сервера.
+		Represents a dialog that works with the current model and does not require additional download from the server.
 	</p>
-	<p>Каждый такой диалог должен иметь уникальный (в пределах текущей страницы) текстовый идентификатор.</p>
+	<p>Each of such dialogs must have a unique (within the current page) text identifier.</p>
 	<p>
-		Диалог работает в пределах текущей страницы. Фактически он представляет собой простой блок,
-		который отображается по команде в виде диалога. Такие возможности как, например, отмену действия
-		нужно реализовывать самостоятельно.
+		The dialog works within the current page. In fact, it is a simple block that is displayed upon command in the form
+		of a dialogue. Such features as undoing an action must be implemented independently.
 	</p>
 
-	<p>Открыть или закрыть диалог можно командами <a class="code-link" href="/client/controller">контроллера</a> <code>$inlineOpen</code>, 
-	<code>$inlineClose</code> передав им идентификтор диалога.</p>
+	<p>
+		You can open or close the dialog using the <a class="code-link" href="/client/controller">controller</a> <code>$inlineOpen</code>,
+		<code>$inlineClose</code> passing them the dialog ID.
+	</p>
 
 	<p>
 		Inherits: <a class="code-link" href="/xaml/abstract/container">Container</a> : <a class="code-link" href="/xaml/abstract/uielement">UIElement</a> : <a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>
@@ -32,9 +32,9 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -42,50 +42,50 @@
 				<td class="prop-name">Id</td>
 				<td>String</td>
 				<td>
-					Уникальный (в пределах страницы) идентификатор диалога.
+					The unique (within the page) dialog identifier.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Title</td>
 				<td>String</td>
 				<td>
-					Заголовок окна диалога.
+					The dialog box heading.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Width</td>
 				<td><a class="code-link" href="/xaml/simple/length">Length</a></td>
 				<td>
-					Ширина окна диалога. По умолчанию определяется содержимым.
+					The dialog box width. by default determined by the content.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Buttons</td>
 				<td class="fit"><a class="code-link" href="/xaml/simple/uielementcollection">UIElementCollection</a></td>
 				<td>
-					Содержимое панели кнопок. Обычно набор управляющих кнопок.
+					The content of the button bar. Typically, a set of control buttons.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">NoClose</td>
 				<td>Boolean</td>
 				<td>
-					Запретить закрытие диалога клавишей <kbd>Escape</kbd> и кнопкой в заголовке окна. Может быть
-					полезным для диалогов отображения длительных операций, которые управляются не пользователем, а системой.
-					Например диалог оплаты по карте через еквайринговый терминал.
+					Disable closing the dialog with the <kbd>Escape</kbd> key and the button in the box heading. It can 
+					be useful for dialogs displaying long-running operations that are not controlled by the user, but 
+					by the system. For example, a dialogue of payment by card through an acquiring terminal.
 				</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name">ShowWaitCursor</td>
 				<td>Boolean</td>
 				<td>
-					Если свойство установлено в <code>True</code>, то при выполнении запросов к серверу
-					окно диалога будет затеняться и будет показываться индикатор выполнения запроса.
+					If the property is set to <code>True</code>, then when making requests to the server, the dialog 
+					box will be grayed out and a progress bar will be displayed.
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/container">Свойства базового элемента</a>
+					<a href="/xaml/abstract/container">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>

@@ -3,15 +3,15 @@
 	<!--keywords:StackPanel-->
 	<div class="title">
 		<h1>
-			Элемент StackPanel
+			StackPanel Layout Element
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все контейнеры</a>
+			<a href="index">All containers</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой контейнер, в котором дочерние элементы
-		выравниваются в одну линию, ориентированную вертикально или горизонтально.
+		Represents a container in which children are aligned
+		in one line oriented vertically or horizontally.
 	</p>
 
 	<p>
@@ -23,9 +23,9 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -33,75 +33,74 @@
 				<td class="prop-name">Orientation</td>
 				<td><a class="code-link" href="/xaml/enums/orientation">Orientation</a></td>
 				<td>
-					Расположение элементов в панели.
+					Arrangement of the items in the panel.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">AlignItems</td>
 				<td><a class="code-link" href="/xaml/enums/alignitems">AlignItems</a></td>
 				<td>
-					Выравнивание дочерних элементов.
+					Alignment of the children.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">JustifyItems</td>
 				<td><a class="code-link" href="/xaml/enums/justifyitems">JustifyItems</a></td>
 				<td>
-					Распределение дочерних элементов.
+					Distribution of the children.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Inline</td>
 				<td>Boolean</td>
 				<td>
-					Строчный элемент (не блочный).
+					Inline element (not block).
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Gap</td>
 				<td><a class="code-link" href="/xaml/simple/gapsize">GapSize</a></td>
-				<td>Промежутки между элементами по основной и перпендикулярной оси.</td>
+				<td>The gaps between the items along the main and perpendicular axis.</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/container">Свойства базового элемента</a>
+					<a href="/xaml/abstract/container">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Разделители</h3>
+	<h3>Separators</h3>
 	<p>
-		Дочерние элементы панели могут включать разделитель <a class="code-link" href="/xaml/controls/separator">Separator</a>.
+		Child panel elements can include a <a class="code-link" href="/xaml/controls/separator">Separator</a>.
 	</p>
 	<p>
-		Вставка разделителя приведет к тому, что содержимое разделится на два блока. 
-		Все что будет до разделителя выровняется по левой (или верхней) стороне панели, а
-		то что после разделителя - по правой (или нижней).
+		Inserting a separator will cause the content to be split into two blocks. Everything before the separator
+		will be aligned on the left (or top) side of the panel, and everything after the separator - on the right (or bottom).
 	</p>
-	Например:
+	For example:
 	<p>
 		XAML
 <pre class="code-highlight xml">
 <script type="text/template">
 <StackPanel Orientation="Horizontal">
-	<Button>Кнопка 1</Button>
-	<Button>Кнопка 2</Button>
-	<Separator />
-	<Button>Кнопка 3</Button>
+		<Button>Button 1</Button>
+		<Button>Button 2</Button>
+		<Separator />
+		<Button>Button 3</Button>
 </StackPanel>
 </script>
 </pre>
 	</p>
 
 	<p>
-		Результат
+		Result
 		<div class="xaml-sample" style="width:400px">
 			<div class="stack-panel horizontal">
-				<button class="btn a2-inline">Кнопка 1</button>
-				<button class="btn a2-inline">Кнопка 2</button>
+				<button class="btn a2-inline">Button 1</button>
+				<button class="btn a2-inline">Button 2</button>
 				<div role="separator" class="divider"></div>
-				<button class="btn a2-inline">Кнопка 3</button>
+				<button class="btn a2-inline">Button 3</button>
 			</div>
 		</div>
 	</p>
