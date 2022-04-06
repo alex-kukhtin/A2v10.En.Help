@@ -3,17 +3,17 @@
 	<!--keywords:Accel-->
 	<div class="title">
 		<h1>
-			Элемент Accel
+			Accel Elements
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все простые элементы</a>
+			<a href="index">All simple elements</a>
 		</div>
 	</div>
 
-	<p>Представляет собой описание акселератора ("горячей" клавиши).</p>
+	<p>Represents the description of the accelerator (hotkey).</p>
 
 	<p>
-		Используется:
+		Used by:
 		<a class="code-link" href="/xaml/controls/textbox">TextBox</a>,
 		<a class="code-link" href="/xaml/simple/accelcommand">AccelCommand</a>.
 	</p>
@@ -23,9 +23,9 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th width="1px">Имя</th>
-				<th width="1px">Тип</th>
-				<th>Описание</th>
+				<th width="1px">Name</th>
+				<th width="1px">Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -33,81 +33,81 @@
 				<td class="prop-name">Key</td>
 				<td>String</td>
 				<td>
-					Акселератор ("горячая" клавиша). Задается в виде наименования клавиши и необязательных (одного или нескольких)
-					модификаторов. Модификаторы и названия клавиш разделяются знаком "+".
+					Accelerator (hot key). It is set in the form of a key name and optional 
+					(one or more) modifiers. Modifiers and key names are separated by a "+" sign.
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Названия клавиш</h3>
+	<h3>Key names</h3>
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Единица</th>
-				<th>Описание</th>
+				<th>Unit</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name no-wrap">A..Z, 0..9</td>
-				<td>Алфавитно-цифровые клавиши.</td>
+				<td>Alphanumeric keys.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">F0..F12</td>
-				<td>Функциональные клавиши.</td>
+				<td>Functional keys.</td>
 			</tr>
 			<tr>
 				<td class="prop-name  no-wrap">Left, Right, Up, Down</td>
-				<td>Клавиши со стрелками.</td>
+				<td>Arrow keys.</td>
 			</tr>
 			<tr>
 				<td class="prop-name no-wrap">PageUp, PageDown, Insert, Delete, <br />Enter, Escape, Tab, Home, End, <br />Backspace, Delete</td>
-				<td>Управляющие клавиши.</td>
+				<td>Control keys.</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Модификаторы</h3>
+	<h3>Modifiers</h3>
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Единица</th>
-				<th>Описание</th>
+				<th>Unit</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name no-wrap">Control, Ctrl</td>
-				<td>Клавиша Control.</td>
+				<td>Control key.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Shift</td>
-				<td>Клавиша Shift.</td>
+				<td>Shift key.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Alt</td>
-				<td>Клавиша Alt.</td>
+				<td>Alt key.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Meta</td>
 				<td>
-					Windows - клавиша <kbd style="padding:2px 4px">&#x229e; Windows</kbd>.
+					Windows - key <kbd style="padding:2px 4px">&#x229e; Windows</kbd>.
 					<br />
-					Mac - клавиша <kbd style="padding:3px 4px 1px 4px">&#8984; Command</kbd>.
+					Mac - key <kbd style="padding:3px 4px 1px 4px">&#8984; Command</kbd>.
 					<br />
-					Обратите внимание, может работать не во всех браузерах.
+					Please note, may not work in all browsers.
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Конвертор</h3>
+	<h3>Converter</h3>
 	<p>
-		Поддерживается преобразование из текстовой строки. Строка будет просто значением свойства <code>Key</code>.
+		Conversion from text string is supported. The string will simply be the value of the <code>Key</code> property.
 	</p>
 
-	<h3>Пример</h3>
+	<h3>Example</h3>
 
 	<p>
 		XAML

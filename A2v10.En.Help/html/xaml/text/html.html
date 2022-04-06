@@ -3,14 +3,14 @@
 	<!--keywords:Html-->
 	<div class="title">
 		<h1>
-			Элемент Html
+			HTML Element
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все текстовые элементы</a>
+			<a href="index">All text elements</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой фрагмент текста, которые отображает html-разметку.
+		Represents a piece of text that displays html markup.
 	</p>
 
 	<p>
@@ -23,61 +23,66 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">Content</td>
 				<td>String</td>
-				<td>Свойство содержимого. Текстовое содержимое. Допустимы html-теги</td>
+				<td>Content property. Text content. HTML tags are allowed.</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/inline">Свойства базового элемента</a>
+					<a href="/xaml/abstract/inline">Basic element properties</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Описание</h3>
+	<h3>Description</h3>
 	<p>
-		Использовать разметку html при непосредственной работе с xaml неудобно. Приходится экранировать все html-теги.
-		Например, если нужно отобразить текст полужирным шрифтом, приходится писать такой код:
+		It is inconvenient to use html markup when working directly with xaml. All
+		html tags have to be escaped. For example, if you want to display text in
+		bold, you have to write code like this:
 <pre class="code-highlight xml">
 <script type="text/template">
-<Html>Это &lt;b&gt;полужирный&lt;/b&gt; текст</Html>
+		<Html>
+	This is &lt;b&gt;semibold&lt;/b&gt; text
+	</Html>
 </script>
 </pre>
 
-		Вместо этого значительно удобнее использовать элементы xaml:
+		Instead, it is much more convenient to use XAML elements:
 
 <pre class="code-highlight xml">
 <script type="text/template">
-<Text>Это <Span Bold="True">полужирный</Span> текст</Text>
+		<Text>This is <Span Bold="True">semibold</Span> text</Text>
 </script>
 </pre>
 
-		Либо использовать элемент CDATA:
+		Or to use a CDATA element:
 
 <pre class="code-highlight xml">
-	<script type="text/template">
-<Html>
-	<![CDATA[
-	Это <b>полужирный</b> шрифт
-	]]>
-</Html>
+		<script type="text/template">
+		<Html>
+			<![CDATA[
+			This is
+		<b>semibold</b> font
+			]]>
+			</Html>
 	</script>
 </pre>
 
-		Чаще всего этот элемент используется для отображения html-текста, полученного, например, из базы данных.
+		Most often this element is used to display html-text obtained, for example, from a database.
 	</p>
 
 	<p class="tip alert">
-		Обратите внимание! <b>Никогда</b> не пытайтесь отобразить html-код, введенный пользователем или полученный из внешнего источника.
-		Хотя система и исключает из такого кода потенциально опасные фрагменты типа скриптов или фреймов, разметка может быть необратимо испорчена.
+		Note! <b>Never</b> try to display html code entered by the user or received from an external 
+		source. Although the system excludes potentially dangerous fragments such as scripts or frames 
+		from such code, the markup may be irreversibly corrupted.
 	</p>
 
 </div>

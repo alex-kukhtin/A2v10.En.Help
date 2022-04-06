@@ -3,10 +3,10 @@
 	<!--keywords:Size-->
 	<div class="title">
 		<h1>
-			Элемент Size
+			Size Element
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все простые элементы</a>
+			<a href="index">All simple elements</a>
 		</div>
 	</div>
 	<p>
@@ -18,53 +18,53 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">Width</td>
 				<td class="fit"><a class="code-link" href="/xaml/simple/length">Length</a></td>
-				<td>Ширина.</td>
+				<td>Width.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Height</td>
 				<td><a class="code-link" href="/xaml/simple/length">Length</a></td>
-				<td>Высота.</td>
+				<td>Height.</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Конвертор</h3>
+	<h3>Converter</h3>
 	<p>
-		Поддерживается преобразование из текстовой строки. Значения ширины и высоты указываются через запятую.
-		Если указано только одно значение, то оно будет использовано и как ширина и как высота.
+		Conversion from text string is supported. The width and height values are separated by commas. 
+		If only one value is specified, it will be used as both width and height.
 	</p>
 
 
-	<h3>Пример</h3>
+	<h3>Example</h3>
 
 	<p>
 		XAML
 <pre class="code-highlight xml">
-<script type="text/template">
-<![CDATA[
-<!--Использование конвертора-->
-<Selector ListSize="25rem,10rem">
-	...
-</Selector>
+	<script type="text/template">
+		<![CDATA[
+		<!--Using the converter-->
+		<Selector ListSize="25rem,10rem">
+			...
+		</Selector>
 
-<!--прямое задание свойства-->
-<Selector>
-	<Selector.ListSize>
-		<Size Width="25rem" Height="10rem" />
-	</Selector.ListSize>
-</Selector>
-]]>
+		<!--direct property assignment-->
+		<Selector>
+			<Selector.ListSize>
+				<Size Width="25rem" Height="10rem" />
+			</Selector.ListSize>
+		</Selector>
+		]]>
 
-</script>
+	</script>
 </pre>
 	</p>
 
