@@ -3,104 +3,105 @@
 	<!--keywords:Bind-->
 	<div class="title">
 		<h1>
-			Привязка Bind
+			Bind Binding
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все привязки</a>
+			<a href="index">All bindings</a>
 		</div>
 	</div>
 
 	<p>
-		Представляет собой специальный объект, описывающий связь свойства с элементом данных.
-		Практически всегда задается как <a href="/xaml/overview/extensions">расширение разметки</a>.
+		Represents a special object that describes the relationship between a property and a data item. 
+		Almost always specified as a <a href="/xaml/overview/extensions">markup extensions</a>.
 	</p>
 
 	<p>
-		Привязка всегда является двухсторонней.
-		Это означает, что при изменении значения в модели, связанное свойство меняется автоматически и наоборот.
+		The binding is always two-way. This means that when the value in the model changes, 
+		the associated property changes automatically and vice versa.
 	</p>
 
 	<p>
-		Привязывать можно практически любые свойства любых элементов. 
-		Обратите внимание, что свойства привязки в свою очередь тоже могут быть привязками.
+		It is possible to bind almost any properties of any element. Note that binding 
+		properties, in turn, can also be bindings.
 	</p>
 
 	<h3>Properties</h3>
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">Path</td>
 				<td>String</td>
-				<td>По умолчанию. Выражение, описывающее путь к свойству модели.</td>
+				<td>By default. An expression describing the path to the model property.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">DataType</td>
 				<td><a class="code-link" href="/xaml/enums/datatype">DataType</a></td>
-				<td>Тип данных.</td>
+				<td>Data type.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Format</td>
 				<td>String</td>
-				<td>Формат отображения.</td>
+				<td>Display format.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Mask</td>
 				<td>String</td>
-				<td>Маска отображения значения.</td>
+				<td>Value display mask.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">HideZeros</td>
 				<td>Boolean</td>
-				<td>Прятать нулевые значения. Имеет смысл только для числовых форматов.</td>
+				<td>Hide null values. This makes sense only for number formats.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">NegativeRed</td>
 				<td>Boolean</td>
-				<td>Показывать отрицательные значения красным цветом. Имеет смысл только для числовых форматов.</td>
+				<td>Show negative values in red. This makes sense only for number formats.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Filters</td>
 				<td><code>FilterCollection</code></td>
 				<td>
-					Фильтры для обработки связанного значения после обновления.
-					Представляет собой список перечислений (через запятую). Возможные значения:
+					Filters to process the associated value after the update. Represents a comma-separated 
+					list of enumerations. Possible values:
 					<ul class="enum-vals">
-						<li><span class="prop-name">Trim</span> - обрезать пробелы в начале и в конце текста.</li>
-						<li><span class="prop-name">Upper</span> - преобразовать символы в верхний регистр.</li>
-						<li><span class="prop-name">Lower</span> - преобразовать символы в нижний регистр.</li>
-						<li><span class="prop-name">Barcode</span> - используется для алфавитно-цифровых кодов. 
-						Заменяет кириллические буквы на латинские в соответствии с раскладкой клавиатуры.</li>
+						<li><span class="prop-name">Trim</span> - trim spaces at the beginning and at the end of the text.</li>
+						<li><span class="prop-name">Upper</span> - convert characters to uppercase.</li>
+						<li><span class="prop-name">Lower</span> - convert characters to lowercase.</li>
+						<li><span class="prop-name">Barcode</span> - used for alphanumeric codes. Replaces Cyrillic 
+						letters with Latin letters according to the keyboard layout.
+						</li>
 					</ul>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Пример</h3>
+	<h3>Example</h3>
 	<p>
-		Привязка элемента <code>Document.Sum</code> модели к текстовому полю и отображение его как суммы (с разделителями тысяч)
+		Binding the Model <code>Document.Sum</code> element to a text field and displaying it as an amount (with thousands separators)
 	</p>
 	<p>
 		XAML
 <pre class="code-highlight xml">
-<script type="text/template">
-<!-- привязка через расширение разметки -->
-<TextBox Value="{Bind Document.Sum, DataType=Currency}" />
+	<script type="text/template">
+		<!-- binding via markup extension -->
+		<TextBox Value="{Bind Document.Sum, DataType=Currency}" />
 
-<!-- привязка объекта -->
-<TextBox>
-	<TextBox.Value>
-		<Bind Path="Document.Sum" DataType="Currency"/>
-	</TextBox.Value>
-</TextBox>
-</script>
+		<!-- object binding -->
+		<TextBox>
+			<TextBox.Value>
+				<Bind Path="Document.Sum" DataType="Currency" />
+			</TextBox.Value>
+		</TextBox>
+	</script>
 </pre>
 	</p>
 

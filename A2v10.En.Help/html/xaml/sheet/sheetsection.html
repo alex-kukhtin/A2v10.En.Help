@@ -3,21 +3,24 @@
 	<!--keywords:SheetSection-->
 	<div class="title">
 		<h1>
-			Элемент SheetSection
+			SheetSection Element
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все элементы таблиц</a>
+			<a href="index">All elements of the sheets</a>
 		</div>
 	</div>
 	<p>
-		Представляет собой секцию таблицы.
+		Represents the sheet section.
 	</p>
-	<p>Секция используется в случае, если нужно связывать данные с источником данных. 
-	Источник задается привязкой <code>ItemsSource</code>. Строки секции будут повторены для каждого элемента массива - источника.
+	<p>
+		The section is used when you need to bind data to a data source.
+		The source is specified by the <code>ItemsSource</code>. binding.
+		The section rows will be repeated for each element of the source array.
 	</p>
 
-	<p>Если в теле таблице непосредственно задаются строки, 
-	то они попадают в секцию, которая создается неявно. Источник данных для такой секции задать невозможно.</p>
+	<p>If rows are directly specified in the body of the sheet, then they fall 
+	into the section, which is created implicitly. It is impossible to specify
+	a data source for such a section.</p>
 
 	Inherits: <a class="code-link" href="/xaml/abstract/uielement">UIElement</a> : <a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>
 
@@ -27,25 +30,26 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">Children</td>
 				<td class="fit no-wrap">Коллекция <a class="code-link" href="sheetrow">SheetRow</a></td>
-				<td>Коллекция строк в секции.</td>
+				<td>A collection of rows in a section.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">ItemsSource</td>
 				<td>Array</td>
-				<td>Всегда привязка (<a class="code-link" href="/xaml/bind/bind">Bind</a>). Источник данных для получения дочерних элементов.</td>
+				<td>Always binding (<a class="code-link" href="/xaml/bind/bind">Bind</a>). 
+				Data source for obtaining children.</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<a href="/xaml/abstract/uielement">Свойства базового элемента</a>
+					<a href="/xaml/abstract/uielement">Base item properties</a>
 				</td>
 			</tr>
 		</tbody>
