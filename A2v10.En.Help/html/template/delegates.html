@@ -1,67 +1,66 @@
 ﻿<div>
-	<!--title:Шаблоны. Делегаты-->
+	<!--title:Templates. Delegates-->
 	<!--keywords:delegates;-->
 	<div class="title">
 		<h1>
-			Шаблоны. Делегаты
+			Templates. Delegates
 		</h1>
 	</div>
 
 	<p>
-		Делегат это функция "обратного вызова" (callback function). Она будет вызываться в тот момент,
-		когда нужно выполнить какое-либо действие.
-		Например в элементе управления <a href="/xaml/controls/selector">Selector</a>,
-		делегат будет вызываться при вводе фрагмента текста для того чтобы получить список вариантов выбора.
+		The delegate is a callback function. It will be called at the moment when it is necessary to
+		perform any action. For example, in a <a href="/xaml/controls/selector">Selector</a> control,
+		a delegate will be called when a piece of text is entered to get a list of choices.
+
 	</p>
 
 	<p>
-		Объект, описывающий делегаты в шаблоне, является обычным объектом JavaScript.
-		Имена свойств этого объекта являются именами делегатов, а значения - функциями.
+		The object describing the delegates in the template is a regular JavaScript object. The property
+		names of this object are the names of the delegates, and the values are functions.
 	</p>
 
 	<p>
-		Делегаты в представлениях задаются с помощью свойства
-		<code>Delegate</code> соответствующего элемента управления.
+		Delegates in views are set using the <code>Delegate</code> property of the corresponding control.
 	</p>
 
-	<h3>Синтаксис</h3>
+	<h3>Syntax</h3>
 <pre class="code-highlight js">
-<script type="text/template">
-/* делегаты */
-delegates: {
-	Delegate1: Function,
-	Delegate2: Function,
-	...
-}
-</script>
+	<script type="text/template">
+		/* delegates */
+		delegates: {
+		Delegate1: Function,
+		Delegate2: Function,
+		...
+		}
+	</script>
 </pre>
 
-	<h3>Аргументы делегатов</h3>
+	<h3>Delegates arguments</h3>
 	<ul class="params">
-		<li><code>this</code> - корневой объект (TRoot).</li>
+		<li><code>this</code> - root object (TRoot).</li>
 		<li>
-			<code>...</code> - остальные аргументы зависят от конкретного делегата.
+			<code>...</code> - the rest of the arguments depend on the specific delegate.
 		</li>
 	</ul>
 
-	<h3>Возвращаемое значение</h3>
+	<h3>Returned value</h3>
 	<ul class="params">
 		<li>
-			Возвращаемое значение зависит от конкретного делегата.
+			The returned value depends on the specific delegate.
 		</li>
 	</ul>
 
 
-	<h3>Пример</h3>
+	<h3>Example</h3>
 
 	<p>
 		XAML:
 <pre class="code-highlight xml">
 <script type="text/template">
-<!--селектор-->
+<!--selector-->
 <Selector Delegate="FetchAgent" Value="{Bind Document.Agent}"
 		  DisplayProperty="Name"
-		  Label="Выберите контрагента">
+		  Label="Select a contractor">
 </Selector>
 </script>
 </pre>
@@ -78,15 +77,18 @@ const template = {
 
 function fetchAgent(agent, text) {
 	/*
-	agent - контрагент, выбранный в селекторе 
-	text - фрагмент текста, введенный пользователем
+	agent - contractor selected in the selector 
+	text - a piece of text entered by the user
 	*/
 
 	const ctrl = this.$ctrl;
 
 	/* 
-	Выполнить на сервере команду 'fetchCustomer', которая вернет список подходящих клиентов. 
-	В данном случае функция должна вернуть Promise, который будет обрабатываться селектором.
+	Run the 'fetchCustomer' command on the server, 
+	which will return a list of eligible customers. 
+  In this case, the function should return a Promise, 
+	which will be processed by the selector.
+
 	*/
 	return ctrl.$invoke('fetchCustomer', { Text: text, Kind: 'Customer' });
 

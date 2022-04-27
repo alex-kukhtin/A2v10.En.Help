@@ -1,55 +1,58 @@
 ﻿<div>
-	<!--title:Работа с сообщениями-->
+	<!--title:Working with Messages-->
 	<div class="title">
 		<h1>
-			Работа с сообщениями
+			Working with Messages
 		</h1>
 	</div>
 
 
 	<p>
-		Для того, чтобы отделить логику построения сообщения и механизм его отправки используется механизм шаблонов.
-		Шаблон представляет собой набор правил, при помощи которых строится тело сообщения, его тема, адресаты, копии и т.д.
+		In order to separate the logic of building a message and the mechanism for sending it,
+		the template mechanism is used. A template represents a set of rules used to construct
+		the body of a message, its subject, addressees, copies, etc.
 	</p>
 
-	<p>Шаблон может включать несколько сообщений. Доступ к ним осуществляется по простому текстовому ключу.</p>
-
-	<p>
-		При построении сообщения может использоваться модель данных,
-		дополнительные параметры, которые передаются отправителем и переменные окружения.
-	</p>
+	<p>A template can include several messages. They are accessed using a simple text key.</p>
 
 	<p>
-		Когда системе нужно отправить сообщение, она просто указывает, по какому шаблону его нужно построить, и передает нужные параметры,
-		такие как имя шаблона, ключ сообщения, идентификатор для модели данных и произвольные параметры.
+		When building a message, a data model, additional parameters that are passed by the 
+		sender and environment variables can be used.</p>
+
+	<p>
+		When the system needs to send a message, it simply indicates on what template it needs
+		to be built and passes the required parameters such as template name, message key, ID 
+		for the data model, and arbitrary parameters.
 	</p>
 
 	<p>
-		Подсистема оправки выбирает нужное сообщение, загружает модель данных (если нужно), формирует непосредственно текст сообщения с использованием <a href="bindings">привязок</a>
-		и отправляет его адресату.
+		The sending subsystem selects the required message, loads the data model (if necessary), forms the
+		message text directly using the <a href="bindings">bindings</a> and sends it to the addressee.
 	</p>
-	<h3>Использование</h3>
-	<p>Сообщение можно отправить следующими способами:</p>
+	<h3>Application</h3>
+	<p>You can send a message in the following ways:</p>
 	<ul class="std">
-		<li>Из бизнес-процесса с помощью активностей <a class="code-link" href="/workflow/activities/request">Request</a> 
-		или <a href="/workflow/activities/sendmessage" class="code-link">SendMessage</a>.</li>
-		<li>Непосредственно серверной командой типа <a href="/app/sendmessagecommand">sendMessage</a></li>
+		<li>
+			From a business process using the <a class="code-link" href="/workflow/activities/request">Request</a>
+			or <a href="/workflow/activities/sendmessage" class="code-link">SendMessage</a> activities.
+		</li>
+		<li>Directly by a server command like <a href="/app/sendmessagecommand">sendMessage</a></li>
 	</ul>
 
-	<h3>Настройка</h3>
+	<h3>Setting up</h3>
 	<ul class="std">
-		<li><a href="/messaging/settings">Настройка конфигурации</a>.</li>
+		<li><a href="/messaging/settings">Setting up the configuration</a>.</li>
 	</ul>
 
-	<h3>Объекты для работы с сообщениями</h3>
+	<h3>Objects for working with messages</h3>
 	<ul class="std">
-		<li><a href="/messaging/emailmessage">EmailMessage</a> - сообщение электронной почты.</li>
-		<li><a href="/messaging/messageaddress">MessageAddress</a> - адрес сообщения.</li>
-		<li><a href="/messaging/messageattachment">MessageAttachment</a> - вложение.</li>
-		<li><a href="/messaging/messagereport">MessageReport</a> - отчет.</li>
-		<li><a href="/messaging/messagereportmodel">MessageReportModel</a> - модель данных для отчета.</li>
-		<li><a href="/messaging/messagereportparam">MessageReportParam</a> - параметр модели данных для отчета.</li>
-		<li><a href="/messaging/template">Template</a> - шаблон.</li>
-		<li><a href="/messaging/templatedmessage">TemplatedMessage</a> - базовый класс для работы с сообщениями.</li>
+		<li><a href="/messaging/emailmessage">EmailMessage</a> - email message.</li>
+		<li><a href="/messaging/messageaddress">MessageAddress</a> - message address.</li>
+		<li><a href="/messaging/messageattachment">MessageAttachment</a> - attachment.</li>
+		<li><a href="/messaging/messagereport">MessageReport</a> - report.</li>
+		<li><a href="/messaging/messagereportmodel">MessageReportModel</a> - data model for the report.</li>
+		<li><a href="/messaging/messagereportparam">MessageReportParam</a> - data model parameter for the report.</li>
+		<li><a href="/messaging/template">Template</a> - template.</li>
+		<li><a href="/messaging/templatedmessage">TemplatedMessage</a> - the base class for working with messages.</li>
 	</ul>
 </div>

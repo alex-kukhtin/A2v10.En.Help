@@ -1,77 +1,78 @@
 ﻿<div>
-	<!--title:Шаблоны-->
-	<!--keywords:template;Шаблон;-->
+	<!--title:Templates-->
+	<!--keywords:template;Templates;-->
 	<div class="title">
 		<h1>
-			Шаблоны
+			Templates
 		</h1>
 	</div>
 
-	<p>Шаблон представляет собой объект JavaScript, который определяет поведение модели данных. Общая структура шаблона:</p>
+	<p>A Template is a JavaScript object that defines the behavior 
+	of a data model. General structure of the template:</p>
 
 	<p>
 <pre class="code-highlight js">
-<script type="text/template">
-const template = {
-  'options':    {}
-  'defaults':   {},
-  'properties': {},
-  'validators': {},
-  'events':     {},
-  'commands':   {},
-  'delegates':  {}
-}
+	<script type="text/template">
+		const template = {
+		'options':    {}
+		'defaults':   {},
+		'properties': {},
+		'validators': {},
+		'events':     {},
+		'commands':   {},
+		'delegates':  {}
+		}
 
-module.exports = template; /*экспорт шаблона из текущего модуля*/
-</script>
+		module.exports = template; /*export template from current module*/
+	</script>
 </pre>
 	</p>
 
 
-	<h3>Свойства объекта шаблона</h3>
+	<h3>Object properties of the Template</h3>
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">options</td>
 				<td><a href="options">options</a></td>
-				<td>Объект, описывающий опции настройки шаблона.</td>
+				<td>An object describing the options for configuring the template.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">defaults</td>
 				<td><a href="defaults">defaults</a></td>
-				<td>Объект, описывающий правила инициализации модели.</td>
+				<td>An object describing the model initialization rules.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">properties</td>
 				<td><a href="properties">properties</a></td>
-				<td>Объект, описывающий дополнительные свойства, которые будут добавлены в модель.</td>
+				<td>An object describing additional properties to be added to the model.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">validators</td>
 				<td><a href="validators">validators</a></td>
-				<td>Объект, описывающий правила проверки достоверности для элементов модели.</td>
+				<td>An object describing the validation rules for model items.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">events</td>
 				<td><a href="events">events</a></td>
-				<td>Объект, описывающий обработчики событий модели.</td>
+				<td>An object describing event handlers for the model.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">commands</td>
 				<td><a href="commands">commands</a></td>
-				<td>Объект, описывающий команды для модели.</td>
+				<td>An object describing commands for the model.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">delegates</td>
 				<td><a href="delegates">delegates</a></td>
-				<td>Объект, описывающий делегаты (функции обратного вызова, callback functions), необходимые для работы модели.</td>
+				<td>An object describing the delegates (callback functions) required for the model to work.</td>
 			</tr>
 		</tbody>
 	</table>

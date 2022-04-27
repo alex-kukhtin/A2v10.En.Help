@@ -1,16 +1,16 @@
 ﻿<div>
-	<!--title:Свойства и методы объекта-->
+	<!--title:Object Properties and Methods-->
 	<!--keywords:$empty;$merge;$root;$parent;$id;$name;$isNew;$isEmpty;$valid;$invalid;$ctrl;-->
 	<div class="title">
 		<h1>
-			Свойства и методы объекта
+			Object Properties and Methods
 		</h1>
 		<div class="breadcrumb">
-			<a href="data">Модель на клиенте</a>
+			<a href="data">Model on the Client</a>
 		</div>
 	</div>
 
-	<p>Каждый объект расширяется следующими служебными свойствами и методами:</p>
+	<p>Each object is expanded with the following additional service properties and methods:</p>
 	<p>
 <pre class="code-highlight js" data-lang="js">
 <script type="text/template">
@@ -39,31 +39,31 @@ interface IElement {
 </pre>
 	</p>
 
-	<h2>Свойства</h2>
+	<h2>Properties</h2>
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">readonly $root: IRoot</pre></div>
 		<p>
-			Ссылка на корневой объект <a class="code-link" href="rootprops">(IRoot)</a>.
+			Root object reference <a class="code-link" href="rootprops">(IRoot)</a>.
 		</p>
 	</div>
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">readonly $ctrl: IController</pre></div>
 		<p>
-			Ссылка на <a class="code-link" href="controller">объект контроллера (IController)</a>.
+			Controller object reference  <a class="code-link" href="controller">(IController)</a>.
 		</p>
 	</div>
 
-	<h2>Методы</h2>
+	<h2>Methods</h2>
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">$empty(): IElement</pre></div>
-		<h4>Описание</h4>
+		<h4>Description</h4>
 		<p>
-			Очищает объект. Очистка объекта означает установку всех его свойств в значения по умолчанию. Очистка рекурсивная. Это значит,
-			что все вложенные объекты будут также очищены.
+			Cleans up an object. Cleaning up an object means setting all of its properties to their default
+			values. Cleaning is recursive. This means that all nested objects will be cleaned up as well.
 		</p>
-		<h4>Возвращает:</h4>
+		<h4>Returns:</h4>
 		<ul class="params">
-			<li>Ссылку на самого себя.</li>
+			<li>Reference to itself</li>
 		</ul>
 	</div>
 </div>

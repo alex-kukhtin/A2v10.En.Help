@@ -1,16 +1,16 @@
 ﻿<div>
-	<!--title:Свойства и методы элемента дерева-->
+	<!--title:Properties and Methods of the Tree Item-->
 	<!--keywords:ITreeElement;$expanded;$selectPath;$expand;-->
 	<div class="title">
 		<h1>
-			Свойства и методы элемента дерева
+			Properties and Methods of the Tree Item
 		</h1>
 		<div class="breadcrumb">
-			<a href="data">Модель на клиенте</a>
+			<a href="data">Model on the Client</a>
 		</div>
 	</div>
 	<p>
-		Каждый элемент дерева расширяется следующими служебными свойствами и методами:
+		Each tree item is expanded with the following additional service properties and methods:
 	</p>
 	<p>
 <pre class="code-highlight js" data-lang="js">
@@ -28,63 +28,61 @@ interface ITreeElement extends IArrayElement {
 </pre>
 	</p>
 
-	<h2>Свойства</h2>
+	<h2>Properties</h2>
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">readonly $expanded: boolean</pre></div>
 		<p>
-			Элемент развернут.
+			Item is expanded.
 		</p>
 	</div>
 
-	<h2>Методы</h2>
+	<h2>Methods</h2>
 	<div class="method">
 		<div class="syntax">
 			<pre class="code-highlight js">
 			<script type="text/template"><![CDATA[$expand<T>(this: T): Promise<IElementArray<T>>]]></script>
 		</pre>
 		</div>
-		<h4>Описание</h4>
-		<p>Разворачивает элемент дерева (если он был свернут). Работает как для статических, так и для динамических деревьев.</p>
-		<h4>Возвращает:</h4>
+		<h4>Description</h4>
+		<p>Expands the tree item (if it was collapsed). Works for both static and dynamic trees.</p>
+		<h4>Returns:</h4>
 		<ul class="params">
-			<li>Промис со ссылкой на массив развернутых дочерних элементов.</li>
+			<li>A promise with a reference to an array of expanded children.</li>
 		</ul>
 	</div>
 
-	<h2>Методы</h2>
+	<h2>Methods</h2>
 	<div class="method">
 		<div class="syntax">
 			<pre class="code-highlight js">
 			<script type="text/template"><![CDATA[$selectPath<T>(this:T, path:Array<any>, predicate:(item:T, val:any) => boolean): Promise<T>]]></script>
 		</pre>
 		</div>
-		<h4>Аргументы:</h4>
+		<h4>Arguments:</h4>
 		<ul class="params">
 			<li>
-				<code>path</code> - массив, который определяет путь в дереве, начиная с корня. Массив может содержать любые элементы.
+				<code>path</code> - an array that defines the path in the tree, starting at the root. The array can contain any items.
 			</li>
 			<li>
-				<code>predicate</code> - функция, которая будет вызываться для поиска заданного элемента в дереве. Должна вернуть <code>true</code>,
-				если элемент дерева <code>item</code> соответствует элементу в массиве <code>val</code>.
-				Аргументы предиката:
+				<code>predicate</code> - a function that will be called to search for a specified item in the tree. Should return <code>true</code>,
+				if the <code>item</code> in the tree matches an item in the <code>val</code> array. Predicate arguments:
 				<ul>
-					<li><code>item: ITreeElement</code> - элемент дерева.</li>
-					<li><code>val: any</code> - элемент из массива <code>path</code>.</li>
+					<li><code>item: ITreeElement</code> - item of the tree.</li>
+					<li><code>val: any</code> - item from the array <code>path</code>.</li>
 				</ul>
 			</li>
 		</ul>
-		<h4>Описание</h4>
+		<h4>Description</h4>
 		<p>
-			Выделяет в дереве элемент по заданному пути. Имеет смысл только для динамических деревьев.
-			В процессе работы метод разворачивает все промежуточные узлы.
+			Selects an item in the tree along the specified path. Only useful for dynamic trees. In the process, the method expands all intermediate nodes.
 		</p>
-		<h4>Возвращает:</h4>
+		<h4>Returns:</h4>
 		<ul class="params">
-			<li>Промис со ссылкой на выделенный элемент дерева.</li>
+			<li>A promise with a reference to the selected tree item.</li>
 		</ul>
 	</div>
 
 	<p>
-		Более подробно работа с деревьями описана в разделе об <a href="/models/tree">иерархических моделях данных</a>.
+		Working with trees is described in more detail in the section on <a href="/models/tree">hierarchical data models</a>.
 	</p>
 </div>

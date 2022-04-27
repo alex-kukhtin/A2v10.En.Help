@@ -1,15 +1,15 @@
 ﻿<div>
-	<!--title:Шаблоны. Опции-->
+	<!--title:Templates. Options-->
 	<!--keywords:options;-->
 	<div class="title">
 		<h1>
-			Шаблоны. Опции
+			Templates. Options
 		</h1>
 	</div>
 	<p>
-		Опции шаблона задают поведение всей модели.
+		Template options define the behavior of the entire model.
 	</p>
-	<h3>Синтаксис</h3>
+	<h3>Syntax</h3>
 <pre class="code-highlight js">
 <script type="text/template">
 /* опции */
@@ -22,44 +22,45 @@ options: {
 </script>
 </pre>
 
-	<h3>Свойства объекта options</h3>
+<h3>Options object properties</h3>
 	<ul class="params">
-		<li><code>noDirty</code> - не взводить флаг изменений <code>$isDirty</code> при изменениях модели данных.</li>
 		<li>
-			<code>bindOnce</code> - массив строк, определяющий какие корневые свойства модели будут связываться однократно.
+			<code>noDirty</code> - do not set the <code>$isDirty</code> change flag upon data model changes.
 		</li>
 		<li>
-			<code>persistSelect</code> - массив строк, определяющий массивы модели, для которых нужно сохранять
-			позицию выделенного элемента в процессе сохранения или перезагрузки модели.
+			<code>bindOnce</code> - an array of strings defining which root properties of the model will be bound once.
 		</li>
 		<li>
-			<code>skipDirty</code> - массив строк, определяющий пути к свойствам модели, при изменении которых не нужно взводить 
-			флаг изменений <code>$isDirty</code>.
+			<code>persistSelect</code> - an array of strings that defines the arrays of the model for which to keep the 
+			position of the selected item during saving or reloading of the model.
+		</li>
+		<li>
+			<code>skipDirty</code> - an array of strings that defines the paths to the model properties,
+			when changing which you do not need to set the<code>$isDirty</code> change flag.
 		</li>
 	</ul>
 
-	<h3>Подробнее</h3>
+	<h3>Read more</h3>
 	<p>
-		Флаг <code>$isDirty</code> отвечает за вывод сообщения о необходимости сохранить модель после внесения изменений, а также за поведение
-		некоторых элементов управления.
-		Например кнопка, связанная с командой <code>Save</code> будет автоматически разрешаться
-		после изменения модели. Если опция <code>noDirty</code> установлена, то флаг $isDirty взводиться не будет.
+		The <code>$isDirty</code> flag is responsible for displaying a message about the need to save the model after making
+		changes, as well as for the behavior of some controls. For example, the button associated with the  <code>Save</code>
+		command will be automatically allowed after changing the model. If the <code>noDirty</code> option is set, then the
+		<code>$isDirty</code> flag will not be set.
 	</p>
 	<p>
-		Свойство <code>bindOnce</code> позволяет определить корневые свойства модели, которые будут 
-		связываться с данными только при первой загрузке модели. 
-		При дальнейшей перезагрузке (например командой <code>Reload</code> или после сохранения модели)
-		перепривязки этого свойства не будет. Чаще всего это используется для привязки элементов справочников.
+		The <code>bindOnce</code> property allows you to define the root properties of the model that will only bind to data
+		upon the first model loading. Upon further reloading (for example, using the <code>Reload</code> command or after saving
+		the model), this property will not be rebound. This is most often used to bind the catalog items.
 
 		<div class="tip warning">
-			<b>Обратите внимание!</b> В массиве <code>bindOnce</code> можно указывать только корневые свойства модели
-			(то есть только те, в именах которых нет точки).
+			<b>Please note!</b> In the <code>bindOnce</code> array, you can specify only the root properties of the model (that 
+			is, only those that do not have a period in their names).
 		</div>
 	</p>
 	<p>
-		Свойство <code>persistSelect</code> позволяет определить массивы в модели, для которых будет сохраняться позиция выделенного
-		элемента (<code>$selected</code>). Позиция будет сохраняться при сохранении модели (например командой <code>Save</code>) и
-		при ее перезагрузке (например командой <code>Reload</code>).
+		The <code>persistSelect</code> property allows you to define arrays in the model for which the position of the selected
+		item (<code>$selected</code>). will be persisted. The position will be persisted when the model is saved (for example,
+		with the <code>Save</code>) command) and when it is reloaded (for example, with the <code>Reload</code> command).
 	</p>
 
 </div>

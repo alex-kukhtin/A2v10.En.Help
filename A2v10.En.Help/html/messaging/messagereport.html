@@ -3,14 +3,14 @@
 	<!--keywords:MessageReport-->
 	<div class="title">
 		<h1>
-			Элемент MessageReport
+			MessageReport Item
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Отправка сообщений</a>
+			<a href="index">Sending the Messages</a>
 		</div>
 	</div>
 
-	<p>Представляет собой отчет, который будет сформирован и вложен в сообщение электронной почты.</p>
+	<p>Represents a report that will be generated and attached to an e-mail message.</p>
 
 	<p>Content property: <code>Model</code></p>
 
@@ -18,9 +18,9 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,21 +28,24 @@
 				<td class="prop-name">Report</td>
 				<td>String</td>
 				<td>
-					Всегда привязка из модели данных. Поле основной модели (не модели отчета!), которое
-					должно содержать текстовое описание отчета (тип поля - <b>nvarchar(max)</b>).
+					Always binding from the data model. The field of the main model
+					(not the report model!), which must contain the text description 
+					of the report (the field type is <b>nvarchar(max)</b>).
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Name</td>
 				<td>String</td>
-				<td>Имя отчета (вложения). Если не указано, будет иметь значение "report".
-				Кроме того, если не указано расширение, то автоматически добавляется расширение <b>.pdf</b>.</td>
+				<td>
+					The name of the report (attachment). If not specified, will be
+					"report". In addition, if no extension is specified, the <b>.pdf</b> extension is automatically added.
+				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Model</td>
 				<td><a class="code-link" href="messagereportmodel">MessageReportModel</a></td>
 				<td>
-					Описание модели данных для построения отчета.
+					Description of the data model for building a report.
 				</td>
 			</tr>
 		</tbody>

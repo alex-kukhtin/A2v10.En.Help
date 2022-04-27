@@ -3,66 +3,66 @@
 	<!--keywords:MessageInfo-->
 	<div class="title">
 		<h1>
-			Объект MessageInfo
+			MessageInfo Object
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все объекты</a>
+			<a href="index">All Objects</a>
 		</div>
 	</div>
 
-	<p>Представляет собой описание сообщения.</p>
+	<p>Represents the description of the message.</p>
 
 	<p>
-		Используется общая подсистема <a href="/messaging/index">работы с сообщениями</a>.
+		A common subsystem for <a href="/messaging/index">working with messages</a>.
 	</p>
 
 	<p>
-		Используется в:
+		Used in:
 		<a class="code-link" href="/workflow/activities/request">Request</a>,
 		<a class="code-link" href="/workflow/activities/sendmessage">SendMessage</a>
 	</p>
 
-	<h3>Свойства (C#)</h3>
+	<h3>Properties (C#)</h3>
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">Template</td>
 				<td class="fit no-wrap">String</td>
-				<td>Имя файла шаблона. Имя файла задается относительно корня прикладного приложения.</td>
+				<td>The name of the template file. The file name is set relative to the root of the application.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Key</td>
 				<td class="fit no-wrap">String</td>
-				<td>Ключ сообщения в шаблоне.</td>
+				<td>The message key in the template.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">TargetId</td>
 				<td class="fit no-wrap">Int64</td>
-				<td>Идентификатор модели данных. Сама модель (если нужно) задается в шаблоне сообщения.</td>
+				<td>Data model identifier. The model itself (if needed) is specified in the message template.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Parameters</td>
 				<td class="fit no-wrap"><code>Dictionary&lt;String, Object&gt;</code></td>
-				<td>Параметры сообщения. Для более удобной работы есть статический метод <code>CreateParameters</code></td>
+				<td>Message parameters. For more convenient work, there is the <code>CreateParameters</code> static method.</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Методы (C#)</h3>
+	<h3>Methods (C#)</h3>
 	<div class="method">
 		<div class="syntax">
 			<pre class="code-highlight js">
 			<script type="text/template"><![CDATA[static ~Dictionary<string, object> CreateParameters(object prms)]]></script>
 		</pre>
 		</div>
-		<h4>Описание</h4>
-		<p>Создает словарь из произвольного объекта (в том числе анонимного). Имена свойств становятся ключами, а значения - значениями.</p>
+		<h4>Description</h4>
+		<p>Creates a dictionary from an arbitrary object (including an anonymous one). Property names become keys and values become values.</p>
 	</div>
 </div>

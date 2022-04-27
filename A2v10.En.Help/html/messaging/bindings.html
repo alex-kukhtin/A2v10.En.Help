@@ -1,60 +1,58 @@
 ﻿<div>
-	<!--title:Привязки-->
+	<!--title:Bindings-->
 	<div class="title">
 		<h1>
-			Привязки
+			Bindings
 		</h1>
 	</div>
 
 	<p>
-		Для того, чтобы в свойствах можно было использовать значения "снаружи", используются привязки.
-		Привязка это наименование свойства, заключенное в двойные квадратные, фигурные или круглые скобки.
+		In order for the properties to be able to use the "outside" values, the bindings are used. 
+		A binding is the name of a property, enclosed in double brackets, braces, or parentheses.
 	</p>
 
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Привязка</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Binding</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr class="top">
 				<td class="prop-name">[[param]]</td>
-				<td class="no-wrap">Параметры команды</td>
+				<td class="no-wrap">Command parameters</td>
 				<td>
-					Значение из параметров команды. Обратите внимание, что это не свойство <code>parameters</code>, а параметры,
-					с которыми команда вызвана с клиента.
+					The value from the command parameters. Note that this is not the <code>parameters</code>
+					property, but the parameters with which the command is called from the client.
 				</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name">{{path}}</td>
-				<td class="no-wrap">Свойства модели</td>
+				<td class="no-wrap">Model properties</td>
 				<td>
-					Значение из модели. <code>Path</code> это путь в модели данных.
-					Если вся привязка представляет собой выражение, то возможен конфликт с XAML-парсером.
-					Он считает, что текст, начинающийся с символа "{" представляет собой расширение разметки.
-					В этом случае поставьте начальным символом выражения символ обратной кавычки ("`") либо
-					используйте <code>&lt;![CDATA[...]]]]&gt;</code>.
+					The value from the model. The <code>Path</code> is the path from the data model. If the 
+					entire binding represents an expression, a conflict is possible with the XAML parser. 
+					It considers the text starting with "{" as a markup extension. In this case, start the 
+					expression with a backquote character ("`") or use  <code>&lt;![CDATA[...]]]]&gt;</code>.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">((value))</td>
-				<td>Окружение</td>
+				<td>Environment</td>
 				<td>
-					Значение внешнего окружения. Возможны следующие значения:
+					The value of the external environment. Possible values:
 					<ul class="enum-vals">
 						<li>
-							<span class="prop-name">((Host))</span> - имя хоста из файла конфигурации.
-							Используется для построения ссылок в теле письма.
+							<span class="prop-name">((Host))</span> - the hostname from the config file. Used to build links in the body of an email.
 						</li>
 						<li>
-							<span class="prop-name">((UserHost))</span> - имя хоста пользовательского приложения (сайта)
-							из файла конфигурации. Используется для построения ссылок в теле письма.
+							<span class="prop-name">((UserHost))</span> - the hostname of the custom application (site) from the 
+							config file. Used to build links in the body of an email.
 						</li>
-						<li><span class="prop-name">((ProcessId))</span> - только для сообщений из бизнес-процессов. Идентификатор текущего процесса.</li>
-						<li><span class="prop-name">((InboxId))</span> - только для сообщений из бизнес-процессов. Идентификатор текущей задачи.</li>
+						<li><span class="prop-name">((ProcessId))</span> - only for messages from business processes. The identifier of the current process.</li>
+						<li><span class="prop-name">((InboxId))</span> - only for messages from business processes. The identifier of the current task.</li>
 					</ul>
 				</td>
 			</tr>

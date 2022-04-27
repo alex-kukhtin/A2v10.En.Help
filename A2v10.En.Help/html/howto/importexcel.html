@@ -1,33 +1,34 @@
 ﻿<div>
-	<!--title:Импорт данных из Excel-->
+	<!--title:Data import from Excel-->
 	<div class="title">
 		<h1>
-			Импорт данных из Excel
+			Data import from Excel
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Как сделать</a>
+			<a href="index">How to make</a>
 		</div>
 	</div>
 
-	<h3>Введение</h3>
+	<h3>Introduction</h3>
 	<p>
-		В этом разделе описывается пример импорта данных из таблицы Excel в базу данных системы.
-		Все исходные тексты и работающий пример можно найти
-		в репозитории <a href="https://github.com/alex-kukhtin/A2v10.Web.Sample" target="_blank">A2v10.Web.Sample</a> на Github.
+		This section describes an example of importing data from an Excel spreadsheet
+		into a system database. All sources and a working example can be found in the
+		<a href="https://github.com/alex-kukhtin/A2v10.Web.Sample" target="_blank">A2v10.Web.Sample</a>
+		repository on Github.
 	</p>
 	<p>
-		Для того, чтобы система знала, как обрабатывать загружаемые файлы, их формат должен быть предопределен заранее.
-		Для этого рекомендуется предлагать пользователям скачать образцы файлов.
+		In order for the system to know how to process the downloaded files, their format must be
+		predefined in advance. To do this, it is recommended to offer users to download sample files.
 	</p>
 	<p>
-		Мы будем рассматривать импорт товаров. Поэтому все
-		основные файлы находятся в каталоге <span class="file-name">/sample/catalog/product</span>.
+		We will overview importing goods. Therefore, all the main files
+		are in the <span class="file-name">/sample/catalog/product</span>.
 	</p>
 
-	<h3>Добавление кнопки импорта в панель инструметов</h3>
-	<p>Первым делом добавим в панель инструментов списка товаров кнопку <kbd>Import</kbd>.</p>
+	<h3>Adding an Import Button to the Toolbar</h3>
+	<p>The first step is to add the <kbd>Import</kbd> button to the product list toolbar.</p>
 
-	<p>Фрагмент файла <b>index.view.xaml</b></p>
+	<p><b>index.view.xaml</b> file fragment</p>
 <pre class="code-highlight xml" data-lang="xml">
 <script type="text/template">
 <Toolbar>
@@ -38,16 +39,15 @@
 </script>
 </pre>
 
-	<p>Кнопка просто вызывает диалог import.</p>
+<p>The button simply calls the import dialog.</p>
 
-	<h3>Диалог импорта и его шаблон</h3>
+<h3>Import dialog and its template</h3>
 
-	<p>
-		Не забудем указать
-		этот диалог в файле <span class="file-name">/catalog/product/model.json</span>.
-	</p>
+<p>
+	Let's not forget to indicate this dialog in the file <span class="file-name">/catalog/product/model.json</span>.
+</p>
 
-	<p>Фрагмент файла <span class="file-name">model.json</span></p>
+<p><span class="file-name">model.json</span> file fragment</p>
 <pre class="code-highlight js" data-lang="js">
 <script type="text/template">
 {
@@ -62,17 +62,16 @@
 </script>
 </pre>
 
-	<p>
-		Модель данных для этого диалога нам не нужна, поэтому указываем пустую строку в
-		свойстве <code>model</code>. Возможны другие сценарии, которые, например будут сначала
-		показывать импортированные записи. В этом случае модель будет нужна.
-	</p>
-	<p>
-		В остальном это стандартный диалог платформы.
-		При его работе используется шаблон <code>import.template</code>
-	</p>
+<p>
+	We don't need a data model for this dialog, so we specify an empty string in the
+	<code>model</code> property. Other scenarios are possible, which, for example, will
+	show the imported records first. In this case, the model will be needed.
+</p>
+<p>
+	For the rest, this is the standard platform dialog. It uses the <code>import.template</code> template.
+</p>
 
-	<p>Фрагмент файла <b>import.dialog.xaml</b></p>
+<p><b>import.dialog.xaml</b> file fragment</p>
 <pre class="code-highlight xml" data-lang="xml">
 <script type="text/template">
 <Dialog>
@@ -83,22 +82,21 @@
 </Dialog>
 </script>
 </pre>
-	<p>
-		В этом диалоге интерес представляют два элемента управления.
-		Во первых <a class="code-link" href="/xaml/controls/uploadfile">UploadFile</a>.
-		Этот элемент выведет на экран поле для загрузки файла (кликом или перетаскиванием).
-		Содержимое выбранного файла будет отправлено на сервер и будет обрабатываться командой
-		<code>/catalog/product/import</code> из раздела <b>files</b> файла <span class="file-name">model.json</span>.
-		После загрузки и обработки файла будет вызван делегат, который указан в свойстве <code>Delegate</code>.
-	</p>
-	<p>
-		Второй элемент управления - ссылка, которая позволит пользователю скачать образец файла для загрузки.
-		Команда <a class="code-link" href="/xaml/bind/bindcmd">Download</a> позволяет скачать файл
-		из специальной папки <a class="code-link" href="/app/folders/files">_files</a>.
-	</p>
+<p>
+	In this dialogue, two controls are interesting. Firstly <a class="code-link" href="/xaml/controls/uploadfile">UploadFile</a>.
+	This item will display a field for uploading a file (by clicking or dragging). The content of the selected file will be sent
+	to the server and processed by the <code>/catalog/product/import</code> command from the <b>files</b> section of the
+	<span class="file-name">model.json</span>. After downloading and processing the file, the delegate specified in the
+	<code>Delegate</code> property will be called.
+</p>
+<p>
+	The second control is a link that will allow the user to download a sample file for upload.
+	<a class="code-link" href="/xaml/bind/bindcmd">Download</a> command allows downloading a
+	file from a special <a class="code-link" href="/app/folders/files">_files</a> folder.
+</p>
 
-	<h3>Обработка файла на сервере</h3>
-	<p>После загрузки файла на сервер будет вызвана команда из раздела <b>files</b> файла <span class="file-name">model.json</span></p>
+<h3>File processing on the server</h3>
+<p>After uploading the file to the server, the command from the <b>files</b> section of the <span class="file-name">model.json</span> file will be called.</p>
 
 <pre class="code-highlight js" data-lang="js">
 <script type="text/template">
@@ -113,43 +111,44 @@
 }
 </script>
 </pre>
-	<p>
-		Тип команды <code>parse</code> говорит о том, что файл необходимо обработать, а вид обработки (<code>parse</code>
-		о том, что система ожидает файл Microsoft Excel.
-	</p>
+<p>
+	The <code>parse</code> command type indicates that the file needs to be processed, and the type 
+	of processing (<code>parse</code>) indicates that the system expects a Microsoft Excel file.
+</p>
 
-	<p class="tip info">
-		<b>Обратите внимание!</b> Обрабатываются только файлы формата <b>.xlsx</b> (Excel 2007 и старше).
-		Старые версии таблиц в формате <b>.xls</b> не поддерживаются.
-	</p>
+<p class="tip info">
+	<b>Please note!</b> Only <b>.xlsx</b> files (Excel 2007 and older) are processed. Old versions of
+	tables in <b>.xls</b> format are not supported.
+</p>
 
-	<p>
-		После того, как система получит файл от клиента, она попытается его разобрать и
-		получить из него простую таблицу. Если в команде указана модель (свойство <b>model</b>, то
-		создается объект с единственным свойством <b>Rows</b> (имя предопрелено!), представляющим собой массив строк из файла Excel.
+<p>
+	After the system receives the file from the client, it will try to parse it and receive a simple
+	table from it. If the command specifies a model (the <b>model</b> property), then an object is
+	created with a single <b>Rows</b> property (the name is predefined!) which represents an array
+	of rows from an Excel file.
 
-		После этого система попытается <a href="/models/update">сохранить этот объект как стандартную модель</a>, вызвав процедуры
-		<b>.Metadata</b> и <b>.Update</b>.
-	</p>
+	After that the system will attempt to <a href="/models/update">save this object as a standard 
+	model</a>, by calling the <b>.Metadata</b> и <b>.Update</b> procedures.
+</p>
 
-	<p>В результате обработки на клиент будет возвращена модель, которая вернется из процедуры <b>.Update</b>.</p>
+<p>As a result of processing, a model, which will be returned from the <b>.Update</b> procedure, will be returned to the client.</p>
 
-	<p>
-		Хранимые процедуры и типы данных можно изучить, посмотрев файл
-		<a target="_blank" class="file-name" href="https://github.com/alex-kukhtin/A2v10.Web.Sample/blob/master/App_application/sample/catalog/product/import.sql">import.sql</a>
-	</p>
+<p>
+	Stored procedures and data types can be examined by looking at the
+	<a target="_blank" class="file-name" href="https://github.com/alex-kukhtin/A2v10.Web.Sample/blob/master/App_application/sample/catalog/product/import.sql">import.sql</a> file.
+</p>
 
-	<h3>Оповещение вызывющего кода</h3>
-	<p>
-		После того, как данные будут импортированы в базу данных необходимо иметь какой-то способ оповестить об этом вызывающий код.
-	</p>
-	<p>
-		Для этого проще всего использовать пользовательские события. В обработчике события <b>Model.load</b> диалога
-		можно запомнить в переменной ссылку на вызывающий контекст. В делегате, который будет вызван
-		после завершения загрузки можно инициировать событие в вызывающем контексте.
-	</p>
+<h3>Notifying the calling code</h3>
+<p>
+	After the data is imported into the database, it is necessary to have some way to notify the calling code of this.
+</p>
+<p>
+	The easiest way to do this is to use custom events. In the dialog's <b>Model.load</b> event handler, it is possible 
+	to store a reference to the calling context in a variable. In the delegate that will be called after the download 
+	completes, you can initialize an event in the calling context.
+</p>
 
-	<p>Фрагмент файла шаблона диалога <span class="file-name">import.template.ts</span></p>
+<p>Fragment of the <span class="file-name">import.template.ts</span> dialog template file</p>
 <pre class="code-highlight js" data-lang="js">
 <script type="text/template">
 
@@ -175,9 +174,9 @@ function uploadFile(result) {
 }
 </script>
 </pre>
-	<p>При получении события <b>$product.import.done</b> страница индекса просто перезагружается.</p>
+<p>When the <b>$product.import.done</b> event is received, the index page is simply reloaded.</p>
 
-	<p>Фрагмент файла шаблона диалога <span class="file-name">import.template.ts</span></p>
+<p>Fragment of the <span class="file-name">import.template.ts</span> dialog template file</p>
 <pre class="code-highlight js" data-lang="js">
 <script type="text/template">
 const template: Template = {
@@ -192,10 +191,10 @@ export default template;
 </script>
 </pre>
 
-	<h3>Совет</h3>
-	<p>
-		Для того, чтобы выполнить импорт данных из одного контекста (в этом случае события будут не нужны),
-		можно использовать элемент управления <a href="/xaml/containers/inlinedialog">InlineDialog</a>.
-	</p>
-	<p>Реалзиацию этого способа оставим в качестве упражнения.</p>
+<h3>Tip</h3>
+<p>
+	In order to import data from a single context (in which case no events are needed),
+	you can use the <a href="/xaml/containers/inlinedialog">InlineDialog</a> control.
+</p>
+<p>We will leave the implementation of this method as an exercise.</p>
 </div>

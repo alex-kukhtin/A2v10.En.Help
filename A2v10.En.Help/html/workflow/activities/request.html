@@ -1,51 +1,53 @@
 ﻿<div>
-	<!--title:Активность Request-->
+	<!--title:Request Activity-->
 	<div class="title">
 		<h1>
-			Активность Request
+			Request Activity
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Все активности</a>
+			<a href="index">All Activities</a>
 		</div>
 	</div>
 
-	<p>Останавливает процесс и устанавливает закладку. Имя закладки (задается в объекте <code>Inbox</code>) 
-	используется для продолжения процесса с этой точки останова.</p>
+	<p>
+		Stops the process and sets the bookmark. The bookmark name (specified in the <code>Inbox</code>)
+		object) is used to continue the process from this breakpoint.
+	</p>
 
 	<h3>Properties</h3>
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">Inbox</td>
 				<td class="fit no-wrap"><code>InArgument&lt;<a href="/workflow/objects/inbox">Inbox</a>&gt;</code></td>
-				<td>Описание задачи.</td>
+				<td>Task description.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">TrackBefore</td>
 				<td class="fit no-wrap"><code>InArgument&lt;<a href="/workflow/objects/trackrecord">TrackRecord</a>&gt;</code></td>
-				<td>Запись в протокол процесса перед приостановкой процесса.</td>
+				<td>Recording into the process log before suspending the process.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">TrackAfter</td>
 				<td class="fit no-wrap"><code>InArgument&lt;<a href="/workflow/objects/trackrecord">TrackRecord</a>&gt;</code></td>
-				<td>Запись в протокол процесса после возобновления процесса.</td>
+				<td>Recording into the process log after resuming the process.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">SendBefore</td>
 				<td class="fit no-wrap"><code>InArgument&lt;<a href="/workflow/objects/messageinfo">MessageInfo</a>&gt;</code></td>
-				<td>Сообщение перед приостановкой процесса.</td>
+				<td>Message before suspending the process.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">SendAfter</td>
 				<td class="fit no-wrap"><code>InArgument&lt;<a href="/workflow/objects/messageinfo">MessageInfo</a>&gt;</code></td>
-				<td>Сообщение после возобновления процесса.</td>
+				<td>Message after resuming the process.</td>
 			</tr>
 		</tbody>
 	</table>

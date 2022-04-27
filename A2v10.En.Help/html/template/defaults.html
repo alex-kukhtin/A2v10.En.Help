@@ -1,27 +1,27 @@
 ﻿<div>
-	<!--title:Шаблоны. Начальные значения-->
-	<!--keywords:properties;Начальные значения;-->
+	<!--title:Templates. Initial Values-->
+	<!--keywords:properties;Templates. Initial Values;-->
 	<div class="title">
 		<h1>
-			Шаблоны. Начальные значения
+			Templates. Initial Values
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Шаблоны</a>
+			<a href="index">Templates</a>
 		</div>
 	</div>
 
 	<p>
-		Раздел <code>defaults</code> позволяет установить начальные значения для новой модели. Новой считается модель с нулевым (пустым)
-		идентификатором главного объекта.
+		The <code>defaults</code> section allows you to set initial values for the new model. A model with a zero (empty)
+		identifier of the main object is considered new.
 	</p>
 
 	<p>
-		Объект, описывающий начальные значения представляет собой обычный объект JavaScript. Имена свойств представляют
-		собой путь к элементу данных в модели (к тому свойству, значение которого надо установить).		
+		The object describing the initial values is a regular JavaScript object. Property names represent the path to the 
+		data item in the model (to the property the value of which needs to be set).
 	</p>
 
 
-	<h3>Синтаксис</h3>
+	<h3>Syntax</h3>
 <pre class="code-highlight js">
 <script type="text/template">
 
@@ -38,22 +38,22 @@ template: ~Template {
 </script>
 </pre>
 
-	<h3>Пример</h3>
-	<p>
-		Пример шаблона документа с автоматической установкой сегодняшней даты.
+<h3>Example</h3>
+<p>
+	Example of a document template with automatic setting of today's date.
 
-		<pre class="code-highlight js" data-lang="js">
+	<pre class="code-highlight js" data-lang="js">
 <script type="text/template">
 
 const dateUtils:UtilsDate = require("std:utils").date;
 
 const template = {
 	defaults: {
-		'Document.Date': dateUtils.today() /* сегодняшнее число */
+		'Document.Date': dateUtils.today() /* today's date */
 	}
 };
 </script>
 </pre>
 
-	</p>
+</p>
 </div>

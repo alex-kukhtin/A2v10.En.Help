@@ -1,16 +1,16 @@
 ﻿<div>
-	<!--title:Контроллер-->
+	<!--title:Controller-->
 	<!--keywords:IController;$isDirty;$IsPristine;$invoke;$requery;$reload;$modalClose;$msg;$alert;$confirm;$toast;$defer;$showDialog;$asyncValid;$saveModified;$setFilter;$focus;-->
 	<div class="title">
 		<h1>
-			Контроллер
+			Controller
 		</h1>
 	</div>
 
 	<p>
-		Контроллер отвечает за взаимодействие модели и представления. Любой объект данных имеет свойство
-		<code>$ctrl</code>, который возвращает ссылку на текущий контроллер. Контроллер это обычный объект JavaScript, реализующий
-		следующий интерфейс:
+		The controller is responsible for the interaction between the model and the view. Any data object has a
+		<code>$ctrl</code> property that returns a reference to the current controller. The controller is a 
+		regular JavaScript object that implements the following interface:
 	</p>
 
 	<p>
@@ -69,31 +69,30 @@ interface IConfirm {
 </script>
 </pre>
 	</p>
-	<h3>Методы контроллера</h3>
+	<h3>Controller methods</h3>
 
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">$invoke(command: string, arg: object, path?: string, opts?: { catchError: boolean }): Promise</pre></div>
-		<p>Вызывает серверную команду.</p>
-		<h4>Аргументы:</h4>
+		<p>Calls a server command.</p>
+		<h4>Arguments:</h4>
 		<ul class="params">
 			<li>
-				<code>command</code> - имя серверной команды (из раздела <a href="/app/commands">commands</a> файла <a href="/app/model">model.json</a>).
+				<code>command</code> -  the name of the server command (from the <a href="/app/commands">commands</a> section of the <a href="/app/model">model.json</a>) file.
 			</li>
 			<li>
-				<code>arg</code> - произвольный объект аргумента. Свойства этого объекта будут аргументами команды.
+				<code>arg</code> - an arbitrary argument object. The Properties of this object will be the arguments to the command.
 			</li>
 			<li>
-				<code>path?</code> - необязательно. URL для конечной точки. Если не указан, будет выполнен в текущей конечной точке.
+				<code>path?</code> - optional. URL for the endpoint. If not specified, will be executed at the current endpoint.
 			</li>
 			<li>
-				<code>opts</code> - объект опций. В текущей версии содержит единственное свойство - <code>catchError</code>.
-				Если оно установлено, то при возникновении ошибок промис будет отменен и ошибку можно будет
-				перехватить в коде с помощью метода <code>catch</code>
-				(или в операторе <code>try... catch</code> для <code>async ... await</code>) промиса). По умолчанию
-				система просто выводит сообщение об ошибке и не выполняет промис.
+				<code>opts</code> - options object. In the current version, it contains a single property, <code>catchError</code>.
+				If it is set, then when errors occur, the promise will be canceled and the error can be caught in the code using the
+				<code>catch</code> method (or in the <code>try... catch</code> statement for <code>async ... await</code>) of the promise). 
+				By default, the system just displays an error message and does not execute the promise.
 			</li>
 		</ul>
-		<h4>Возвращает:</h4>
+		<h4>Returns:</h4>
 		<ul class="params">
 			<li><code>Promise</code>.</li>
 		</ul>
@@ -102,113 +101,113 @@ interface IConfirm {
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">$reload(array?:object[]): Promise&lt;void&gt;</pre></div>
 		<p>
-			Обновляет модель или ее часть.
+			Updates a model or its part.
 		</p>
-		<h4>Аргументы:</h4>
+		<h4>Arguments:</h4>
 		<ul class="params">
-			<li><code>array</code> - не обязательно. Обновляемый <a href="/models/array">"ленивый массив"</a>.</li>
+			<li><code>array</code> - optional. The <a href="/models/array">"lazy array"</a> being updated.</li>
 		</ul>
 		<p>
-			Если указан аргумент, то обновляются данные ленивого массива, в противном случае -
-			обновляются данные всей модели. Некоторые свойства модели можно "защитить" от обновления с помощью
-			опции шаблона <a class="code-link" href="/template/options">bindOnce</a>.
+			If an argument is specified, then the data of the lazy array is updated, otherwise, the data
+			of the entire model is updated. Some Properties of a model can be "protected" from being updated
+			using the <a class="code-link" href="/template/options">bindOnce</a> template option.
 		</p>
 	</div>
 
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">$msg(msg:string, title?:string, style?:string): Promise&lt;object&gt;</pre></div>
 		<p>
-			Метод выводит сообщение в модальном окне.
+			The method displays a message in a modal window.
 		</p>
-		<h4>Аргументы:</h4>
+		<h4>Arguments:</h4>
 		<ul class="params">
-			<li><code>msg</code> - текст сообщения. Может включать html-разметку.</li>
-			<li><code>title</code> - заголовок окна сообщения. По умолчанию: строка <b>"Сообщение"</b> (в текущей локализации).</li>
-			<li><code>{Enum:['info', 'alert', 'confirm']} style</code>  - стиль. По умолчанию: <code class="string">'info'</code>.</li>
+			<li><code>msg</code> - the message text. May include html markup.</li>
+			<li><code>title</code> - the title of the message box. By default: the <b>"Сообщение"</b> string (in the current localization).</li>
+			<li><code>{Enum:['info', 'alert', 'confirm']} style</code>  - style. By default: <code class="string">'info'</code>.</li>
 		</ul>
-		<h4>Возвращает:</h4>
+		<h4>Returns:</h4>
 		<ul class="params">
-			<li><code>Promise&lt;any&gt;</code>, который будет выполнен после закрытия окна.</li>
+			<li><code>Promise&lt;any&gt;</code> which will be executed after the window is closed.</li>
 		</ul>
 		<p>
-			Кнопки, которые будут размещены в окне, зависят от стиля сообщения.
+			The buttons that will be placed in the window depend on the message style.
 		</p>
 	</div>
 
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">$asyncValid(command: string, arg: object): any | Promise</pre></div>
 		<p>
-			Выполняет асинхронную проверку. Для этого вызывает команду на сервере, передавая ей заданные аргументы.
-			Команда всегда выполняется в текущей конечной точке.
+			Performs an asynchronous check. To do this, it calls a command on the server, passing it the specified arguments. The command
+			is always executed at the current endpoint.
 		</p>
-		<p>Обратите внимание, что результаты выполнения этой команды могут кэшироваться, чтобы предотвратить лишние обращения к серверу.</p>
-		<h4>Аргументы:</h4>
+		<p>Please note that the results of this command can be cached to prevent unnecessary server calls.</p>
+		<h4>Arguments:</h4>
 		<ul class="params">
 			<li>
-				<code>command</code> - имя серверной команды (из раздела <a href="/app/commands">commands</a> файла <a href="/app/model">model.json</a>.
+				<code>command</code> - the name of the server command (from the <a href="/app/commands">commands</a> section of the <a href="/app/model">model.json</a> file.
 			</li>
 			<li>
-				<code>arg</code> - произвольный объект аргумента. Свойства этого объекта будут аргументами команды.
+				<code>arg</code> - an arbitrary argument object. The Properties of this object will be the arguments to the command.
 			</li>
 		</ul>
-		<h4>Возвращает:</h4>
+		<h4>Returns:</h4>
 		<ul class="params">
-			<li><code>Promise</code>. Обычно является возвращаемым значением для <a href="/template/validators">асинхронного валидатора</a>.</li>
+			<li><code>Promise</code>. It is typically the return value for an <a href="/template/validators">asynchronous validator</a>.</li>
 		</ul>
 	</div>
 
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">$saveModified(message?:string, title?:string):boolean</pre></div>
 		<p>
-			Проверяет, изменилась ли модель, и выводит сообщение о необходимости сохранения модели.
+			Checks if the model has changed and displays a message indicating that the model needs to be saved.
 		</p>
-		<h4>Аргументы:</h4>
+		<h4>Arguments:</h4>
 		<ul class="params">
 			<li>
-				<code>message</code> - сообщение. Если не указано (<code>undefined</code>), будет использовано стандартное сообщение
-				<b>"Элемент был изменен. Сохранить изменения?"</b> (в текущей локализации).
+				<code>message</code> - message. If not specified (<code>undefined</code>), the default message
+				<b>"Item has been changed. Save changes?"</b> (in the current localization).
 			</li>
 			<li>
-				<code>title</code> - заголовок окна сообщения. Если не указано (<code>undefined</code>), будет использован
-				стандартный заголовок <b>"Подтверждение закрытия"</b> (в текущей локализации).
+				<code>title</code> - the title of the message box. If not specified (<code>undefined</code>), the standard
+				<b>"Close Confirmation"</b> header (in the current localization) will be used.
 			</li>
 		</ul>
-		<h4>Возвращает:</h4>
+		<h4>Returns:</h4>
 		<ul class="params">
-			<li><code>true</code> - если объект не был изменен (<code>$isDirty = false</code>), <code>false</code> в противном случае.</li>
+			<li><code>true</code> - if the object has not been modified (<code>$isDirty = false</code>), <code>false</code> otherwise.</li>
 		</ul>
-		<h4>Описание:</h4>
+		<h4>Description:</h4>
 		<p>
-			Если модель данных не изменялась, то метод просто возвращает <code>true</code>, если изменялась - показывает диалог
-			подтверждения закрытия с тремя кнопками: <b>"Сохранить"</b>, <b>"Не сохранять"</b> и <b>"Отменить"</b>
-			(в текущей локализации) и возвращает <code>false</code>.
+			If the data model has not changed, then the method simply returns <code>true</code>, if it has changed, it displays a close
+			confirmation dialog with three buttons <b>"Save"</b>, <b>"Do not save"</b> and <b>"Cancel"</b> (in the current localization)
+			and returns <code>false</code>.
 		</p>
 		<p>
-			После того, как пользователь сделает выбор, контроллер выполнит нужное действие (например сохранит модель) и закроет текущее окно.
+			After the user makes a selection, the controller will perform the desired action (for example, save the model) and close the current window.
 		</p>
-		<p>Чаще всего метод используется в делегате <code>CanCloseDelegate</code> объекта <a href="/xaml/containers/dialog">Dialog</a>.</p>
+		<p>The most common use of this method is in the <code>CanCloseDelegate</code> delegate of the <a href="/xaml/containers/dialog">Dialog</a> object.</p>
 	</div>
 
 
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">$setFilter(target:object, prop:string, value:any): void</pre></div>
-		<h4>Описание</h4>
+		<h4>Description</h4>
 		<p>
-			Поскольку фильтры очень плотно взаимодействуют с разметкой и поведением системы, нельзя просто установить значение фильтра из кода.
-			Для этого нужно использовать метод <code>$setFilter</code>.
-			После установки значения система выполнит все необходимые действия, обновит интерфейс, выполнит серверные запросы и т.д.
+			Because filters interact very closely with markup and system behavior, you cannot simply set the filter value from code. To do this, you
+			need to use the <code>$setFilter</code> method. After setting the value, the system will perform all the necessary actions, update the 
+			interface, execute server requests, etc.
 		</p>
 
-		<h4>Аргументы:</h4>
+		<h4>Arguments:</h4>
 		<ul class="params">
 			<li>
-				<code>target</code> - объект, для которого нужно установить фильтр.
+				<code>target</code> - the object for which it is necessary to set the filter.
 			</li>
 			<li>
-				<code>prop</code> - имя свойства элемента фильтра.
+				<code>prop</code> - the name of the filter item property.
 			</li>
 			<li>
-				<code>value</code> - новое значение.
+				<code>value</code> -  the new value.
 			</li>
 		</ul>
 	</div>
@@ -216,36 +215,37 @@ interface IConfirm {
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">$inlineOpen(id:string): void</pre></div>
 		<p>
-			Открывает встроенный диалог (<a class="code-link" href="/xaml/containers/inlinedialog">InlineDialog</a>).
+			Opens an inline dialog (<a class="code-link" href="/xaml/containers/inlinedialog">InlineDialog</a>).
 		</p>
-		<h4>Аргументы:</h4>
+		<h4>Arguments:</h4>
 		<ul class="params">
-			<li><code>id</code> - идентификатор диалога.</li>
+			<li><code>id</code> - dialog ID.</li>
 		</ul>
 		<p>
-			Встроенный диалог имеет полный доступ к текущей модели. Управление поведением полностью ложится на программиста.
+			The built-in dialog has full access to the current model. Behavior management falls entirely upon the programmer.
 		</p>
 	</div>
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">$inlineClose(id:string, result: any): void</pre></div>
 		<p>
-			Закрывает встроенный диалог (<a class="code-link" href="/xaml/containers/inlinedialog">InlineDialog</a>).
+			Closes an inline dialog (<a class="code-link" href="/xaml/containers/inlinedialog">InlineDialog</a>).
 		</p>
-		<h4>Аргументы:</h4>
+		<h4>Arguments:</h4>
 		<ul class="params">
-			<li><code>id</code> - идентификатор диалога.</li>
-			<li><code>result</code> - зарезервировано. В текущей версии не используется.</li>
+			<li><code>id</code> - dialog ID.</li>
+			<li><code>result</code> - reserved. Not used in the current version.</li>
 		</ul>
 	</div>
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">$focus(htmlid: string): void</pre></div>
 		<p>
-			Устанавливает курсор на элемент с заданным htmlid.
+			Sets the cursor to an element with the given htmlid.
 		</p>
 		<h4>Аргументы:</h4>
 		<ul class="params">
-			<li><code>htmlid</code> - идентификатор элемента 
-			(можно установить с помощью свойства <code>HtmlId</code> объекта <a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a>).</li>
+			<li>
+				<code>htmlid</code> - item ID (can be set using the <code>HtmlId</code> property of the <a class="code-link" href="/xaml/abstract/uielementbase">UIElementBase</a> object).
+			</li>
 		</ul>
 	</div>
 </div>

@@ -1,36 +1,39 @@
 ﻿<div>
-	<!--title:Шаблоны. События-->
-	<!--keywords:events;События;-->
+	<!--title:Templates. Events-->
+	<!--keywords:events;Events;-->
 	<div class="title">
 		<h1>
-			Шаблоны. События
+			Templates. Events
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Шаблоны</a>
+			<a href="index">
+				Templates
+			</a>
 		</div>
 	</div>
 
 	<p>
-		Объект, описывающий события в шаблоне, является обычным объектом JavaScript.
-		Имена свойств этого объекта являются именами событий, а значения - функциями, которые будут вызваны при возникновении события.
+		The object describing events in the template is a regular JavaScript object. 
+		The property names of this object are the names of the events, and the values
+		are the functions that will be called when the event occurs.
 	</p>
 
 	<p>
-		Имена событий конструируются различным образом в зависимости от типа события:
+		Event names are constructed in different ways depending on the type of event:
 		<ul class="std">
-			<li>для всей модели имена фиксированные.</li>
-			<li>для события создания объекта конструируются из типа объекта и суффикса <code class="string">.constuct</code>.</li>
-			<li>для событий изменения данных из полного пути к элементу данных и заданного суффикса.</li>
+			<li>the names are fixed for the entire model.</li>
+			<li>for the event of object creation they are constructed from the object type and <code class="string">.constuct</code> suffix.</li>
+			<li>for data change events ― from the full path to the data item and the specified suffix.</li>
 		</ul>
 	</p>
 
 	<p>
-		Полный путь к элементу данных фактически представляет собой полное имя свойства объекта, начиная от корня модели. Для указания
-		элемента массива используется суффикс <code>[]</code>.
+		The full path to the item actually represents the fully qualified name of the object's property, starting
+		from the root of the model. The <code>[]</code> suffix is used to indicate an array item.
 	</p>
 
 	<p>
-		Синтаксис:
+		Syntax:
 <pre class="code-highlight js" data-lang="js">
 <script type="text/template">
 const tempate = {
@@ -47,124 +50,126 @@ const tempate = {
 </pre>
 	</p>
 
-	<h3>Cобытия для всей модели</h3>
-	<p>Эти события имеют фиксированные имена.</p>
+	<h3>Events for the entire model</h3>
+	<p>Those events have fixed names.</p>
 	<ul class="std">
-		<li><code>Model.load</code> - модель загружена.</li>
-		<li><code>Model.unload</code> - модель выгружена. Никакие действия уже невозможны. Чаще всего используюется для отписки 
-		от событий глобальной шины событий.</li>
-		<li><code>Model.saved</code> - модель сохранена.</li>
-		<li><code>Model.beforeSave</code> - перед сохранением.</li>
+		<li><code>Model.load</code> - model is downloaded.</li>
+		<li>
+			<code>Model.unload</code> - model is uploaded. No action is possible anymore. Most often used
+			to unsubscribe from events on the global event bus.
+		</li>
+		<li><code>Model.saved</code> - model is saved.</li>
+		<li><code>Model.beforeSave</code> - before saving.</li>
 	</ul>
 
 	<p>
-		Аргументы для событий модели:
+		Arguments for the model events:
 		<ul class="params">
-			<li><code>this</code> - корень модели данных (IRoot).</li>
-			<li><code>model</code> - корень модели данных (IRoot).</li>
+			<li><code>this</code> - data model root (IRoot).</li>
+			<li><code>model</code> - data model root (IRoot).</li>
 			<li>
-				<code>caller</code> - ссылка на корень модели данных (IRoot) вызывающего объекта.
-				Например, если это модель диалога, то
-				<code>caller</code> будет ссылкой на модель, из которой этот диалог был вызван.
-				Может использоваться для взаимодействия с вызывающим элементом.
-				Для событий <code>Model.saved</code>, <code>Model.save</code> значение всегда будет
+				<code>caller</code> - reference to the data model root (IRoot) of the caller. For example,
+				if this is a dialog model, then the <code>caller</code> will be a reference to the model
+				from which this dialog was called. Can be used to interact with the caller. For
+				<code>Model.saved</code>, <code>Model.save</code> events, the value will always be
 				<code>undefined</code>.
 			</li>
 		</ul>
 	</p>
 
-	<h3>События для объектов</h3>
+	<h3>Events for objects</h3>
 	<ul class="std">
 		<li>
-			<code>.construct</code> - объект создан.
-			Префикс имени события представляет собой имя типа объекта. В обработчике этого события можно дополнить
-			созанный элемент новыми свойствами. Однако 
-			для этого лучше использовать механизм свойств (<a class="code-link" href="properties">properites</a>).
+			<code>.construct</code> - the object is created. The event name prefix represents the name of
+			the object type. In the handler of this event, you can add new properties to the created item.
+			However, it is better to use the (<a class="code-link" href="properties">properites</a>) mechanism for this purpose.
 		</li>
 		<li>
-			<code>.change</code> - значение свойства изменено.
-			Префикс имени события представляет собой полный путь к свойству в модели данных.
+			<code>.change</code> - property value has been changed. The event name prefix is the full path to the property in the data model.
 		</li>
 		<li>
-			<code>.changing</code> - значение свойства будет изменено.
-			Префикс имени события представляет собой полный путь к свойству в модели данных. 
-			Имеется возможность отменить изменения.
+			<code>.changing</code> -  the property value will be changed. The event name prefix is the full path to the property in the
+			data model. It is possible to undo the changes.
 		</li>
 	</ul>
 
 	<p>
-		Аргументы для события <code>.construct</code>:
+		Arguments for the <code>.construct</code> event:
 		<ul class="params">
-			<li><code>this</code> - корень модели данных (IRoot).</li>
-			<li><code>elem</code> - созданный элемент.</li>
-			<li><code>prop</code> - имя свойства родительского элемента, которому будет присвоен созданный объект. Имеет 
-			смысл для обработчиков создания элементов в <code>MapObject</code>.</li>
+			<li><code>this</code> - data model root (IRoot).</li>
+			<li><code>elem</code> - created item.</li>
+			<li>
+				<code>prop</code> - the name of the property of the parent item
+				to which the created object will be assigned. Makes sense for
+				the items creating handlers in a <code>MapObject</code>.
+			</li>
 		</ul>
 
-		Аргументы для событий <code>.changing</code>, <code>.change</code>:
+		Arguments for the <code>.changing</code>, <code>.change</code>:
 		<ul class="params">
-			<li><code>this</code> - корень модели данных (IRoot).</li>
-			<li><code>elem</code> - элемент.</li>
-			<li><code>newValue</code> - новое значение свойства.</li>
-			<li><code>oldValue</code> - старое значение свойства.</li>
-			<li><code>prop</code> - имя изменяемого свойства.</li>
+			<li><code>this</code> - data model root (IRoot).</li>
+			<li><code>elem</code> - item.</li>
+			<li><code>newValue</code> - the new value of the property.</li>
+			<li><code>oldValue</code> - the old value of the property.</li>
+			<li><code>prop</code> - the name of the property to change.</li>
 		</ul>
 
-		Возвращаемое значение имеет смысл только для события <code>.changing</code>:
+		The returned value only makes sense for the <code>.changing</code> event:
 
 		<ul class="params">
 			<li>
-				<code>Boolean</code> - строгое значение <code>false</code>. Отменяет попытку изменения значения свойства. Любое другое
-				значение разрешает изменения.
+				<code>Boolean</code> - strict <code>false</code> value. Cancels an attempt to change
+				the property value. Any other value allows changes.
 			</li>
 		</ul>
 
 		<div class="tip warning">
-			<b>Обратите внимание!</b> При изменении значений объектных свойств, оба значения свойства (и старое и новое) будут указывать
-			на один и тот-же объект. Это происходит потому, что объект никогда не пресоздается. Просто перезаписываются его свойства.
+			<b>Please note!</b> When changing the values of object properties, both property values (old and new) will point to the same object.
+			This is because the object is never re-created. Its properties are simply overwritten.
 		</div>
 	</p>
 
-	<h3>События для массивов</h3>
-	<p>Префикс имени для всех событий массивов представляет собой полный путь к свойству в модели.</p>
+	<h3>Events for arrays</h3>
+	<p>The name prefix for all array events is the full path to the property in the model.</p>
 	<ul class="std">
-		<li><code>[].adding</code> - перед добавлением элемента в массив.</li>
-		<li><code>[].add</code> - элемент добавлен в массив.</li>
-		<li><code>[].change</code> - изменен элемент массива.</li>
-		<li><code>[].remove</code> -  элемент удален из массива.</li>
-		<li><code>[].select</code> - элемент массива выбран.</li>
+		<li><code>[].adding</code> - before adding the item to the array.</li>
+		<li><code>[].add</code> - the item is added to the array.</li>
+		<li><code>[].change</code> - the array item has been changed.</li>
+		<li><code>[].remove</code> -  the item has been removed from the array.</li>
+		<li><code>[].select</code> - the array item is selected.</li>
 	</ul>
 	<p class="tip warning">
-		<b>Обратите внимание!</b> Cобытия будут генерироваться только тогда, когда для манипуляции с массивами используются средства платформы.
-		Если массив меняется стандартными методами (например <code>push</code>, <code>splice</code>), то события генерироваться не будут.
+		<b>Please note!</b> The events will be generated only when platform tools are used to manipulate
+		the arrays. If the array is changed using standard methods (for example, <code>push</code>,
+		<code>splice</code>), then no events will be generated.
 	</p>
 
 	<p>
-		Аргументы для событий массивов:
+		Arguments for the array events:
 		<ul class="params">
-			<li><code>this</code> - корень модели данных (IRoot).</li>
-			<li><code>arr</code> - изменяемый массив.</li>
-			<li><code>elem</code> - новый или удаленный элемент.</li>
+			<li><code>this</code> - data model root (IRoot).</li>
+			<li><code>arr</code> - modifiable array.</li>
+			<li><code>elem</code> - new or deleted item.</li>
 		</ul>
-		Возвращаемое значение имеет смысл только для события <code>.adding</code>.
+		The returned value is only meaningful for the <code>.adding</code> event.
 		<ul class="params">
-			<li><code>Boolean</code> - строгое значение <code>false</code>. Отменяет операцию добавления элемента в массив.</li>
+			<li><code>Boolean</code> - strict <code>false</code> value. Cancels the operation of adding an item to the array.</li>
 		</ul>
 	</p>
 
 
-	<h3>Пользовательские события</h3>
-	<p>Описанные выше события являются встроенными. Однако, никто не запрещает использовать собственные события, которые могут более 
-	точно описывать бизнес-логику приложения.</p>
+	<h3>User-Defined Event</h3>
 	<p>
-		Такие события генерируются методом <a class="code-link" href="/client/data">$emit</a> корневого объекта (IRoot) и могут иметь 
-		произвольное имя (конечно не пересекающееся с системными именами). Методом <code>$emit</code> также можно генерировать 
-		и системные события.
+		The events described above are inline events. However, no one forbids the use of custom events, which 
+		can more accurately describe the business logic of the application.
+	</p>
+	<p>
+		Such events are generated by the <a class="code-link" href="/client/data">$emit</a> method of the root object (IRoot)
+		and can have an arbitrary name (of course, not overlapping with system names). The <code>$emit</code> method can also generate system events.
 	</p>
 
 	<p class="tip warning">
-		<b>Обратите внимание!</b> Модель событий в системе связана с данными, а не с элементами пользовательского интерфейса.
-		Другими словами, события возникают тогда, когда меняются данные. Возникновение событий никак не связано с пользовательским
-		интерфейсом. Фактически, пользовательского интерфейса вообще может не быть.
+		<b>Please note!</b> The event model in the system is associated with data, not with elements of the user interface. In other words, 
+		events occur when data changes. The occurrence of events bears no relation to the user interface. In fact, there may be no user interface at all.
 	</p>
 </div>

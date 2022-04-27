@@ -1,57 +1,57 @@
 ﻿<div>
-	<!--title:Проверка типов-->
+	<!--title:Types Checking-->
 	<div class="title">
 		<h1>
-			Проверка типов
+			Types Checking
 		</h1>
 	</div>
 	<p>
-		В системе предусмотрена возможность динамической (во время выполнения) проверки соответствия типов.
-		Проверяется соответствие типов и свойств полученных из модели и описаных в файле определения *.d.ts.
-		Кроме того, при рендеринге xaml-представлений проверяется соответствие привязок указанным типам.
+		The system provides the ability to dynamically (at runtime) type conformance checking. The conformity of the types and properties 
+		obtained from the model and described in the *.d.ts definition file is checked. In addition, when rendering xaml-views, the 
+		correspondence of the bindings to the specified types is checked.
 	</p>
 	<p>
-		Таким образом, если проверка типов включена, то система гарантирует, что полученная из базы данных модель соответствует описанию
-		и что в представлении используются только существующие привязки. О соответствии данных и кода шаблона заботится компилятор TypeScript.
+		Thus, when type checking is enabled, the system guarantees that the model retrieved from the database matches the description 
+		and that only existing bindings are used in the view. The TypeScript compiler takes care of data and template code compliance.
 	</p>
 	<p>
-		Этот механизм будет работать только в том случае, если шаблоны пишутся на языке TypeScript.
+		This mechanism will only work if templates are written in TypeScript.
 	</p>
 
-	<h3>Пример</h3>
+	<h3>Example</h3>
 	<p>
-		Пусть, например, мы используем проверку типов при редактировании свойств контрагента. Эта часть приложения расположена в папке
-		<code>/catalog/agent</code>.
+		Suppose, for example, we use type checking when editing properties of a contractor. 
+		This part of the application is located in the <code>/catalog/agent</code> folder.
 	</p>
 	<p>
-		Файлы в папке:
+		Files in the folder:
 		<table class="table-props">
 			<thead>
 				<tr>
-					<th class="fit">Файл</th>
-					<th>Описание</th>
+					<th class="fit">File</th>
+					<th>Description</th>
 				</tr>
 			</thead>
 			<tr>
 				<td><code>model.json</code></td>
-				<td>файл описания модели</td>
+				<td>model description file</td>
 			</tr>
 			<tr>
 				<td><code>model.d.ts</code></td>
-				<td>файл определения типов</td>
+				<td>type definition file</td>
 			</tr>
 			<tr>
 				<td><code>edit.template.ts</code></td>
-				<td>файл шаблона (TypeScript)</td>
+				<td>template file (TypeScript)</td>
 			</tr>
 			<tr>
 				<td><code>edit.dialog.xaml</code></td>
-				<td>файл представления</td>
+				<td>view file</td>
 			</tr>
 		</table>
 	</p>
 
-	<h4>Файл model.json</h4>
+	<h4>file model.json</h4>
 	<p>
 <pre class="code-highlight js" data-lang="js">
 <script type="text/template">
@@ -70,9 +70,9 @@
 </pre>
 	</p>
 
-	<h4>Содержимое модели</h4>
+	<h4>Model content</h4>
 	<p>
-		Хранимая процедура <code>a2v10.[Agent.Load]</code>.
+		Stored procedure <code>a2v10.[Agent.Load]</code>.
 
 
 <pre class="code-highlight js" data-lang="sql">
@@ -92,68 +92,68 @@ go
 </pre>
 	</p>
 	<p>
-		Процедура возвращает одну запись типа <code>TAgent</code> с полями
-		<code>Id</code>, <code>Name</code>, <code>Code</code>.
+		The procedure returns one <code>TAgent</code> type record with
+		the fields <code>Id</code>, <code>Name</code>, <code>Code</code>.
 	</p>
 
-	<h4>Файл model.d.ts</h4>
+	<h4>model.d.ts</h4>
 	<p>
 <pre class="code-highlight js" data-lang="js">
-<script type="text/template">
-export interface ~TAgent extends IElement {
-	Id: number;
-	Name: string;
-	Code: string;
-	$NameOrUnknown: string; /*свойства нет в модели, но есть в шаблоне */
-}
-/*TRoot есть всегда и содержит все свойства верхнего уровня */
-export interface ~TRoot extends IRoot {
-	Agent: ~TAgent;
-}
-</script>
-</pre>
-	</p>
-
-	<h4>Фрагмент файла edit.template.ts</h4>
-	<p>
-<pre class="code-highlight js" data-lang="js">
-<script type="text/template">
-
-import {~TAgent, ~TRoot} from 'model';
-
-const template: ~Template = {
-	properties: {
-		'TAgent.$NameOrUnknown'(this: TAgent): string {
-			return this.Id ? this.Name : 'Не выбрано'; 
+	<script type="text/template">
+		export interface ~TAgent extends IElement {
+		Id: number;
+		Name: string;
+		Code: string;
+		$NameOrUnknown: string; /*the property is not in the model, but it is in the template */
 		}
-	}
-};
-
-export default template;
-
-</script>
+		/*TRoot is always present and contains all top-level properties */
+		export interface ~TRoot extends IRoot {
+		Agent: ~TAgent;
+		}
+	</script>
 </pre>
 	</p>
 
-	<h3>Как это работает</h3>
+	<h4>edit.template.ts file fragment</h4>
+	<p>
+<pre class="code-highlight js" data-lang="js">
+	<script type="text/template">
+
+		import {~TAgent, ~TRoot} from 'model';
+
+		const template: ~Template = {
+		properties: {
+		'TAgent.$NameOrUnknown'(this: TAgent): string {
+		return this.Id ? this.Name : 'Not selected';
+		}
+		}
+		};
+
+		export default template;
+
+	</script>
+</pre>
+	</p>
+
+	<h3>How it works</h3>
 
 	<ul class="std">
-		<li>Модель загружается из БД и строятся метаданные.</li>
-		<li>В файле <code>model.json</code> проверяется наличие элемента <code>checkTypes</code>. Если его нет, ничего не выполняется.</li>
-		<li>Если файл описания данных указан, то он загружается и разбираются все описанные в нем типы.</li>
-		<li>Проверяется соответствие типов, описанных в файле <code>model.d.ts</code> и типов, полученных из модели данных. Должны 
-		совпадать имена типов и их свойства. Имена свойств, которые начинаются с символа "$" считаются вычисляемыми и не проверяются в модели данных. 
-		Они понадобятся на следующем шаге.
-		Если найдены несовпадения, генерируется исключение.</li>
-		<li>Во время рендеринга представления проверяются все привязки. При попытке привязаться к несуществующему свойству, генерируется исключение.</li>
+		<li>The model is loaded from the database and the metadata is built.</li>
+		<li>In the <code>model.json</code> file, the presence of the <code>checkTypes</code> item is checked. If it is not there, nothing is executed.</li>
+		<li>If a data description file is specified, then it is loaded and all types described in it are parsed.</li>
+		<li>
+			The conformity of the types described in the <code>model.d.ts</code> иfile and the types obtained from the data model is checked. The type
+			names and their properties must match. Property names that start with the "$" character are considered computed and are not checked in the
+			data model. They will be needed in the next step. If mismatches are found, an exception is thrown.
+		</li>
+		<li>While rendering the view, all bindings are checked. Upon an attempt to bind to a property that does not exist, an exception is thrown.</li>
 	</ul>
 
 
 	<p class="tip warning">
-		<b>Обратите внимание!</b>. Динамическая проверка типов будет работать только в отладочной конфигурации.
+		<b>Please note!</b>. Dynamic type checking will only work in a debug configuration.
 		<br />
-		свойство <code>configuration</code> в разделе <code>appSettings</code> файла Web.config должно быть установлено в
-		<code>debug</code>.
+		The <code>configuration</code> property in the <code>appSettings</code> section of the Web.config file must be set to <code>debug</code>.
 	</p>
 
 

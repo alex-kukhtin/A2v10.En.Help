@@ -3,18 +3,18 @@
 	<!--keywords:Template-->
 	<div class="title">
 		<h1>
-			Элемент Template
+			Template Item
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Отправка сообщений</a>
+			<a href="index">Sending the Messages</a>
 		</div>
 	</div>
 
-	<p>Представляе собой простой словарь объектов <a href="templatedmessage" class="code-link">TemplatedMessage</a> с текстовым ключом.</p>
+	<p>Represents a simple dictionary of <a href="templatedmessage" class="code-link">TemplatedMessage</a> objects with a text key.</p>
 
 	<p class="tip info">
-		<b>Обратите внимание</b>, что ключ словаря находится в пространстве имен <code>http://schemas.microsoft.com/winfx/2006/xaml</code> ,поэтому
-		в заголовок xaml-файла нужно включить соответствующий элемент <code>xmlns</code>.
+		<b>Note</b>, that the dictionary key is located in the <code>http://schemas.microsoft.com/winfx/2006/xaml</code> namespace,
+		so you need to include the corresponding <code>xmlns</code> element in the header of the xaml file.
 	</p>
 
 	<p>Content property: <code>Messages</code></p>
@@ -23,37 +23,37 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">Messages</td>
 				<td class="fit no-wrap"><code>Dictionary&lt;String, <a href="templatedmessage">TemplatedMessage</a>&gt;</code></td>
-				<td>Словарь сообщений.</td>
+				<td>Message dictionary.</td>
 			</tr>
 		</tbody>
 	</table>
 
 
-	<h4>Пример:</h4>
+	<h4>Example:</h4>
 	<p>
 <pre class="code-highlight xml">
 <script type="text/template">
-<Template xmlns="clr-namespace:A2v10.Messaging;assembly=A2v10.Messaging"
-		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-	<!--
-	DataModel: {{}} - модель данных
-	Parameters [[]] - все параметры, переданные в сообщение
+	<Template xmlns="clr-namespace:A2v10.Messaging;assembly=A2v10.Messaging"
+			  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+		<!--
+	DataModel: {{}} - data model
+	Parameters [[]] - all parameters passed to the message
 	Environment: (()) - ProcessId, InboxId, Host, UserHost
 	-->
-	<EmailMessage x:Key="EMail" Subject="[[Subject]]"
-				Model="MessageForSend" Schema="a2demo"
-				BodyTemplate="messaging/mail.html" To=" {{Message.To}}">
-	</EmailMessage>
-</Template>
+		<EmailMessage x:Key="EMail" Subject="[[Subject]]"
+					  Model="MessageForSend" Schema="a2demo"
+					  BodyTemplate="messaging/mail.html" To=" {{Message.To}}">
+		</EmailMessage>
+	</Template>
 </script>
 </pre>
 	</p>

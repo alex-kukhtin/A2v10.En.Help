@@ -1,47 +1,48 @@
 ﻿<div>
-	<!--title:Шаблоны. Свойства-->
-	<!--keywords:properties;Свойства;-->
+	<!--title:Templates. Properties-->
+	<!--keywords:properties;Properties;-->
 	<div class="title">
 		<h1>
-			Шаблоны. Свойства
+			Templates. Properties
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Шаблоны</a>
+			<a href="index">Templates</a>
 		</div>
 	</div>
 
 	<p>
-		Раздел свойств позволяет добавить к элементам модели дополнительные свойства. Они могут быть как скалярными (строка, число), так и
-		<i>вычисляемыми.</i>
+		The properties section allows you to add additional properties to the model elements. They can 
+		be both scalar (string, number) and <i>computed</i>.
 	</p>
 
 	<p>
-		Вычисляемые свойства представляют собой мощный механизм, позволяющий сильно упростить реализацию сложной
-		бизнес-логики приложения. Такое свойство представляет собой функцию, которая вызывается при попытке чтения (или установки) свойства.
-		Возвращаемый функцией результат рассматривается как значение свойства.
-		При расчетах функция может обращаться к другим вычисляемым свойствам и т.д.
-		Таким образом легко строить обработчики зависимых данных без использования модели событий.
+		Computed properties are a powerful mechanism that can greatly simplify the implementation of 
+		complex business logic in an application. Such a property is a function that is called when 
+		an attempt is made to read (or set) a property. The result returned by the function is 
+		considered as the value of the property. During the calculations, the function can refer 
+		to other computed properties, etc. In this way, it is easy to build dependent data handlers 
+		without using the event model.
 	</p>
 
 	<p>
-		Вычисляемые свойства могут как дополнять существующие в модели статические свойства, так и заменять существующие.
+		Computed properties can either supplement existing static properties in the model, or replace existing ones.
 	</p>
 
 	<p>
-		Объект, описывающий свойства в шаблоне, является обычным объектом JavaScript.
-		Имена свойств этого объекта представляют
-		собой полное имя свойства (включая имя типа объекта), а значения - скалярным типом, функцией или объектом.
+		The object describing the properties in the template is a regular JavaScript object. The property names 
+		of this object are the fully qualified name of the property (including the name of the object type), 
+		and the values are a scalar type, function, or object.
 	</p>
 
 
-	<h3>Синтаксис</h3>
+	<h3>Syntax</h3>
 <pre class="code-highlight js">
 <script type="text/template">
 /* свойства */
 properties: {
-	'TypeName.property': String | Number | Boolean, /* скалярное свойство */
-	'TypeName.property': Function,                  /* вычисляемое свойство */
-	'TypeName.property': {                          /* вычисляемое свойство с возможностью установки */
+	'TypeName.property': String | Number | Boolean, /* scalar property */
+	'TypeName.property': Function,                  /* computed property */
+	'TypeName.property': {                          /* computed and settable property */
 		get: Function,
 		set: Function
 	}
@@ -49,74 +50,75 @@ properties: {
 }
 </script>
 </pre>
-	<h3>Правила именования</h3>
+<h3>Naming rules</h3>
 
-	<p>
-		Префикс свойства <code>TypeName</code> должен совпадать с <i>именем типа</i>, который задается при построении модели. По соглашению
-		имена типов начинаются с заглавной буквы "Т" (от слова Type).
-	</p>
+<p>
+	The <code>TypeName</code> property prefix must match the type <i>name</i>, that is specified when the model is built. By 
+	convention, type names begin with an uppercase "T" (for Type).
+</p>
 
-	<p>
-		Если вычисляемое свойство имеет такое же имя, как и свойство в модели, то оно не добавляется к модели, а <i>заменяет</i>
-		свойство модели. Это приведет к тому, что вычисленное значение будет сохранено в модели.
-	</p>
+<p>
+	If a computed property has the same name as a property in the model, then it is not added to the model, but <i>replaces</i>
+	the model property. This will cause the computed value to be saved in the model.
+</p>
 
-	<p>
-		Если имя свойства начинается с символов "$" или "_", то оно является внутренними и не участвует
-		в обмене данными между клиентом и сервером. Если имя свойства начинается с символов "$$" то его
-		изменение не изменяет флажок <a class="code-link" href="/client/data">$dirty</a> для модели.
-	</p>
+<p>
+	If the property name begins with the characters "$" or "_", then it is internal and does not participate in the exchange of
+	data between the client and the server. If a property name begins with "$$", then changing it does not change the
+	<a class="code-link" href="/client/data">$dirty</a> flag for the model.
+</p>
 
-	<h3>Скалярные свойства</h3>
-	<p>
-		Значением скалярного свойства всегда является примитивный тип JavaScript, такой как, например <code>String</code>, <code>Number</code>
-		или <code>Boolean</code>. В модель будет добавлено свойство соответствующего типа.
-	</p>
-
-
-	<h3>Вычисляемые свойства</h3>
-	<p>
-		Значением вычисляемого свойства является функция, которая будет вычислена при попытке обращения к свойству. Аргумент функции:
-		<ul class="params">
-			<li><code>this</code> - ссылка на объект, в который добавляется свойство.</li>
-		</ul>
-		Функция должна вернуть значение свойства.
-	</p>
-	<p>Функция вызывается только при обращении к свойству. Если обращений нет то функция никогда вызываться не будет.</p>
-	<p>Обращения к вычисляемым свойствам могут выполняться многократно и достаточно часто. Никогда не используйте обращение к серверу 
-	в коде вычисляемых свойств. Если нужно - используйте кэширование.</p>
-
-	<p class="tip warning">
-		<b>Обратите внимание!</b> Не используйте стрелочные функции при определении вычисляемых свойств. Стрелочные функции не имеют
-		собственного значения <code>this</code> (они используют родительский контекст), поэтому получить ссылку на объект будет невозможно.
-	</p>
+<h3>Scalar Properties</h3>
+<p>
+	The value of a scalar property is always a primitive JavaScript type such as <code>String</code>, <code>Number</code>
+	or <code>Boolean</code>. A property of the corresponding type will be added to the model.
+</p>
 
 
-	<h3>Вычисляемые свойства с возможностью установки</h3>
-	<p>
-		В дополнение к функции чтения свойства (геттер) можно задать и функцию установки (сеттер). Эта функция будет вызвана при попытке
-		установки значения свойства. Аргументы функции:
-		<ul class="params">
-			<li><code>this</code> - ссылка на объект, в который добавляется свойство.</li>
-			<li><code>value</code> - устанавливаемое значение.</li>
-		</ul>
-	</p>
-	<p>
-		Используйте свойства с сеттерами внимательно и осторожно. При этом очень легко получить бесконечную рекурсию.
-	</p>
+<h3>Computed properties</h3>
+<p>
+	The value of a computed property is the function that will be computed when an attempt is made to access the property. Function argument:
+	<ul class="params">
+		<li><code>this</code> - a reference to the object to which the property is added.</li>
+	</ul>
+	The function should return the value of the property.
+</p>
+<p>The function is called only when the property is accessed. If there are no calls, the function will never be called.</p>
+<p>
+	Computed properties can be accessed many times and often. Never use server calls in computed property code. Use caching if necessary.
+</p>
 
-	<h3>Пример</h3>
-	<p>
-		Пример шаблона документа с вычислением суммы по строке и суммы по документу. 
-		Пусть в модели есть документ со строками, в каждой из которых есть цена и количество.
-		Нужно автоматически рассчитывать сумму по строке и сумму по документу.
+<p class="tip warning">
+	<b>Please note!</b> Do not use arrow functions when defining computed properties. Arrow functions do not have their own this value (they
+	use the parent context), so it will be impossible to get a reference to the object
+</p>
 
-		<pre class="code-highlight js" data-lang="js">
+
+<h3>Computed and Settable Properties</h3>
+<p>
+	In addition to the property read function (getter), you can also specify a set function (setter). 
+	This function will be called when an attempt is made to set a property value. Function arguments:
+	<ul class="params">
+		<li><code>this</code> - a reference to the object to which the property is being added.</li>
+		<li><code>value</code> - set value.</li>
+	</ul>
+</p>
+<p>
+	Use properties with setters cautiously and carefully. When doing so, it is very easy to get infinite recursion.
+</p>
+
+<h3>Example</h3>
+<p>
+	An example of a document template with computing the amount for the row and the amount for the document. 
+	Suppose the model contains a document with rows, each of which has a price and a quantity. It is necessary
+	to automatically calculate the amount for the row and the amount for the document.
+
+	<pre class="code-highlight js" data-lang="js">
 <script type="text/template">
 const template = {
 	properties: {
-		'TRow.Sum'() {return this.Qty * this.Price }, /*сумма по строке */,
-		'TDocument.Sum': getDocumentSum /*сумма по документу */
+		'TRow.Sum'() {return this.Qty * this.Price }, /*amount for row */,
+		'TDocument.Sum': getDocumentSum /*amount for document */
 	}
 };
 
@@ -126,5 +128,5 @@ function getDocumentSum() {
 </script>
 </pre>
 
-	</p>
+</p>
 </div>

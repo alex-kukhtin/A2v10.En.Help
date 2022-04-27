@@ -1,16 +1,16 @@
 ﻿<div>
-	<!--title:Свойства и методы корневого объекта-->
+	<!--title:Properties and methods of the root object-->
 	<!--keywords:$readOnly;$stateReadOnly;$isCopy;$ready;$template;$defer;$emit;$forceValidate;$setDirty;-->
 	<div class="title">
 		<h1>
-			Свойства и методы корневого объекта
+			Properties and methods of the root object
 		</h1>
 		<div class="breadcrumb">
-			<a href="data">Модель на клиенте</a>
+			<a href="data">Model on the Client</a>
 		</div>
 	</div>
 	<p>
-		Корневой объект расширяется следующими служебными свойствами и методами:
+		The root object is expanded with the following additional service properties and methods:
 	</p>
 	<p>
 <pre class="code-highlight js" data-lang="js">
@@ -34,26 +34,26 @@ interface IRoot extends IElement {
 </pre>
 	</p>
 
-	<h2>Свойства</h2>
+	<h2>Properties</h2>
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">readonly $ready: boolean</pre></div>
 		<p>
-			<code>true</code>, если в данный момент НЕ выполняется никаких запросов к серверу. Может
-			использоваться для запрета/разрешения элементов интерфейса при выполнении серверных команд.
+			<code>true</code> if no server requests are currently being made. Can be used to 
+			disable/enable interface elements when executing server commands.
 		</p>
 	</div>
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">readonly $template: Template</pre></div>
 		<p>
-			Ссылка на <a class="code-link" href="/template/index">объект шаблона (Template)</a>.
+			Reference to the <a class="code-link" href="/template/index">template object (Template)</a>.
 		</p>
 	</div>
 
-	<h2>Методы</h2>
+	<h2>Methods</h2>
 	<div class="method">
 		<div class="syntax"><pre class="code-highlight js">$defer(handler:()=>any): void</pre></div>
 		<p>
-			Выполняет функцию (handler) после завершения текущего цикла событий.
+			Executes a (handler) function after the end of the current event loop.
 		</p>
 	</div>
 </div>

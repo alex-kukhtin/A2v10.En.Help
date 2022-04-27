@@ -1,27 +1,26 @@
 ﻿<div>
-	<!--title:Настройка работы с сообщениями-->
+	<!--title:Configuring the work with messages-->
 	<div class="title">
 		<h1>
-			Настройка работы с сообщениями
+			Configuring the work with messages
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Отправка сообщений</a>
+			<a href="index">Sending the Messages</a>
 		</div>
 	</div>
 
-	<h3>Настройка отправки e-mail</h3>
+	<h3>Configuring the email sending</h3>
 
-	<h4>Настройка <b>smtp</b> в файле <code>web.config</code></h4>
+	<h4>Configuring smtp <b>smtp</b> in the <code>web.config</code> file</h4>
 
 	<p>
-		Настройка может выполняться как стандартными средствами .NET
-		(<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/network/mailsettings-element-network-settings">&lt;mailSettings&gt;</a>), 
-		так и элементом
-		 <b>mailSettings в разделе</b> <code>&lt;appSettings&gt;</code>.
+		Configuration can be performed using standard .NET tools
+		(<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/network/mailsettings-element-network-settings">&lt;mailSettings&gt;</a>),
+		or by the mailSettings element in the <code>&lt;appSettings&gt;</code> section.
 
 	</p>
 
-	<p>Формат json-текста для <code>&lt;appSettings&gt;</code> полностью повторяет стандартный формат настроек .NET.</p>
+	<p>The json-text format for <code>&lt;appSettings&gt;</code> is identical to the standard .NET settings format.</p>
 	<pre class="code-highlight js" data-lang="js">
 <script type="text/template">
 {
@@ -38,12 +37,12 @@
 </pre>
 
 	<p class="tip info">
-		<b>Обратите внимание!</b>, Если задан метод доставки <code>'SpecifiedPickupDirectory'</code> (используется для тестирования, без реальной отправки сообщения), 
-		то обязательно нужно задать папку, 
-		куда будут помещаться тестовые сообщения (<code>pickupDirectoryLocation</code>).
+		<b>Please note!</b> If the delivery method <code>'SpecifiedPickupDirectory'</code> is set 
+		(used for testing, without actually sending a message), then you must obligatorily specify
+		the folder where test messages will be placed (<code>pickupDirectoryLocation</code>).
 	</p>
 
-	<h4>Пример настройки через ключ mailSettings</h4>
+	<h4>Example of configuring via the mailSettings key</h4>
 	<pre class="code-highlight xml" data-lang="xml">
 <script type="text/template">
 <appSettings>
@@ -52,13 +51,13 @@
 </script>
 </pre>
 
-	<p>Пример настройки через <b>system.net</b></p>
+	<p>Example of configuring via system.net</b></p>
 	<pre class="code-highlight xml" data-lang="xml">
 <script type="text/template">
 <system.net>
 	<mailSettings>
-		<smtp from="from@domain.com" deliveryMethod="Network" deliveryFormat="International">
-			<network host="mail.domain.com" port="111" userName="userName" password="userPassword" enableSsl="true" />
+	<smtp from="from@domain.com" deliveryMethod="Network" deliveryFormat="International">
+	<network host="mail.domain.com" port="111" userName="userName" password="userPassword" enableSsl="true" />
 		</smtp>
 	</mailSettings>
 </system.net>

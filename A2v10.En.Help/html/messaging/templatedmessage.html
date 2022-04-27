@@ -3,17 +3,17 @@
 	<!--keywords:TemplatedMessage-->
 	<div class="title">
 		<h1>
-			Элемент TemplatedMessage
+			TemplatedMessage Item
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Отправка сообщений</a>
+			<a href="index">Sending the Messages</a>
 		</div>
 	</div>
 
-	<p>Представляет собой абстрактный базовый класс для сообщений.</p>
+	<p>Represents the abstract base class for messages.</p>
 
 	<p>
-		Производные элементы:
+		Derived elements:
 		<a class="code-link" href="emailmessage">EmailMessage</a>,
 	</p>
 
@@ -22,27 +22,28 @@
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="prop-name">Source</td>
 				<td>String</td>
-				<td>Источник данных для загрузки модели.</td>
+				<td>Data source for loading the model.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Schema</td>
 				<td>String</td>
-				<td>Схема для загрузки модели.</td>
+				<td>Scheme for loading the model.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">Model</td>
 				<td>String</td>
-				<td>Имя модели. Для загрузки модели будет вызвана процедура
-				<code>[{Schema}].[{Model}.Load]</code> в источнике данных <code>{Source}</code>.</td>
+				<td>Model name. The <code>[{Schema}].[{Model}.Load]</code>
+				procedure in the <code>{Source}</code> data source will be
+				called to load the model.</td>
 			</tr>
 		</tbody>
 	</table>
