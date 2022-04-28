@@ -1,146 +1,141 @@
 ﻿<div>
-	<!--title:Работа с двоичными объектами -->
+	<!--title:Working with binary objects (blob) -->
 	<!--keywords:Blob;-->
 	<div class="title">
 		<h1>
-			Работа с двоичными объектами (blob)
+			Working with binary objects (blob)
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Модели данных</a>
+			<a href="index">Data models</a>
 		</div>
 	</div>
 
-	<h2>Общая информация</h2>
+	<h2>General information</h2>
 
 	<p>
-		Двоичный объект (это может быть изображение, вложение (attachment) и т.д.)
-		представляет собой отдельную сущность. У нее есть свойства <code>Name</code>, <code>Mime</code>
-		и непосредственно данные (<code>Stream</code>).
+		A binary object (this can be an image, attachment, etc.) is a separate entity. It has
+		the <code>Name</code>, <code>Mime</code> properties and, actually, data (<code>Stream</code>).
 	</p>
 	<p>
-		Эта сущность может храниться как в отдельной таблице для каждого элемента, так и в общей таблице вложений c дополнительной таблицей связей.
-		Для предотвращения несанкционированного доступа к вложениям используется механизм формирования токенов доступа.
-		Токен это просто хеш строки, содержащей идентификатор текущей сессии,
-		идентификатор пользователя и дополнительный ключ доступа (guid) связанный с этим вложением.
-		Проще всего добавить этот ключ в виде поля с типом <code>uniqueidentifier</code> и значением по умолчанию <code>newid()</code>.
+		This entity can be stored in a separate table for each item, as well as in a common table of
+		attachments with an additional table of relations. An access token generation mechanism is
+		used to prevent unauthorized access to attachments. A token is simply a hash of a string
+		containing the ID of the current session, the user ID, and the additional access key (guid)
+		associated with that attachment. The simplest way is to add this key as a field with a
+		<code>uniqueidentifier</code> type and a default <code>newid()</code> value.
 	</p>
 
 	<p>
-		Работа с двоичными объектами фактически состоит из трех почти независимых частей.
+		Working with binary objects actually consists of three almost independent parts.
 		<ol>
 			<li>
-				Получение самого объекта и токена доступа.
-				Тут все просто и можно использовать стандартные средства платформы.
-				Однако загружать сам поток данных сразу не получится. Нужны какие-то отдельные инструменты для работы с этим потоком.
-				Простейший вариант – загрузка (download) данных по клику на ссылке.
-				Если мы работаем с картинками, имеет смысл показать их Preview. Кроме того, для
-				предотвращения несанкционированного доступа необходимо сформировать токен доступа.
-				Для этого в набор данных нужно включить поле со специальным типом <code>!Token</code>.
-				При обработке этого поля система возьмет значение (это будет guid) и сформирует вместо него токен доступа.
-				Обратите внимание, что значения этого токена будут разными в разных сессиях работы с браузером.
+				Obtaining the object itself and the access token. Here everything is simple and you
+				can use the standard tools of the platform. However, you will not be able to download
+				the data stream immediately. We need some separate tools to work with this stream. The
+				simplest option is to download the data by clicking on the link. If we work with pictures,
+				it makes sense to show their Preview. In addition, an access token must be generated to
+				prevent unauthorized access. To do this, you have to include a field with the special
+				<code>!Token</code>. type into the recordset. When processing this field, the system will
+				take a value (this will be guid) and generate an access token instead. Note that the values
+				of this token will be different in different browser sessions.
 			</li>
 			<li>
-				Получение с сервера байтов (картинки, вложения) с использованием токена доступа.
-				Используется для отображения картинок (элементы
-				<a class="code-link" href="/xaml/controls/image">Image</a>,
-				<a class="code-link" href="/xaml/controls/fileimage">FileImage</a>
-				)
-				или просто для их загрузки с помощью команды
-				<a class="code-link" href="/xaml/bind/bindcmd">File</a>.
+				Receiving bytes from the server (pictures, attachments) using an access token. Used to display images
+				(<a class="code-link" href="/xaml/controls/image">Image</a>,
+				<a class="code-link" href="/xaml/controls/fileimage">FileImage</a> items)
+				or simply to load them using the
+				<a class="code-link" href="/xaml/bind/bindcmd">File</a> command.
 			</li>
 			<li>
-				Выгрузка (upload) данных на сервер.
-				Сохранить данные можно где угодно (например в БД или в Azure Storage).
-				У этого вложения появляется идентификатор.
-				По нему можно получить содержимое для загрузки или отображения двоичных данных (картинки, файла).
-				Обратите внимание, что в саму модель этот идентификатор запишется только при сохранении модели.
-				Кроме идентификатора загрузки при сохранении данных сформируется токен доступа.
-				Его тоже нужно записать в модель (сохранять не нужно, при загрузке он все равно сформируется заново).
+				Uploading data to the server. You can save data anywhere (for example in a database or in Azure Storage).
+				This attachment has an ID. It can be used to obtain content for downloading or displaying binary data 
+				(picture, file). Note that this ID will be recorded into the model itself only when the model is saved.
+				In addition to the download ID, an access token will be generated when the data is saved. It also has 
+				to be recorded into the model (you don't need to save it; when loading, it will be newly generated anyway).
+				Note that this ID will only be written to the model itself when the model is saved. In addition to the download
+				ID, an access token will be generated when the data is saved. It also has to be recorded into the model (you
+				don’t need to save it; when loading it will be newly generated anyway).
 			</li>
 		</ol>
 	</p>
 
-	<h2>Форматы хранимых процедур</h2>
+	<h2>Stored procedure formats</h2>
 
 	<p>
-		Для работы с двоичными данными используется две хранимые процедуры. Одна для чтения данных (суффикс <code>.Load</code>),
-		вторая, для их записи (суффикс <code>.Update</code>). Обратите внимание, что процедуры работы с двоичными данными
-		специфические и не соответствуют правилам для построения моделей.
+		Two stored procedures are used to work with binary data. One for reading data (<code>.Load</code> suffix),
+		another for their recording (<code>.Update</code> suffix). Note that the procedures for working with binary
+		data are specific and do not comply with the rules for building models.
 	</p>
 
-	<h4>Процедура <code>.Load</code></h4>
+	<h4><code>.Load</code> Procedure</h4>
 	<p>
-		Процедура получает следующие параметры (имена фиксированы, порядок не имеет значения):
+		The procedure receives the following parameters (the names are fixed, the order does not matter):
 		<ul class="std">
-			<li><code>@TenantId int</code> - Id тенанта (только в мультитенантном окружении).</li>
-			<li><code>@UserId bigint</code> - Id текущего пользователя.</li>
-			<li><code>@Id bigint</code> - Id данных (картинки, вложения).</li>
+			<li><code>@TenantId int</code> - tenant ID (only in a multitenant environment).</li>
+			<li><code>@UserId bigint</code> - current user ID.</li>
+			<li><code>@Id bigint</code> - data (image, attachment) ID.</li>
 		</ul>
 	</p>
 
 	<p>
-		Процедура должна вернуть единственный набор данных со следующими полями (имеют значения имена полей,
-		порядок произвольный.
+		The procedure must return a single record set with the following fields (field names matter, their order is arbitrary).
 		<ul class="std">
-			<li><code>Id bigint</code> - Id данных (картинки, вложения).</li>
-			<li><code>Mime nvarchar(255)</code> - Mime тип данных.</li>
-			<li><code>Name nvarchar(255)</code> - Наименование набора данных.</li>
-			<li><code>Stream varbinary(max)</code> - сам поток данных. Может быть равно null</li>
+			<li><code>Id bigint</code> - data (image, attachment) ID.</li>
+			<li><code>Mime nvarchar(255)</code> - mime data type.</li>
+			<li><code>Name nvarchar(255)</code> - the recordset name.</li>
+			<li><code>Stream varbinary(max)</code> - the data stream itself. Can be equal to null.</li>
 			<li>
-				<code>BlobName nvarcvhar(max)</code> - имя набора во внешнем хранилище (например Azure Storage).
-				Может быть равно null.
+				<code>BlobName nvarcvhar(max)</code> - the name of the set in external storage (e. g. Azure Storage). Can be equal to null.
 			</li>
 			<li>
-				<code>Token uniqueidentifier</code> - поле для формирования токена доступа.
-				Этот элемент должен соответствовать тому. что возвращет процедура загрузки модели, из
-				которой будут получаться эти данные.
+				<code>Token uniqueidentifier</code> - the field for generating the access token. This item must correspond to what the load
+				procedure of the model, from which this data will be received, will return.
 			</li>
 		</ul>
 	</p>
 
 	<p>
-		Процедура загрузки должна вернуть одно из полей <code>BlobName</code> или <code>Stream</code>.
-		Если задано поле <code>BlobName</code>, то данные будут получены из внешнего хранилища (Azure Storage), а
-		значение поля <code>Stream</code> будет проигнорировано.
+		The download procedure must return one of the fields <code>BlobName</code> or <code>Stream</code>.
+		If the <code>BlobName</code> field is specified, the data will be retrieved from external storage
+		(Azure Storage) and the value of the <code>Stream</code> field will be ignored.
 	</p>
 
 
-	<h4>Процедура <code>.Update</code></h4>
+	<h4><code>.Update</code> Procedure</h4>
 	<p>
-		Процедура получает следующие параметры (имена фиксированы, порядок не имеет значения):
+		The procedure receives the following parameters (the names are fixed, the order does not matter):
 		<ul class="std">
-			<li><code>@TenantId int</code> - Id тенанта (только в мультитенантном окружении).</li>
-			<li><code>@UserId bigint</code> - Id текущего пользователя.</li>
-			<li><code>@Name nvarchar(255)</code> - Наименование набора данных.</li>
-			<li><code>@Mime nvarchar(255)</code> - Mime тип данных.</li>
-			<li><code>@Stream varbinary(max)</code> - сам поток данных или null, если данные сохранены во внешнем хранилище.</li>
-			<li><code>@BlobName nvarcvhar(max)</code> - имя набора во внешнем хранилище или null.</li>
+			<li><code>@TenantId int</code> - tenant ID (only in a multitenant environment).</li>
+			<li><code>@UserId bigint</code> - current user ID.</li>
+			<li><code>@Name nvarchar(255)</code> - the recordset name.</li>
+			<li><code>@Mime nvarchar(255)</code> - mime data type.</li>
+			<li><code>@Stream varbinary(max)</code> - the data stream itself or null, if the data is stored in external storage.</li>
+			<li><code>@BlobName nvarcvhar(max)</code> - the set name in external storage or null.</li>
 		</ul>
 	</p>
 
 	<p>
-		Процедура должна вернуть единственный набор со следующими полями (имеют значение имена полей,
-		порядок не важен)
+		The procedure must return a single set with the following fields (field names matter, order not important).
 		<ul class="std">
-			<li><code>Id bigint</code> - Id данных (картинки, вложения).</li>
+			<li><code>Id bigint</code> - data (image, attachment) ID.</li>
 			<li>
-				<code>Token uniqueidentifier</code> - поле для формирования токена доступа.
+				<code>Token uniqueidentifier</code> - field for generating the access token.
 			</li>
 		</ul>
 	</p>
 
-	<p>Данные, котрые вернет эта процедура будут возвращены на клиент, который должен будет добавить их к своей модели данных.</p>
+	<p>The data returned by this procedure will be returned to the client, who will need to add it to their data model.</p>
 
 
-	<h2>Смотри также</h2>
+	<h2>See also</h2>
 
 	<p>
 		<ul class=" std">
-			<li>Элемент управления <a class="code-link" href="/xaml/controls/image">Image</a>.</li>
-			<li>Элемент управления <a class="code-link" href="/xaml/controls/fileimage">FileImage</a>.</li>
-			<li>Элемент управления <a class="code-link" href="/xaml/controls/uploadfile">UploadFile</a>.</li>
-			<li>Команда <a class="code-link" href="/xaml/bind/bindcmd">File</a>.</li>
-			<li>Раздел <a class="code-link" href="/app/files">files</a> файла <code>model.json</code>.</li>
+			<li><a class="code-link" href="/xaml/controls/image">Image</a> Control.</li>
+			<li><a class="code-link" href="/xaml/controls/fileimage">FileImage</a> Control.</li>
+			<li><a class="code-link" href="/xaml/controls/uploadfile">UploadFile</a> Control.</li>
+			<li><a class="code-link" href="/xaml/bind/bindcmd">File</a> Command.</li>
+			<li><a class="code-link" href="/app/files">files</a> section of the <code>model.json</code> file.</li>
 		</ul>
 	</p>
 </div>

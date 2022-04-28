@@ -1,64 +1,65 @@
 ﻿<div>
-	<!--title:Модели с группировкой-->
-	<!--keywords:Модели с группировкой;-->
+	<!--title:Grouped Models-->
+	<!--keywords:Grouped Models;-->
 	<div class="title">
 		<h1>
-			Модели с группировкой
+			Grouped Models
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Модели данных</a>
+			<a href="index">Data models</a>
 		</div>
 	</div>
 
 	<p>
-		Модель данных с группировкой включает набор записей
-		c соотношением родитель-потомок. Глубина вложенности не ограничена.
+		A grouped data model includes a record set with a parent-child relationship. The nesting depth is not limited.
 	</p>
 	<p>
-		В отличие от <a href="tree">иерархических (древовидных) моделей</a>, в которых
-		отношения родитель-потомок определяются с помощью идентификатора родительской записи,
-		в моделях с группировкой отношения определяются на основе повторяющихся значений.
+		Unlike <a href="tree">hierarchical (tree-like) models</a>, in which parent-child relationships are defined using
+		the parent record identifier, in the grouped models, relationships are defined based on repeated values.
 	</p>
 
 	<p class="tip info">
-		<b>Обратите внимание</b>. Для формирования наборов данных с группировкой
-		обычно используется оператор <code>GROUP BY ROLLUP</code> языка T-SQL.
-		<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ru-ru/sql/t-sql/queries/select-group-by-transact-sql?view=sql-server-ver15">Подробнее в документации Microsoft</a>.
+		<b>Please note</b>. The T-SQL <code>GROUP BY ROLLUP</code> clause is usually used to form grouped datasets.
+									  <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ru-ru/sql/t-sql/queries/select-group-by-transact-sql?view=sql-server-ver15">For more information, see the Microsoft documentation</a>.
 	</p>
 
 	<p>
-		Модель с группировкой представлена типом объекта <code>!Group</code>.
-		Для правильной каждая запись должна иметь два дополнительных обязательных поля:
+		A grouped model is represented by the <code>!Group</code> object type. 
+		To be correct, each record must have two additional required fields:
 	</p>
 	<ul class="std">
 		<li>
-			<code>!GroupMarker</code> - маркеры группировки. Их будет столько, сколько уровней группировки будет использовано.
-			Фактически представляют собой просто значение T-SQL функции <code>grouping</code> для соответствующего поля.
-			Таких полей будет столько же, сколько указано в операторе <code>groupby rollup</code>
+			<code>!GroupMarker</code> - the grouping markers. There will be as
+			many of them as many grouping levels will be used. In fact, they are
+			simply the T-SQL value of the <code>grouping</code> function for the
+			corresponding field. There will be as many such fields as are specified
+			in the group <code>groupby rollup</code> statement.
 		</li>
 		<li>
-			<code>!Items</code> - массив дочерних записей.
-			В наборе данных это значение всегда будет равно null. Поле необходимо для того, чтобы система смогла
-			построить иерархию исходя из полученных данных.
-			Обратите внимание, что тип данных элементов всегда должен совпадать с типом данных корневого объекта (с модификатором <code>!Group</code>).
+			<code>!Items</code> - an array of child records. This value will always
+			be null in the recordset. The field is necessary for the system to build
+			a hierarchy based on the received data. Note that the data type of the
+			items must always be the same as the data type of the root object (with
+			the <code>!Group</code> modifier).
 		</li>
 	</ul>
 
 	<p>
-		Из за особенностей обработки моделей НЕОБХОДИМО сначала отсортировать
-		набор данных по маркерам группировки в обратном порядке, так чтобы сначала выдавались группы.
+		Due to the nature of the processing of models, you MUST first sort the recordset
+		by grouping markers in reverse order, so that groups are displayed first.
 	</p>
 
 
 	<p class="tip info">
-		<b>Обратите внимание</b>. Если для модели задан только один уровень группировки, то фактически это
-		означает что вы просто подсчитаете итоги для определенных полей (тех, которые выводятся с помощью функции <code>sum</code>).
+		<b>Please note</b>. If only one grouping level is specified for the model, then in
+		fact this means that you will simply calculate the totals for certain fields (those
+		that are displayed using the <code>sum</code> function).
 	</p>
 
-	<h3>Пример</h3>
+	<h3>Example</h3>
 	<p>
-		Работу с моделями с группировкой проще всего продемострировать на примере.
-		Пусть имееются таблица <code>Documents</code> следующего вида:
+		The simplest way to demonstrate working with grouped models is with an example.
+		Suppose you have the <code>Documents</code> table looking as follows:
 	</p>
 
 	<table class="sql-table">
@@ -99,7 +100,7 @@
 	</table>
 
 	<p>
-		И таблица <code>Agents</code> следующего вида:
+		And the <code>Agents</code> table looking as follows:
 	</p>
 
 	<table class="sql-table">
@@ -122,7 +123,7 @@
 	</table>
 
 	<p>
-		Построим набор данных с группировкой по дате и контрагенту.
+		Let's build a recordset with grouping by date and contractor.
 	</p>
 
 <pre class="code-highlight js" data-lang="sql">
@@ -149,7 +150,7 @@ go
 </script>
 </pre>
 
-	<p>В результате работы этой процедуры сформируется такой набор данных:</p>
+<p>As a result of this procedure the following recordset will be formed:</p>
 
 	<table class="sql-table">
 		<thead>
@@ -231,11 +232,11 @@ go
 	</table>
 
 	<p>
-		Первые три строки набора представляют собой итоги по всему отчету (первая строка) и по каждому из контрагентов (вторая и третья строки).
-		Маркеры группировки показывают для какого поля этот итог.
+		The first three lines of the set represent the totals for the entire report (the first line) and for each of the
+		countractors (the second and the third lines). Grouping markers show which field this total is for.
 	</p>
 
-	<p>После обработки этого набора сформируется такая модель (служебные свойства для простоты не показаны).</p>
+	<p>After processing this set, such a model will be formed (service properties are not shown for simplicity).</p>
 
 <pre class="code-highlight js" data-lang="js">
 <script type="text/template">
@@ -300,36 +301,37 @@ go
   }
 }</script>
 </pre>
-	<p>
-		Обратите внимание на свойства <code>$level</code> и <code>$groupName</code>.
-		Свойство <code>$level</code> - определяет уровень в дереве (с 0), а <code>$groupName</code> -
-		имя группы - фактически просто выбирается одно из значений набора в зависимости от уровня.
-	</p>
+<p>
+	Note the <code>$level</code> and <code>$groupName</code> properties.
+	The <code>$level</code> - property - specifies the level in the tree
+	(from 0), and <code>$groupName</code> - - the group name - actually 
+	simply selects one of the set values depending on the level.
+</p>
 
-	<p>
-		Отобразить такую модель можно, например, с помощью объекта <a class="code-link" href="/xaml/sheet/sheet">Sheet</a>.
-	</p>
+<p>
+	You can display such a model, for example, using the <a class="code-link" href="/xaml/sheet/sheet">Sheet</a> object.
+</p>
 
 <pre class="code-highlight xml">
 	<script type="text/template">
 <![CDATA[
 <Sheet GridLines="Both" Columns="Fit,Auto,Auto">
 	<Sheet.Header>
-		<SheetRow Style="Header">
-			<SheetCell />
-			<SheetCell Content="Agent/Date"/>
-			<SheetCell Content="Amount"/>
+	<SheetRow Style="Header">
+	<SheetCell />
+	<SheetCell Content="Agent/Date" />
+	<SheetCell Content="Amount" />
 		</SheetRow>
-		<SheetRow Style="Total">
-			<SheetCell ColSpan="2" Content="Total"/>
-			<SheetCell Content="{Bind ReportData.Amount, DataType=Currency}" Align="Right"/>
+	<SheetRow Style="Total">
+	<SheetCell ColSpan="2" Content="Total" />
+	<SheetCell Content="{Bind ReportData.Amount, DataType=Currency}" Align="Right" />
 		</SheetRow>
 	</Sheet.Header>
 	<SheetTreeSection ItemsSource="{Bind ReportData.Items}">
-		<SheetRow>
-			<SheetGroupCell/>
-			<SheetCell GroupIndent="True" Content="{Bind $groupName}"/>
-			<SheetCell Content="{Bind Amount, DataType=Currency}" Align="Right"/>
+	<SheetRow>
+	<SheetGroupCell />
+	<SheetCell GroupIndent="True" Content="{Bind $groupName}" />
+	<SheetCell Content="{Bind Amount, DataType=Currency}" Align="Right" />
 		</SheetRow>
 	</SheetTreeSection>
 </Sheet>
@@ -337,7 +339,8 @@ go
 	</script>
 </pre>
 
-<p>Результат (только отображение, свертка групп не работает)
+<p>
+	Result (display only, group convolution does not work)
 </p>
 
 	<table class="sheet grid-both" style="width:300px">
@@ -345,10 +348,11 @@ go
 			<col class="fit"></col>
 			<col style="width: auto;"></col>
 			<col style="width: auto;"></col>
-		</colgroup> 
+		</colgroup>
 		<thead>
 			<tr class="row-header"><td></td><td>Agent/Date</td><td>Amount</td></tr>
-			<tr class="row-total"><td colspan="2">Total</td><td data-type="currency" class="text-right">1 040,00</td></tr></thead>
+			<tr class="row-total"><td colspan="2">Total</td><td data-type="currency" class="text-right">1 040,00</td></tr>
+		</thead>
 		<tbody class="col-shadow">
 			<tr><td></td><td></td><td></td></tr>
 		</tbody>

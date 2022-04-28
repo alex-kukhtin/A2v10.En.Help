@@ -1,52 +1,56 @@
 ﻿<div>
-	<!--title:Обновление моделей-->
+	<!--title:Updating the models-->
 	<!--keywords:Update;-->
 	<div class="title">
 		<h1>
-			Обновление моделей
+			Updating the models
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Модели данных</a>
+			<a href="index">Data models</a>
 		</div>
 	</div>
 	<p>
-		Обратите внимание, что модель обновляется целиком за один вызов хранимой процедуры.
-		Для передчи данных широко используются
-		<a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/tables/use-table-valued-parameters-database-engine?view=sql-server-ver15">табличные параметры</a> SQL-сервер.
+		Note that the model is completely updated in one call to a stored procedure. SQL server
+		<a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/tables/use-table-valued-parameters-database-engine?view=sql-server-ver15">table parameters</a>
+		are widely used for data transfer.
 	</p>
-	<p>Обновление моделей выполняется следующим образом.</p>
-	<p>Сначала клиент отправляет всю модель на сервер.</p>
+	<p>Models are updated as follows.</p>
+	<p>First, the client sends the entire model to the server.</p>
 	<p>
-		Система находит имя модели для соответствующего действия и вызывает хранимую процедуру
-		с суффиксом <b>.Metadata</b>. Эта процедура возвращает несколько наборов с пустым содержимым.
-		Имена полей в этих наборах определяют правила, каким образом пребразовывать
-		содержимое полученной с клиента модели в параметры хранимой процедуры обновления модели.
+		The system finds the model name for the corresponding action and calls the stored procedure with the
+		<b>.Metadata</b> suffix. This procedure returns multiple sets with empty content. The field names in
+		these sets define the rules for how to convert the contents of the model received from the client to
+		the parameters of the stored model update procedure.
 	</p>
-	<p>Система преобразовывает полученые сырые данные в набор таблиц используя полученные метаданные.</p>
-	<p>Вызывается процедура с суффиксом <b>.Update</b> и ей передаются преобразованные таблицы.</p>
+	<p>The system converts the obtained raw data into a set of tables using the received metadata.</p>
+	<p>The procedure with the <b>.Update</b> suffix is called and the converted tables are passed to it.</p>
 
-	<h3>Правила интерпретации наборов .Metadata</h3>
-	<p>Имя первого поля каждого набора всегда состоит из трех элементов, разделенных символом '!'.</p>
+	<h3>Rules for interpreting .Metadata sets</h3>
+	<p>The name of the first field of each set always consists of three items separated by a '!' character.</p>
 	<ul>
-		<li>Первый элемент - имя параметра в процедуре <b>.Update</b>.</li>
+		<li>The first item is the name of the parameter in the <b>.Update</b> procedure.</li>
 		<li>
-			Второй элемент - путь к данным из модели данных. Не смотря на то, что некоторые
-			значения могут являться массивами, путь все равно задается через точку.
+			The second item is the path to the data from the data model. Although some values may be arrays,
+			the path is still specified through a point.
 		</li>
-		<li>Третий элемент - всегда значение <b>Metadata</b>.</li>
+		<li>The third item is always the value of <b>Metadata</b>.</li>
 	</ul>
 	<p>
-		Остальные поля набора представляют собой свойства в модели и соответственно поля в табличной переменной.
+		The remaining fields of the set are properties in the model and, accordingly, the fields in the tabular variable.
 	</p>
 	<p>
-		Количество табличных параметров в процедуре <b>.Update</b> (не считая предопределенных) всегда будет
-		равно количеству наборов, которые вернула процедура <b>.Metadata</b>.
+		The number of tabular parameters in the <b>.Update</b> procedure (excluding predefined
+		ones) will always be equal to the number of sets returned by the <b>.Metadata</b> procedure.
 	</p>
 
-	<h3>Пример</h3>
-	<p>Рассмотрим процедуру обновления документа. Работающий пример <a target="_blank" href="https://github.com/alex-kukhtin/A2v10.Web.Sample/blob/master/App_application/sample/document/model.sql">таблиц и хранмых процедур</a> можно найти на GitHub</p>
+	<h3>Example</h3>
+	<p>
+		Consider the procedure for updating a document. A working example of
+		<a target="_blank" href="https://github.com/alex-kukhtin/A2v10.Web.Sample/blob/master/App_application/sample/document/model.sql">tables and stored procedures</a>
+		can be found on GitHub
+	</p>
 
-	<p>Определим табличные типы</p>
+	<p>Let's define tabular types</p>
 	<pre class="code-highlight js" data-lang="sql">
 <script type="text/template">
 create type a2v10sample.[Document.TableType] as table(
@@ -74,11 +78,11 @@ go
 </script>
 </pre>
 	<p>
-		Первый тип будет соответствовать таблице <b>a2v10sample.Documents</b>, а второй таблице
-		<b>a2v10sample.DocDetails</b>.
+		The first type will correspond to the <b>a2v10sample.Documents</b> 
+		table, and the second to the <b>a2v10sample.DocDetails</b>.
 	</p>
 
-	<p>Процедура получения метаданных будет иметь следующий вид:</p>
+	<p>The procedure for obtaining metadata will be as follows:</p>
 	<pre class="code-highlight js" data-lang="sql">
 <script type="text/template">
 create or alter procedure a2v10sample.[Document.Metadata]
@@ -95,17 +99,17 @@ end
 go</script>
 </pre>
 	<p>
-		Она возвращает два набора. Первый набор описывает сам документ (в таблице будет всегда одна запись) со всеми нужными полями.
-		Эта таблица буде передана в параметр с именем <b>@Document</b>. Обатите внимание, что в имени
-		<b>[Document!Document!Metadata]</b> первое слово <b>Document</b> это имя параметра, а второе <b>Document</b> -
-		путь в модели, откуда надо получить данные.
+		It returns two sets. The first set describes the document itself (there will always be one record in the table) with
+		all the required fields. This table will be passed to a parameter named <b>@Document</b>. Note that in the name 
+		<b>[Document!Document!Metadata]</b>, the first word <b>Document</b> is the name of the parameter, and the second 
+		<b>Document</b> - is the path in the model where you want to receive the data from.
 	</p>
 	<p>
-		Второй набор описывает таблицу строк. В этой таблице будет столько же строк, сколько и в массиве
-		<b>Document.Rows</b> исходной модели. Имя параметра - <b>@Rows</b>.
+		The second set describes the row table. This table will have as many rows as the
+		<b>Document.Rows</b> array of the original model. The parameter name is <b>@Rows</b>.
 	</p>
 
-	<p>Процедура обновления будет иметь следующий вид:</p>
+	<p>The update procedure will be as follows:</p>
 	<pre class="code-highlight js" data-lang="sql">
 <script type="text/template">
 create or alter procedure a2v10sample.[Document.Update]
@@ -161,24 +165,23 @@ go</script>
 </pre>
 
 	<p>
-		Процедура просто обновляет (или вставляет) документ и его строки используя оператор <b>merge</b>.
-		Обратите внимание, что для получения идентификатора документа (который нужен для вставки строк)
-		используется псевдотаблица <b>inserted</b>
+		The procedure simply updates (or inserts) the document and its rows using the <b>merge</b> statement. Note that
+		a pseudo-table <b>inserted</b> is used to obtain the document ID (which is needed to insert rows)
 	</p>
 
-	<h3>Дополнительные служебные поля в наборах данных </h3>
+	<h3>Additional service fields in record sets</h3>
 	<p>
-		При заполнении таблиц данных из моделей в таблицы добавляются следующие служебные поля. Если они будут
-		объявлены в табличных типах, то их значения будут заполнены.
-		Эти поля используются для связывания дочерних записей (ведь они могут быть новыми и их идентификаторов пока может не быть).
+		When filling in data tables from models, the following service fields are added to the tables. If they are 
+		declared in tabular types, their values will be filled in. These fields are used to bind child records 
+		(because they may be new and their identifiers may not yet exist).
 	</p>
 
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -186,50 +189,51 @@ go</script>
 				<td class="prop-name">GUID</td>
 				<td>uniqueidentifier</td>
 				<td>
-					Уникальное значение. Используется совместно с <b>ParentGUID</b>.
+					Unique value. Used in conjunction with <b>ParentGUID</b>.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">RowNumber</td>
 				<td>int</td>
 				<td>
-					Номер строки в таблице (начиная с 1).
+					The row number in the table (starting with 1).
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">CurrentKey</td>
-				<td>Разные типы</td>
+				<td>Various types</td>
 				<td>
-					Текущий ключ в таблицах типа <b>Map</b>. Используется вместе с полем 
-					<b>ParentKey</b> дочерней таблицы.
+					The current key in <b>Map</b> type tables. Used in conjunction
+					with the <b>ParentKey</b> field of a child table.
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">ParentId</td>
-				<td>Разные типы</td>
-				<td>Идентификатор родительской записи. Идентификатор - всегда свойство с именем <b>Id</b>.</td>
+				<td>Various types</td>
+				<td>arent record ID. An identifier is always a property named <b>Id</b>.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">ParentGUID</td>
 				<td>uniqueidentifier</td>
-				<td>Уникальный идентификатор родительской записи (свойство с именем <b>GUID</b> из родительской таблицы).</td>
+				<td>Unique identifier of the parent record (property named <b>GUID</b> from the parent table).</td>
 			</tr>
 			<tr>
 				<td class="prop-name">ParentKey</td>
-				<td>Разные типы</td>
-				<td>Ключ родительской записи (<b>CurrentKey</b>). Используется для заполнения таблиц типа <b>Map</b>.</td>
+				<td>Various types</td>
+				<td>Parent record key (<b>CurrentKey</b>). Used to populate tables of type <b>Map</b>.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">ParentRowNumber</td>
 				<td>int</td>
-				<td>Номер строки родительской записи (свойство с именем <b>RowNumber</b> из родительской таблицы).</td>
+				<td>The row number of the parent record (a property named <b>RowNumber</b> from the parent table).</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h3>Совет</h3>
-	<p>Для того, чтобы посмотреть какие данные приходят в хранимую процедуру можно использовать следующий фрагмент кода
-	(где @Rows - имя табличного параметра):</p>
+	<h3>Tip</h3>
+	<p>
+		To see what data comes into the stored procedure, you can use the following code snippet (where @Rows is the name of the table parameter):
+	</p>
 
 	<pre class="code-highlight js" data-lang="sql">
 <script type="text/template">

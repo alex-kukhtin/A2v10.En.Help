@@ -1,41 +1,43 @@
 ﻿<div>
-	<!--title:Модели данных. Массивы-->
+	<!--title:data models. Arrays-->
 	<!--keywords:Массивы;-->
 	<div class="title">
 		<h1>
-			Работа с массивами
+			Working with arrays
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Модели данных</a>
+			<a href="index">Data models</a>
 		</div>
 	</div>
 	<p>
-		Массив может быть как самостоятельным элементом модели (тогда у него есть имя и он будет отображен в корне модели),
-		так и дочерним элементом какого либо другого объекта.
+		An array can be either an independent item of the model (then it has a name and it
+		will be displayed in the root of the model), or a child item of some other object.
 	</p>
-	<p>Массив определяется типом <code>Array</code> (либо <code>LazyArray</code> для "ленивого" массива) в дескрипторе (первое поле) набора данных.</p>
+	<p>An array is defined by the <code>Array</code> type (or <code>LazyArray</code> for 
+	"lazy" array) in the descriptor (the first field) of the dataset.</p>
 
 
 	<div class="info tip">
-		Обратите внимание! Не следует использовать массивы со слишком большим количеством элементов.
-		Кроме того, что это приводит к падению быстродействия, с этим еще и очень неудобно работать конечному пользователю.
-		Для работы с большими массивами (таблицами) используйте серверную сортировку, фильтрацию и разбиение на страницы.
-		<a href="paging">Подробнее...</a>.
+		Note! The arrays with too many items should not be used. In addition to the fact
+		that this leads to a drop in performance, it is also very inconvenient for the end
+		user to work with. Use server-side sorting, filtering, and paging to work with
+		large arrays (tables). <a href="paging">Подробнее...</a>.
 		<br />
 		<br />
-		Рекомендуемый размер массива на клиенте - не более 100 элементов. Максимальный, который не приводит к заметному уменьшению производительности - около 200 элементов.
+		The recommended size of the array on the client is no more than 100 items. The maximum,
+		which does not lead to a noticeable decrease in performance, is about 200 items.
 	</div>
 
-	<h3>Обычные массивы</h3>
+	<h3>Regular arrays</h3>
 	<p>
-		Это просто набор данных. Каждая строка набора будет соответствующим объектом массива. Тип объекта определяется дескриптором
-		набора.
+		It's simply a recordset. Each row in the set will be a corresponding object of array. The 
+		type of the object is determined by the set descriptor.
 	</p>
 
-	<h5>Пример</h5>
+	<h5>Example</h5>
 	<p>
 
-		Пусть имеется фрагмент кода SQL:
+		Let there be a fragment of SQL code:
 
 <pre class="code-highlight js" data-lang="sql">
 <script type="text/template">
@@ -44,138 +46,137 @@ from dbo.Agents where ....;
 </script>
 </pre>
 
-		Он сформирует в корне модели массив <code>Agents</code>. Каждый элемент массива будет иметь тип
-		<code>TAgent</code> со следующими свойствами: <code>Id</code>, <code>Name</code>, <code>Code</code>.
+		It will form the <code>Agents</code>. array at the root of the model. Each item of the array will be of 
+		<code>TAgent</code> type with the following properties: <code>Id</code>, <code>Name</code>, <code>Code</code>.
 	</p>
 
 
-	<h3>Дочерние массивы</h3>
+	<h3>Child arrays</h3>
 	<p>
-		Дочерний массив всегда является вложенным и представляет собой свойство другого объекта. Как правило не имеет имени.
-		В родительском объекте должно быть свойство-заполнитель со значением <code>null</code> и типом элементов дочернего массива.
-		Обратите внимание, что дочерний набор должен обрабатываться после основного.
+		A child array is always nested and is a property of another object. Usually has no name. The parent must have a
+		<code>null</code> placeholder property with the item type of the child array. Please note that the child set must
+		be processed after the basic one.
 	</p>
 	<p>
-		Для того, чтобы связать массив с родительским объектом, в наборе данных обязательно должно присутствовать
-		поле со ссылкой на родительский объект в виде <code>[Name!ParentType.PropertyName!ParentId]</code>, где
+		In order to associate an array with a parent object, the recordset must contain a field with a link to the parent
+		object in the form <code>[Name!ParentType.PropertyName!ParentId]</code>, where
 		<ul class="params">
-			<li><b>[Name]</b> - необязательное имя поля. Может быть пустым.</li>
-			<li><b>ParentType.PropertyName</b> - Имя типа и имя свойства родительского объекта, куда будет записан элемент массива.</li>
-			<li><b>ParentId</b> - модификатор поля.</li>
+			<li><b>[Name]</b> - the optional field name. May be empty.</li>
+			<li><b>ParentType.PropertyName</b> - the type name and the property name of the parent object where the array item will be recorded.</li>
+			<li><b>ParentId</b> - the field modifier.</li>
 		</ul>
 	</p>
 	<p>
-		Связывание работает следующим образом:
+		Binding works as follows:
 		<ol>
-			<li>Берется значение поля <code>!ParentId</code>.</li>
+			<li>The value of the <code>!ParentId</code> field is taken.</li>
 			<li>
-				В модели ищется объект с типом <code>ParentType</code>
-				с соответствующим идентификатором (само собой разумеется, что этот идентификатор должен быть помечен модификатором <code>!Id</code>).
+				The object of the <code>ParentType</code> type with the corresponding identifier is searched for in the
+				model (it goes without saying that this identifier should be marked with the <code>!Id</code> modifier).
 			</li>
-			<li>В найденном объекте ищется поле с именем <code>PropertyName</code>. В массив, соответствующий этому полю добавляется элемент.</li>
+			<li>The field with the <code>PropertyName</code> name is searched for in the found object. The item is added
+			to the array corresponding to this field.</li>
 		</ol>
 	</p>
 
-	<h5>Пример</h5>
+	<h5>Example</h5>
 	<p>
 
-		Пусть имеется фрагмент кода SQL:
+		Let there be a fragment of SQL code:
 
 <pre class="code-highlight js" data-lang="sql">
-<script type="text/template">
-/*основной объект*/
-select [Document!TDocument!Object] = null, [Id!!Id] = Id, [Date], [Rows!TRow!Array]=null
-from dbo.Documents where ....;
+		<script type="text/template">
+		/*basic object*/
+		select [Document!TDocument!Object] = null, [Id!!Id] = Id, [Date], [Rows!TRow!Array]=null
+		from dbo.Documents where ....;
 
-/*дочерний массив*/
-select [!TRow!Array] = null, [Id!!Id] = Id, [Qty], [Price], [Sum], [!TDocument.Rows!ParentId]=null
-from dbo.DocDetails where ....;
-</script>
+		/*child array*/
+		select [!TRow!Array] = null, [Id!!Id] = Id, [Qty], [Price], [Sum], [!TDocument.Rows!ParentId]=null
+		from dbo.DocDetails where ....;
+	</script>
 </pre>
 
-		Он сформирует в корне объект <code>Document</code> типа
-		<code>TDocument</code> со следующими свойствами: <code>Id</code>, <code>Date</code>, <code>Rows</code>.
-		Свойство <code>Rows</code> будет представлять собой массив элементов типа <code>TRow</code> со следующими свойствами:
-		<code>Id</code>, <code>Qty</code>, <code>Price</code>, <code>Sum</code>.
+		It will form the <code>Document</code> object of the <code>TDocument</code> ype at the root with the following properties:
+		<code>Id</code>, <code>Date</code>, <code>Rows</code>. The <code>Rows</code> property will be the items array of the 
+		<code>TRow</code> type with the following properties: <code>Id</code>, <code>Qty</code>, <code>Price</code>, <code>Sum</code>.
 	</p>
 
 
-	<h3>"Ленивые" массивы</h3>
+	<h3>"Lazy" arrays</h3>
 
 	<p>
-		Ленивые (on demand) массивы не добавляются в модель в процессе , а загружаются при первом обращении к свойству.
-		Чаще всего этот механизм используется в случае, если основная модель представляет собой массив, а дочерние массивы
-		будут нужны не всегда, а только при попытке их отобразить. Типичный пример - список контрагентов, каждый из которых
-		содержит связанные с ним документы.
+		Lazy (on demand) arrays are not added to the model in the process, but are loaded the first time the property is accessed.
+		Most often, this mechanism is used when the basic model is an array, and the child arrays are not always needed, but only
+		on the attempt to display them. A typical example is a list of contractors, each of which contains the documents associated with it.
 	</p>
 	<p>
-		Ленивые массивы могут быть только дочерними и определяются модификатором <code>LazyArray</code>.
+		Lazy arrays can only be children and are defined by the <code>LazyArray</code> modifier.
 	</p>
 	<div class="tip warning">
-		Cледует обратить внимание на то, что структура дочернего объекта (не данные!) должна быть известна системе
-		при начальном построении модели. Поэтому при использовании "ленивых" массивов, необходимо вернуть пустой набор данных,
-		который будет определять правильную структуру данных массива. Реальными данными массив заполнится уже в процессе загрузки.
+		It should be noted that the structure of the child object (not data!) must be known to the system at the initial building of the 
+		model. Therefore, when using "lazy" arrays, it is necessary to return an empty recordset, which will define the correct data 
+		structure of the array. The array will be filled with real data during the loading process.
 	</div>
 	<p>
-		Для загрузки ленивого массива будет вызвана хранимая процедура загрузки модели с суффиксом, соответствующим имени
-		свойства основной модели. В качестве параметра <code>@Id</code> ей будет передан идентификатор основного элемента.
-		Она должна вернуть набор, соответствущий описанию массива в основной модели. Свойство с
-		модификатором <code>!ParentId</code> не обязательно.
+		To load the lazy array, the model load stored procedure will be called with a suffix corresponding to the property name of the
+		main model. The ID of the main item will be passed to it as the <code>@Id</code> parameter. It should return a set that corresponds
+		to the description of the array in the main model. The property with the <code>!ParentId</code> modifier is optional.
 	</p>
 
-	<h5>Пример</h5>
+	<h5>
+		Example
+	</h5>
 	<p>
 
-		Пусть имеется список контрагенов со списком документов.
+		Let there be a list of the contractors with a list of documents.
 
 <pre class="code-highlight js" data-lang="sql">
-<script type="text/template">
-<![CDATA[
-/*основная процедура*/
-create or alter proceduure dbo.[Agent.Index.Load]
-@UserId bigint
-as
-begin
-	set nocount on;
-	/* основной набор */
-	select [Agents!TAgent!Array] = null, [Id!!Id] = Id, [Name!!Name] = Name, [Code]
-		[Documents!TDocument!LazyArray] = null /* ленивый массив Documents */
-	from dbo.Agents where ....;
+		<script type="text/template">
+		<![CDATA[
+		/*basic procedure*/
+		create or alter proceduure dbo.[Agent.Index.Load]
+		@UserId bigint
+		as
+		begin
+		set nocount on;
+		/* basic set */
+		select [Agents!TAgent!Array] = null, [Id!!Id] = Id, [Name!!Name] = Name, [Code]
+		[Documents!TDocument!LazyArray] = null /* lazy array Documents */
+		from dbo.Agents where ....;
 
-	/* структура объекта TDocument - пустой набор */
-	select [Documents!TDocument!Array] = null, [Id!!Id] = Id, [Date], [Sum], [Memo]
-	from dbo.Documents where 0 <> 0;
-end
-go
+		/* TDocument object structure - empty set */
+		select [Documents!TDocument!Array] = null, [Id!!Id] = Id, [Date], [Sum], [Memo]
+		from dbo.Documents where 0 <> 0;
+		end
+		go
 
-/*процедура загрузки ленивого массива. Суффикс Documents соответствует имени свойства в основной модели.*/
-create or alter procedure dbo.[Agent.Documents]
-@UserId bigint,
-@Id bigint /*идентификтор контрагента, для которого загружается список документов*/
-as
-begin
-	set nocount on;
-	select [Documents!TDocument!Array] = null, [Id!!Id] = Id, [Date], [Sum], [Memo]
-	from dbo.Documents where [Agent]=@Id and ....;
-end
-go
-]]>
-</script>
+		/*The procedure for loading a lazy array. The Documents suffix corresponds to the name of the property in the basic model.*/
+		create or alter procedure dbo.[Agent.Documents]
+		@UserId bigint,
+		@Id bigint /*The identifier of the contractor for which the list of documents is loaded*/
+		as
+		begin
+		set nocount on;
+		select [Documents!TDocument!Array] = null, [Id!!Id] = Id, [Date], [Sum], [Memo]
+		from dbo.Documents where [Agent]=@Id and ....;
+		end
+		go
+		]]>
+	</script>
 </pre>
 
-		Он сформирует в корне объект <code>Document</code> типа
-		<code>TDocument</code> со следующими свойствами: <code>Id</code>, <code>Date</code>, <code>Rows</code>.
-		Свойство <code>Rows</code> будет представлять собой массив элементов типа <code>TRow</code> со следующими свойствами:
-		<code>Id</code>, <code>Qty</code>, <code>Price</code>, <code>Sum</code>.
+		It will form the <code>Document</code> object of the <code>TDocument</code> ype at the root with the following properties:
+		<code>Id</code>, <code>Date</code>, <code>Rows</code>. The <code>Rows</code> type will be the items array of the
+		<code>TRow</code> with the following properties: <code>Id</code>, <code>Qty</code>, <code>Price</code>, <code>Sum</code>.
 	</p>
 
 
-	<p>Процедуры загрузки ленивых массивов также могут имет параметры и использовать <a href="paging">разбиение на страницы</a>.</p>
+	<p>Lazy array loading procedures can also take parameters and use <a href="paging">pagination</a>.</p>
 
 	<div class="tip info">
-		Обратите внимание! Имеется возможность обновить (перезагрузить из базы данных) только содержимое ленивого массива 
-		без основной модели. Для этого просто передайте массив в качестве аргумента в команду <a class="code-link" href="/xaml/bind/bindcmd">Refresh (Reload)</a> или в метод
-		<a class="code-link" href="/client/controller">$reload</a> контроллера.
+		Please note! It is possible to update (reload from the database) only the contents of the lazy array without the basic model.
+		To do this, simply pass the array as an argument to the <a class="code-link" href="/xaml/bind/bindcmd">Refresh (Reload)</a>
+		command or to the controller's <a class="code-link" href="/client/controller">$reload</a> method.
 	</div>
 </div>
 

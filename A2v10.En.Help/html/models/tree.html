@@ -1,45 +1,45 @@
 ﻿<div>
-	<!--title:Иерархические модели данных-->
-	<!--keywords:Иерархические модели данных;-->
+	<!--title:Hierarchical data models-->
+	<!--keywords:Hierarchical data models;-->
 	<div class="title">
 		<h1>
-			Иерархические модели данных
+			Hierarchical data models
 		</h1>
 		<div class="breadcrumb">
-			<a href="index">Модели данных</a>
+			<a href="index">Data models</a>
 		</div>
 	</div>
 	<p>
-		Иерархическая (древовидная) модель данных включает набор записей
-		c соотношением родитель-потомок. Глубина вложенности не ограничена.
+		The hierarchical (tree-like) data model includes a set of records 
+		with a parent-child relationship. The nesting depth is not limited.
 	</p>
 
 	<p>
-		Иерархическая модель представлена типом объекта <code>!Tree</code>.
-		Для правильной работы дерева каждая запись должна иметь три обязательных поля:
+		The hierarchical model is represented by the <code>!Tree</code> object type.
+		For the tree to work properly, each record must have three required fields:
 	</p>
 	<ul class="std">
-		<li><code>!Id</code> - идентификтор записи</li>
-		<li><code>!ParentId</code> - идентификтор родительской записи.</li>
-		<li><code>!Items</code> - массив дочерних полей.</li>
+		<li><code>!Id</code> - record identifier</li>
+		<li><code>!ParentId</code> - parent record identifier.</li>
+		<li><code>!Items</code> - an array of child fields.</li>
 	</ul>
 
 	<p class="tip info">
-		<b>Обратите внимание</b>. Для формирования наборов данных
-		обычно используется механизм рекурсивных запросов T-SQL (CTE) - Common Table Expressions) и
-		оператор WITH.
-		<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ru-ru/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15">Подробнее в документации Microsoft</a>.
+		<b>Note</b>. The T-SQL recursive query engine (CTE) - Common Table Expressions
+		and the WITH clause - is usually used to generate record sets.
+		<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ru-ru/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15">For more information, see the Microsoft documentation</a>.
 	</p>
 
 	<p>
-		Деревья могут загружаться как статически (все дерево за однин запрос), так и динамически (lazy loading), когда ветви
-		дерева заполняются из базы данных только в том случае, если пользователь (или программа) раскрывает эту ветку.
+		The trees can be loaded both statically (the entire tree in one request), and 
+		dynamically (lazy loading), when the branches of the tree are filled from the
+		database only in case the user (or program) expands this branch.
 	</p>
 
-	<h3>Пример</h3>
+	<h3>Example</h3>
 	<p>
-		Работу с иерархической моделью проще всего продемострировать на примере.
-		Пусть имеется таблица <code>Agents</code>следующего вида:
+		Working with a hierarchical model is easiest to demonstrate with an example. Let
+		there be a table <code>Agents</code> of the following form:
 	</p>
 
 	<table class="sql-table">
@@ -84,10 +84,10 @@
 		</tbody>
 	</table>
 
-	<h3>Статическое дерево</h3>
+	<h3>Static tree</h3>
 	<p>
-		Статическое дерево заполняется сразу полностью за одно обращение к БД.
-		Запрос, формирующий данные для модели дерева будет выглядеть следующим образом
+		The static tree is completely filled at once in one access to the database. 
+		The query that generates data for the tree model will look as follows:
 	</p>
 
 <pre class="code-highlight js" data-lang="sql">
@@ -112,12 +112,12 @@ end
 </script>
 </pre>
 
-	<p>
-		При обработке этого набора создается простой массив <code>Agents</code>элементов типа <code>TAgent</code>.
-		В каждом элементе этого массива будет массив <code>Items</code>, который будет заполнен дочерними элементами.
-		Родительский элемента определяется свойством c модификатором <code>ParentId</code>. Обратите внимание, что
-		это поле не имеет имени свойства, поэтому оно не попадет в результирующую модель.
-	</p>
+<p>
+	When this set is being processed, a simple array of <code>Agents</code>  items of <code>TAgent</code>
+	type is created. Each item of this array will contain an <code>Items</code> array that will be
+	populated with child items. The parent item is defined by the property with the <code>ParentId</code>.
+	modifier. Note that this field does not have a property name, so it will not be included in the resulting model.
+</p>
 
 	<p>В результате обработки получится вот такая модель (служебные свойства для простоты не показаны):</p>
 <pre class="code-highlight js" data-lang="js">
@@ -241,7 +241,9 @@ end
 </script>
 </pre>
 
-	<p>Элементы дерева в модели данных реализуют интерфейс <code>ITreeElement</code> и 
-	имеют некоторые дополнительные свойства. <a href="/client/treeelemprops">Подробнее...</a>.</p>
+	<p>
+		Элементы дерева в модели данных реализуют интерфейс <code>ITreeElement</code> и
+		имеют некоторые дополнительные свойства. <a href="/client/treeelemprops">Подробнее...</a>.
+	</p>
 
 </div>
