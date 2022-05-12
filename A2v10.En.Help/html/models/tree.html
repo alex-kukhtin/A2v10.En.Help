@@ -119,7 +119,7 @@ end
 	modifier. Note that this field does not have a property name, so it will not be included in the resulting model.
 </p>
 
-	<p>В результате обработки получится вот такая модель (служебные свойства для простоты не показаны):</p>
+	<p>As a result of processing, such model will be obtained (service properties for simplicity are not shown):</p>
 <pre class="code-highlight js" data-lang="js">
 	<script type="text/template">{
   "Agents": [
@@ -165,12 +165,9 @@ end
 }</script>
 </pre>
 
-	<p>
-		Для работы с такой моделью чаще всего используется элемент
-		управления <a href="/xaml/controls/treeview">TreeView</a>.
-	</p>
+<p>To work with such a model, the <a href="/xaml/controls/treeview">TreeView</a> control is most often used.</p>
 
-	<p>Например (XAML):</p>
+<p>Example (XAML):</p>
 <pre class="code-highlight xml">
 	<script type="text/template">
 <![CDATA[
@@ -181,27 +178,26 @@ end
 	</script>
 </pre>
 
-	<h3>Динамическое дерево</h3>
-	<p>Динамическое дерево заполняется по мере того, как пользователь открывает определенные ветви дерева.</p>
-	<p>
-		При работе с динамическим деревом достаточно вернуть из процедуры загрузки только верхний уровень дерева.
-		Однако для того, чтобы система знала, какие элементы можно раскрыть, нужно иметь в модели еще одно служебное
-		свойство с специальным типом <code>!HasChildren</code>. Если такое свойство установлено, то система считает, что этот
-		элемент имеет дочерние и показывает соответствующие элементы пользовательского интерфейса.
-	</p>
-	<p>
-		Обратите внимание,
-		что такое свойство, несмотря на то, что оно служебное, обязательно должно иметь имя, поскольку работа с ним ведется на
-		клиентской стороне.
-	</p>
+<h3>Dynamic tree</h3>
+<p>Dynamic tree fills up as the user opens certain branches of the tree.</p>
+<p>
+	When working with a dynamic tree, it is sufficient to return only the top level
+	of the tree from the loading procedure. However, in order for the system to know
+	which items can be disclosed, you need to have another service property in the model
+	with a special <code>!HasChildren</code> type. If this property is set, the system
+	assumes that this item has children and shows the corresponding user interface elements.
+</p>
+<p>
+	Note that such a property, even though it is a service property, must have a name, as it is handled on the client’s side.
+</p>
 
-	<p>
-		Когда пользователь пытается раскрыть такой элемент дерева, вызывается хранимая процедура с суффиксом
-		<code>.Expand</code>, которая должна вернуть дочерние элементы для этого узла.
-		Далее процесс повторяется рекурсивно.
-	</p>
+<p>
+	When a user attempts to open such a tree item, a stored procedure with the
+	<code>.Expand</code> suffix is called, which should return the child items
+	for that node. The process is then repeated recursively.
+</p>
 
-	<p>Процедура верхнего уровня может вернуть такой набор:</p>
+<p>The top-level procedure can return the following set:</p>
 <pre class="code-highlight js" data-lang="sql">
 <script type="text/template">
 create or alter procedure dbo.[Agent.Index.Load]
@@ -218,32 +214,30 @@ end
 </script>
 </pre>
 
-	<p>
-		Тогда при попытке раскрытия дерева вызовется процедура <code>.Expand</code>, которая должна вернуть
-		элементы следующего уровня дерева.
-	</p>
+<p>
+	Then, upon an attempt to open the tree, the <code>.Expand</code> procedure will be called, which should return the elements of the next level of the tree.
+</p>
 
 <pre class="code-highlight js" data-lang="sql">
-<script type="text/template">
-create or alter procedure dbo.[Agent.Index.Expand]
-@UserId bigint,
-@Id bigint
-as
-begin
-set nocount on;
-/*обратите внимание, что теперь дерево имеет имя Items (такое-же как и дочерние элементы верхнего уровня) */
-select [Items!TAgent!Tree] = null, [Id!!Id] = a.Id, [Name!!Name] = a.[Name],
-	[Items!TAgent!Items] = null,
-	[HasChildren!!HasChildren] = case when exists(select * from dbo.Agents c where c.Parent = a.Id) then 1 else 0 end
-from dbo.Agents a where Parent = @Id
-order by [Id!!Id];
-end
-</script>
+	<script type="text/template">
+		create or alter procedure dbo.[Agent.Index.Expand]
+		@UserId bigint,
+		@Id bigint
+		as
+		begin
+		set nocount on;
+		/*Please note that the tree now has the name Items (same as the top-level child items) */
+		select [Items!TAgent!Tree] = null, [Id!!Id] = a.Id, [Name!!Name] = a.[Name],
+		[Items!TAgent!Items] = null,
+		[HasChildren!!HasChildren] = case when exists(select * from dbo.Agents c where c.Parent = a.Id) then 1 else 0 end
+		from dbo.Agents a where Parent = @Id
+		order by [Id!!Id];
+		end
+	</script>
 </pre>
 
-	<p>
-		Элементы дерева в модели данных реализуют интерфейс <code>ITreeElement</code> и
-		имеют некоторые дополнительные свойства. <a href="/client/treeelemprops">Подробнее...</a>.
-	</p>
+<p>
+	The tree items in the data model implement the <code>ITreeElement</code> interface and have some additional properties. <a href="/client/treeelemprops">Learn more...</a>.
+</p>
 
 </div>

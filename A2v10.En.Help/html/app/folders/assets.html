@@ -3,36 +3,31 @@
 	<!--keywords:_assets-->
 	<div class="title">
 		<h1>
-			Специальная папка _assets
+			_assets special folder
 		</h1>
 	</div>
 
 	<p>
-		Специальная папка <code>_assets</code> содержит общие элементы приложения, такие как картинки, скрипты JavaScript 
-		или таблицы стилей.
+		<code>_assets</code> special folder contains common application elements, such as images, JavaScript scripts, or style sheets.
 	</p>
 
-	<p>Таблицы стилей (файлы *.css) и скрипты (*.js) из папки <code>_assets</code> загружаются в 
-	момент начальной инициализации приложения.</p>
+	<p>Style sheets (* .css files) and scripts (* .js) from the <code>_assets</code> folder are loaded at the moment of initial program initialization.</p>
 
-	<h3>Файлы скриптов (*.js)</h3>
+	<h3>Script files (*.js)</h3>
 	<p>
-		Файлы скриптов загружаются и выполняются в момент начальной инициализации приложения. Как правило, эти файлы 
-		должны включать модули, хотя это и не обязательно.
-		По соглашению такие модули должны иметь префикс <code>"app:"</code>.
+		Script files are loaded and executed at the moment of initial program initialization. Usually, these files should
+		contain modules, although this is optional. By convention, such modules must be prefixed with <code>"app:"</code>.
 	</p>
 
 	<p>
-		Обычные подключаемые модули (без префикса <code>"app:"</code>) будут загружаться каждый раз вместе со страницей, 
-		которая на них ссылается.
-		В отличие от этого, модули с префиксом <code>"app:"</code>, которые находятся в папке <code>_assets</code> загружаются один раз
-		при инициализации приложения. Если обычный модуль имеет префикс <code>"app:"</code>, то он не будет загружен.
+		Regular plug-in modules (without the <code>"app:"</code>refix) will be loaded each time together with the page that refers to them. In contrast,
+		modules with the <code>"app:"</code> prefix in the <code>_assets</code> folder are loaded once, when the program is initialized. If the regular
+		module is prefixed with <code>"app:"</code>, it will not be loaded.
 	</p>
 
 	<p class="tip warning">
-		<b>Обратите внимание!</b> В папке могут содержаться минифицированные файлы (*.min.css или *.min.js). Если система находит 
-		такие файлы, то обычные их версии (без промежуточного суффикса min) игнорируются. Это поведение позволяет использовать 
-		стандартные инструменты минификации для уменьшения времени загрузки приложения.
+		<b>Please note!</b> The folder may contain minified files (* .min.css or * .min.js). If the system finds such files, their usual versions (without 
+		the intermediate suffix min) are ignored. This behavior allows you to use standard minimization tools to reduce program loading time.
 	</p>
 
 </div>

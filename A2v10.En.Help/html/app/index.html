@@ -1,43 +1,41 @@
 ﻿<div>
-	<!--title:Прикладные приложения-->
-	<!--keywords:Прикладные приложения;-->
+	<!--title:Application programs-->
+	<!--keywords:Application programs;-->
 	<div class="title">
 		<h1>
-			Прикладные приложения
+			Application programs
 		</h1>
 	</div>
 
-	<p>Система <b>A2v10</b> предоставляет разработчику высокоуровневый предметно-ориентированный «конструктор» прикладных приложений.</p>
+	<p>The <b>A2v10</b> system provides the developer with a high-level object-oriented "designer" of application programs.</p>
 
 	<p>
-		Фактически прикладное приложение представляет собой простой каталог с файлами.
-		Это описания моделей,
-		представления, шаблоны, отчеты, статические файлы и т.д.
-		Отметим, что прикладное приложение является «динамическим» в том смысле,
-		что после изменений в файлах приложения, не требуется компиляции файлов, сборки проекта и его развертывания.
+		In fact, an application program is a simple directory with files. They are model descriptions, views, templates,
+		reports, static files, etc. Please note that the application program is "dynamic" in the sense that after changes
+		in the program files, the file compilation, project assembly, and deployment are not required.
 	</p>
 
 	<p>
-		Каждый конечный каталог предствляет собой конечную точку (endpoint), которая адресуется через уникальный url-адрес.
+		Each endpoint directory represents an endpoint that is addressed via a unique URL address.
 	</p>
 
 	<p>
-		Конечная точка (endpoint) представляет собой точку взаимодействия с приложением. Как правило, одна конечная точка отвечает
-		за обработку одного элемента предметной области. Обращение к конечной точке выполняется по относительному пути (указывается в url).
-
-		В каталоге, представляющем конечную точку, обязательно должен
-		присутствовать файл <a href="model" class="code-link">model.json</a>, в котором описаны возможные действия с этой конечной точкой.
-		Можно считать, что признаком конечной точки является наличие в соответствующем каталоге файла <code>model.json</code>.
+		The endpoint is the point of interaction with the program. Usually, one endpoint is responsible for
+		processing one item of the subject field. The endpoint is accessed in a relative way (indicated in the
+		URL). The <a href="model" class="code-link">model.json</a>, file must be present in the directory,
+		representing the endpoint, which describes possible actions with this endpoint. It can be assumed that
+		the sign of the endpoint is the presence of the <code>model.json</code> file in the corresponding directory.
 	</p>
 
 	<p>
-		Система поддерживает переадресацию url-адресов в различные конечные точки. Для этого используется файл перенаправлений
-		<a href="redirect" class="code-link">redirect.json</a>, который должен находиться в корневом каталоге приложения.
+		The system supports the redirection of the URLs to various endpoints. The
+		<a href="redirect" class="code-link">redirect.json</a> redirect file is used
+		for this, which must be located in the root directory of the program.
 
 	</p>
 
 	<p>
-		Папка приложения может содержать дополнительные <a class="code-link" href="folders/index">специальные папки</a>.
+		The application folder may contain additional <a class="code-link" href="folders/index">special folders</a>.
 	</p>
 
 </div>

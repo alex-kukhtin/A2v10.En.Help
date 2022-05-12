@@ -3,15 +3,16 @@
 	<!--keywords:commands-->
 	<div class="title">
 		<h1>
-			Команды (commands)
+			Commands
 		</h1>
 		<div class="breadcrumb">
 			<a href="model">model.json</a>
 		</div>
 	</div>
 	<p>
-		Объект <b>commands</b> описывает команды, доступные в текущей конечной точке.
-		Имена свойств объекта представляют собой имена команд. Каждое свойство представляет собой объект следующей структуры:
+		The <b>commands</b> object describes the commands available at the
+		current endpoint. Object property names are command names. Each 
+		property represents an object of the following structure:
 	</p>
 
 	<p>
@@ -29,13 +30,13 @@
 </pre>
 	</p>
 
-	<h3>Свойства объекта команды</h3>
+	<h3>Properties of the command object</h3>
 	<table class="table-props">
 		<thead>
 			<tr>
-				<th>Имя</th>
-				<th>Тип</th>
-				<th>Описание</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -43,43 +44,43 @@
 				<td class="prop-name">type</td>
 				<td>enum</td>
 				<td>
-					Обязательно. Тип команды:
+					Obligatory. The command type:
 					<table class="sub-table">
 						<tr>
 							<td class="prop-name">sql</td>
-							<td>Вызов хранимой процедуры sql. Должно быть указано свойство <code>procedure</code>.</td>
+							<td>Calling a stored sql procedure. You must specify a <code>procedure</code> property.</td>
 						</tr>
 						<tr>
 							<td class="prop-name">clr</td>
 							<td>
-								Вызов метода .NET объекта. Должно быть указано свойство <code>clrType</code>.
-								<a href="clrсommand">Подробнее...</a>.
+								Calling the .NET object method. You must specify the <code>clrType</code> property.
+								<a href="clrсommand">Learn more...</a>.
 							</td>
 						</tr>
 						<tr>
 							<td class="prop-name">callApi</td>
 							<td>
-								Вызов внешнего http-API. Параметры определяются свойством <code>parameters</code>.
-								<a href="callapicommand">Подробнее...</a>.
+								Calling an external http-API. Parameters are determined by the <code>parameters</code> property.
+								<a href="callapicommand">Learn more...</a>.
 							</td>
 						</tr>
 						<tr>
 							<td class="prop-name">startProcess</td>
-							<td>Запуск бизнес-процесса.</td>
+							<td>Starting a business process.</td>
 						</tr>
 						<tr>
 							<td class="prop-name">resumeProcess</td>
-							<td>Возобновление бизнес-процесса.</td>
+							<td>Resuming a business process.</td>
 						</tr>
 						<tr>
 							<td class="prop-name">file</td>
-							<td>Получение файла.</td>
+							<td>Receiving a file.</td>
 						</tr>
 						<tr>
 							<td class="prop-name">sendMessage</td>
 							<td>
-								Отправка сообщения. Параметры определяются свойством <code>parameters</code>.
-								<a href="sendmessagecommand">Подробнее...</a>.
+								Sending a message. Parameters are determined by the <code>parameters</code> property.
+								<a href="sendmessagecommand">Learn more...</a>.
 							</td>
 						</tr>
 					</table>
@@ -88,80 +89,81 @@
 			<tr>
 				<td class="prop-name">source</td>
 				<td>string</td>
-				<td>Необязательно. Имеет смысл только для типа <b>sql</b>. Источник данных для хранимой процедуры. Если не указан, берется из родительского элемента.</td>
+				<td>Optional. Only makes sense for the <b>sql</b> type. Data source for the stored procedure. If not specified, taken from the parent element.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">schema</td>
 				<td>string</td>
-				<td>Необязательно.  Имеет смысл только для типа <b>sql</b>. Имя sql-схемы для хранимой процедуры. Если не указана, берется из родительского элемента.</td>
+				<td>Optional. Only makes sense for the <b>sql</b> type. Name of the SQL schema for the stored procedure. If not specified, taken from the parent element.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">procedure</td>
 				<td>string</td>
-				<td>Обязательно для типа <b>sql</b>. Имя хранимой процедуры.</td>
+				<td>Required for the <b>sql</b> type. The name of the stored procedure.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">clrType</td>
 				<td>string</td>
-				<td>Обязательно для типа <b>clr</b>. Строка, описывающая сборку и .NET тип.</td>
+				<td>Required for the <b>clr</b> type. A string describing the build and the .NET type.</td>
 			</tr>
 			<tr>
 				<td class="prop-name">file</td>
 				<td>string</td>
-				<td>Строка. Имя файла для бизнес-процессов.</td>
+				<td>String. Ther file name for business processes.</td>
 			</tr>
 			<tr class="top">
 				<td class="prop-name">parameters</td>
 				<td>object</td>
 				<td>
-					Необязательно.
+					Optional.
 					<br />
-					Для типа <b>sql</b> представляет собой объект, свойства которого передаются в хранимую процедуру как статические параметры. Имя свойства является именем параметра,
-					значение - значением параметра.
+					For the <b>sql</b> type, it is an object whose properties are passed to the stored procedure
+					as the static parameters. The property name is the name of the parameter, the value is the value of the parameter.
 					<br />
-					Для типа <b>callApi</b> определяют поведение команды. <a href="callapicommand">Подробнее...</a>.
+					For the <b>callApi</b> type, determine the command’s behavior. <a href="callapicommand">Learn more...</a>.
 
 				</td>
 			</tr>
 			<tr>
 				<td class="prop-name">debugOnly</td>
 				<td>boolean</td>
-				<td>Команда будет выполняться только в отладочной конфигурации (
-				ключ <code>configuration</code> раздела <code>appSettings</code> имеет значение <b>"debug"</b>).</td>
+				<td>
+					The command will be executed only in the debug configuration ( <code>configuration</code> key of the <code>appSettings</code> section is <b>"debug"</b>).
+				</td>
 			</tr>
 		</tbody>
 	</table>
 
 
-	<h3>Команды типа sql</h3>
+	<h3>Sql type commands</h3>
 	<p>
-		Команда типа <b>sql</b> выполняет хранимую процедуру. Имя процедуры задается свойством <code>procedure</code>. Sql-cхема задается свойством
-		<code>schema</code> или берется из родительского элемента (если не указано). Процедура выполняется в источнике, который задается свойством
-		<code>source</code> или берется из родительского элемента (если не указано).
+		<b>Sql</b> type command executes a stored procedure. The procedure name is specified by the <code>procedure</code> property. The Sql-schema is specified
+		by the <code>schema</code> property or taken from the parent element (if not specified). The procedure is executed at the source, which is specified by the
+		<code>source</code> or is taken from the parent element (if not specified).
 	</p>
 	<p>
-		Процедуре передаются следующие параметры:
+		The following parameters are passed to the procedure:
 		<ul class="std">
-			<li>Стандартные параметры (@TenantId, @UserId).</li>
-			<li>Параметры переданные в url.</li>
-			<li>Параметры из свойства <code>parameters</code>.</li>
+			<li>Standard parameters (@TenantId, @UserId).</li>
+			<li>Parameters passed to the url.</li>
+			<li>Parameters from the  <code>parameters</code> property.</li>
 		</ul>
 	</p>
 
-	<h3>Команды типа clr</h3>
+	<h3>Clr type commands</h3>
 	<p>
-		Команда типа <b>clr</b> вызывает метод из типа, заданного свойством <code>clrType</code>. Тип должен реализовывать
-		интерфейс <code>IInvokeTarget</code>.  <a href="clrcommand">Подробнее...</a>
+		<b>Clr</b> type command calls a method of the type specified by the <code>clrType</code> property. 
+		The type must implement the <code>IInvokeTarget</code>.  <a href="clrcommand">Learn more...</a>
 	</p>
 
-	<h3>Команды типа callApi</h3>
+	<h3>CallApi type commands</h3>
 	<p>
-		Команда типа <b>callApi</b> вызывает внешний сервер по протоколу http. Поведение команды оперделяется параметрами.
-		<code>parameters</code>. <a href="callapicommand">Подробнее...</a>.
+		<b>CallApi</b> type command calls an external server via http. The behavior of the command is
+		determined by the <code>parameters</code> parameters. <a href="callapicommand">Learn more...</a>.
 	</p>
-	<h3>Команды типа sendMessage</h3>
+	<h3>SendMessage type commands</h3>
 	<p>
-		Команда типа <b>sendMessage</b> отправляет сообщение. Поведение команды оперделяется параметрами.
-		<code>parameters</code>. <a href="sendmessagecommand">Подробнее...</a>.
+		<b>SendMessage</b> type command sends a message. The behavior of the command is determined by
+		the	<code>parameters</code> parameters. <a href="sendmessagecommand">Learn more...</a>.
 	</p>
 </div>
