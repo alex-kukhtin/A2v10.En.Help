@@ -1,4 +1,4 @@
-﻿/* Copyright © 2017-2018 Alex Kukhtin. All rights reserved.*/
+﻿/* Copyright © 2017-2022 Alex Kukhtin. All rights reserved.*/
 
 (function () {
 
@@ -12,7 +12,7 @@
 `<div class="sub-side">
 	<div class="index-view">
 		<div class="search-block">
-			<label>Введите слово для поиска:</label>
+			<label>Enter word to search:</label>
 			<input class="input-search" v-model.lazy="searchText" ref="input">
 			<a v-if="debugMode" @click="showDebug">debug</a>
 		</div>

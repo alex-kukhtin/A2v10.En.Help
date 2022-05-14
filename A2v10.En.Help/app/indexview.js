@@ -1,4 +1,4 @@
-﻿/* Copyright © 2017-2018 Alex Kukhtin. All rights reserved. */
+﻿/* Copyright © 2017-2022 Alex Kukhtin. All rights reserved. */
 
 (function () {
 
@@ -9,7 +9,7 @@
 <div class="sub-side">
 	<div class="index-view">
 		<div class="search-block">
-			<label>Введите ключевое слово для поиска:</label>
+			<label>Enter a keyword to search:</label>
 			<input class="input-search" type=text v-model="fragment"></input>
 		</div>
 		<ul class="index-tree">

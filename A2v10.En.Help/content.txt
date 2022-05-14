@@ -1,11 +1,11 @@
 ﻿A2v10 Platform		/index
 	What's new		/whatsnew/index
-		Январь 2022				/whatsnew/w202201
+		January 2022		/whatsnew/w202201
 	
 General information		/common/index
 	Platform			/common/platform
 
-Прикладные приложения		/app/index
+Application programs		/app/index
 	model.json			/app/model
 		actions			/app/actions
 		dialogs			/app/dialogs
@@ -30,14 +30,14 @@ Data models		/models/index
 	Updating the models			/models/update
 	Hierarchical data models		/models/tree
 	Cross data models			/models/cross
-	Модели с группировкой		/models/group
-	Работа с двоичными объектами		/models/blob
+	Grouped Models		/models/group
+	Working with binary objects		/models/blob
 
 
 Views	/views/index
 	Xaml			/xaml/index
 		General information		/xaml/overview/index
-			Расширения разметки	/xaml/overview/extensions
+			Markup extensions	/xaml/overview/extensions
 		Controls	/xaml/controls/index
 			Alert				/xaml/controls/alert
 			Button				/xaml/controls/button
@@ -81,7 +81,7 @@ Views	/views/index
 			TreeViewItem		/xaml/controls/treeviewitem
 			UploadFile			/xaml/controls/uploadfile
 
-		Контейнеры			/xaml/containers/index
+		Сontainers			/xaml/containers/index
 			Block				/xaml/containers/block
 			Card				/xaml/containers/card
 			CardBody			/xaml/containers/cardbody
@@ -203,24 +203,24 @@ Views	/views/index
 			UIContentElement	/xaml/abstract/uicontentelement
 			UIElement			/xaml/abstract/uielement
 			UIElementBase		/xaml/abstract/uielementbase
-		Диаграммы				/xaml/diagram/index
+		Diagram				/xaml/diagram/index
 			Diagram				/xaml/diagram/diagram
 			Group				/xaml/diagram/group
 			Path				/xaml/diagram/path
 
-Программирование клиента	/client/index
+Programming on the client	/client/index
 	Controller		/client/controller
-	Data Model			/client/data
-		Свойства и методы объекта			/client/elemprops
-		Свойства и методы корневого объекта	/client/rootprops
-		Свойства и методы элемента массива	/client/arrayelemprops
-		Свойства и методы элемента дерева	/client/treeelemprops
-		Свойства и методы массива			/client/arrayprops
+	Data Model		/client/data
+		Object properties and methods		/client/elemprops
+		Root object properties and methods	/client/rootprops
+		Array item properties and methods	/client/arrayelemprops
+		Tree item properties and methods	/client/treeelemprops
+		Array properties and methods		/client/arrayprops
 
 	Templates		/template/index
 		Events			/template/events
 		Options			/template/options
-		Начальные значения		/template/defaults
+		Defaults		/template/defaults
 		Properties		/template/properties
 		Validators		/template/validators
 		Commands			/template/commands
@@ -229,11 +229,11 @@ Views	/views/index
 	Modules				/client/module
 		std:utils			/client/stdutils
 
-	Глобальные функции	/client/global
+	Global functions	/client/global
 		require			/client/global_require
 
 Desktop applications			/desktop/index
-	Файл app.config.json		/desktop/config
+	app.config.json file		/desktop/config
 
 Business processes (WWF)	/workflow/index
 	Activities			/workflow/activities/index
@@ -257,11 +257,11 @@ Messaging	/messaging/index
 	Template			/messaging/template
 	TemplatedMessage	/messaging/templatedmessage
 
-Как сделать			/howto/index
-	Импорт данных из Excel		/howto/importexcel
+How to			/howto/index
+	Import data from Excel		/howto/importexcel
 
-Тестирование		/tests/index
-	Проверка типов	/tests/checktypes
+Testing		/tests/index
+	Types Checking	/tests/checktypes
 	Tools		/tests/tools
 
 About help system	/help/about

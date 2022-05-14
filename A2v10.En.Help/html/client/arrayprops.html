@@ -41,7 +41,7 @@ interface IElementArray<T> extends Array<T> {
 	readonly $cross: {[prop: string]: string[]};
 	// methods
 	$empty(): this;
-	$reload(): Promise<IElementArray<T>>;
+	$reload(): Promise<IElementArray<T> >;
 	$remove(elem: T): this;
 	$clearSelected(): this;
 	$append(src?: object): T;
@@ -51,7 +51,7 @@ interface IElementArray<T> extends Array<T> {
 	$sum(fn: (item: T) => number): number;
 	$find(fn: (this: any, item:T, index?: number, array?: IElementArray<T>): boolean, thisArg:any): T;
 	$isLazy(): boolean;
-	$loadLazy(): Promise<IElementArray<T>>;
+	$loadLazy(): Promise<IElementArray<T> >;
 	$load(): void;
 	$resetLazy(): void;
 }
@@ -126,7 +126,7 @@ interface IElementArray<T> extends Array<T> {
 	<div class="method">
 		<div class="syntax">
 			<pre class="code-highlight js">
-			<script type="text/template"><![CDATA[$reload(): Promise<IElementArray<T>>
+			<script type="text/template"><![CDATA[$reload(): Promise<IElementArray<T> >
 				]]></script>
 		</pre>
 		</div>
@@ -234,7 +234,7 @@ interface IElementArray<T> extends Array<T> {
 					<li><span class="prop-name">'start'</span> -  to the beginning of the array (equivalent of <code>$prepend</code>).</li>
 					<li><span class="prop-name">'end'</span> -  to the end of the array (equivalent of <code>$append</code>).</li>
 					<li><span class="prop-name">'above'</span> - before the specified (<code>ref</code>) item.</li>
-					<li><span class="prop-name">'below'</span> - after the specified (<code>ref</code>) элемента.</li>
+					<li><span class="prop-name">'below'</span> - after the specified (<code>ref</code>) item.</li>
 				</ul>
 			</li>
 			<li><code>ref</code>  - item relative to which the insertion will be performed for <code>to = 'above' | 'below'</code>.</li>
@@ -318,7 +318,8 @@ interface IElementArray<T> extends Array<T> {
 			<ul class="params">
 				<li>Found item.</li>
 			</ul>
-</div>
+		</p>
+	</div>
 
 	<div class="method">
 		<div class="syntax">
