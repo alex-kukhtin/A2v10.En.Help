@@ -670,3 +670,8 @@ header .lang {
   font-size: 12px;
   margin-right: 5px;
 }
+a[onmouseover] {
+  position: absolute;
+  bottom: 34px;
+  left: 12px;
+}
