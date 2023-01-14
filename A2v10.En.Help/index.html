@@ -13,6 +13,7 @@
 	<meta property="og:url" content="https://docs.a2v10.com" />
 	<meta property="og:site_name" content="docs.a2v10.com" />
 	<meta property="og:locale" content="en_US" />
+	<meta name="google-site-verification" content="KBCdyof0pVa92dNzuqNwXWpzEAheTNRCPVo7rfLXbE8" />
 	<title>A2v10:SDK version 10</title>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
@@ -35,9 +36,6 @@
 			<div class="lang">
 				<a href="https://docs.a2v10.com">UK</a>
 			</div>
-			<div class="lang">
-				<a href="https://docs-ru.a2v10.com">RU</a>
-			</div>
 		</header>
 		<ul class="menu-tab-header">
 			<li @click.prevent="tab('content')" :class="{active: isActive('content')}">Content</li>
@@ -50,10 +48,14 @@
 			<a2-search-view v-show="isActive('fts')"></a2-search-view>
 		</aside>
 
-		<a2-include class="help-content-view" :source="content"></a2-include>
+		<a2-include class="help-content-view" :source="content">
+			<div v-pre>
+				$(PageContent)
+			</div>
+		</a2-include>
 
 		<footer class="help-footer">
-			<span>Copyright &copy; 2017-2022 Oleksandr Kukhtin</span>
+			<span>Copyright &copy; 2017-2023 Oleksandr Kukhtin</span>
 			<span class="divider"></span>
 			<a href="/help/about">About help system...</a>
 			<span class="divider"></span>
@@ -61,7 +63,7 @@
 				<a target="_blank" tabindex="-1" rel="noopener" href="https://a2v10.com" title="A2v10 Platform">
 					<i class="ico ico-a2logo a2logo-layout"></i>
 				</a>
-				<span>version 10.0.7846</span>
+				<span>version 10.0.7915</span>
 			</span>
 		</footer>
 	</div>
